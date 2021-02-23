@@ -1,0 +1,144 @@
+@media screen and (min-width: 1000px) {
+  .buttons {
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 10000;
+    user-select: none;
+  }
+}
+
+svg.turn {
+  zoom: 1.5;
+}
+
+.char.match0:not(.selected) {
+  display: none;
+}
+
+.match0:not(.selected) {
+  opacity: 0.1;
+}
+
+body {
+  overflow: scroll;
+}
+
+.level1.match1 {
+  color: #ddd;
+}
+.level1.match2 {
+  color: #999;
+}
+
+.level1.match3,
+.level1.match4 {
+  color: #777;
+}
+
+.level1.match5,
+.level1.match6 {
+  color: #333;
+}
+
+.level1.match7,
+.level1.match8 {
+  color: black;
+}
+
+div {
+  display: inline-block;
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+div.container {
+  display: block;
+  padding: 0px;
+  border: 0px;
+}
+
+div.char {
+  margin: 5px;
+  font-size: 30px;
+  letter-spacing: 10px;
+}
+
+div.char.level1 {
+  font-size: 50px;
+}
+div.char.level2 {
+  font-size: 30px;
+  letter-spacing: 0px;
+}
+div.char.level3 {
+  font-size: 40px;
+  padding: 2px;
+  letter-spacing: 0px;
+}
+
+div.group.inverted span.complement,
+div.group span:not(.complement) {
+  text-decoration: underline white;
+}
+
+div.group span.complement,
+div.group.inverted span:not(.complement) {
+  text-decoration: none;
+}
+
+.complement {
+  border-left: 1px solid black;
+}
+
+div.group span {
+  display: inline-block;
+  padding: 10px;
+}
+
+div.group {
+  padding: 0px;
+  font-size: 20px;
+  margin: 2px;
+  background-color: #ddd;
+}
+
+div.full_match {
+  background-color: yellow;
+}
+
+div.selected {
+  background-color: #00399c;
+  color: white;
+}
+.flag-icon {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+body,
+td {
+  font-weight: bold;
+  font-size: 30px;
+  padding-left: 10px;
+  background-color: #999;
+}
+
+td:nth-child(3) {
+  white-space: nowrap;
+}
+td:nth-child(5) {
+  letter-spacing: 4px;
+  word-break: break-all;
+  text-align: right;
+}
+tr:nth-child(2n + 1) td {
+  background-color: #bbb;
+}
+
+table:not(.alpha) td:nth-child(5) {
+  display: none;
+}

@@ -1,0 +1,57 @@
+<div ng-if="e.fig" ng-style="{'color': e.fig[1], 'background-color': e.fig[2]}">
+  {{ e.fig[0] }}
+</div>
+<img
+  ng-if="e.image"
+  src="images/{{ e.image }}"
+  ng-style="img_style"
+  title="Country ISO codes: [{{ e.isos }}] // {{ e.image }}"
+/>
+
+<ng-include
+  ng-if="e.svg[0] == 'poll1'"
+  src="'html/poll/poll1.html'"
+  title="Country ISO codes: {{ e.isos }}"
+></ng-include>
+
+<ng-include
+  ng-if="e.svg[0] == 'turn'"
+  src="'html/sign/turn.html'"
+  title="Country ISO codes: {{ e.isos }}"
+></ng-include>
+
+<ng-include
+  ng-if="e.type == 'bollard'"
+  src="'html/bollard/bollard.html'"
+  title="Country ISO codes: {{ e.isos }}"
+></ng-include>
+
+<ng-include
+  ng-repeat="code in ['cz', 'ec1', 'ec2', 'pl', 'rs']"
+  ng-if="e.type == 'bollard_' + code"
+  src="'html/bollard/' + code + '.html'"
+  title="Country ISO codes: {{ e.isos }}"
+></ng-include>
+
+<svg
+  width="32"
+  height="32"
+  ng-if="e.svg[0] == 'square'"
+  xmlns="http://www.w3.org/2000/svg"
+  title="Country ISO codes: {{ e.isos }}"
+>
+  <g transform="translate(16, 0)">
+    <rect
+      fill="{{ e.svg[2] }}"
+      x="0"
+      y="0"
+      width="23"
+      height="23"
+      stroke="{{ e.svg[1] }}"
+      transform="rotate(45)"
+    />
+  </g>
+</svg>
+<div ng-if="e.figure" ng-style="e.figure.style">
+  {{ e.figure.content }}
+</div>

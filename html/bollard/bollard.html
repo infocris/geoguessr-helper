@@ -1,0 +1,42 @@
+<svg width="16" height="60">
+  <rect fill="white" x="0" y="0" width="16" height="60" />
+  <path
+    fill="{{ e.color2 || '#000000' }}"
+    d="m 0,10 l 16,-5 l 0,40 l -16,5 z"
+    ng-if="!e.rect"
+  />
+  <rect
+    x="2"
+    y="10"
+    width="12"
+    height="40"
+    fill="{{ e.color2 || '#000000' }}"
+    ng-if="e.rect"
+  />
+  <rect
+    fill="{{ e.color || 'white' }}"
+    x="3"
+    y="14"
+    width="10"
+    height="28"
+    ng-if="!e.rect && !e.circ"
+  />
+  <rect
+    x="4"
+    y="14"
+    width="8"
+    height="32"
+    fill="{{ e.color || 'white' }}"
+    ng-if="e.rect && !e.circ"
+  />
+  <circle cx="8" cy="18" r="5" fill="{{ e.color || 'white' }}" ng-if="e.circ" />
+  <circle cx="8" cy="42" r="5" fill="{{ e.color || 'white' }}" ng-if="e.circ" />
+  <rect
+    x="0"
+    y="0"
+    width="16"
+    height="10"
+    fill="{{ e.hat || 'white' }}"
+    ng-if="e.hat"
+  />
+</svg>

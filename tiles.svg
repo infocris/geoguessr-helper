@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <rect fill="#ffcc00" x="0" y="0" width="32" height="32" />
+  <path fill="#000000" d="m 0,0 l 32,32 l -32,0 z"/>
+ </g>
+ <g transform="translate(32, 0) rotate(180, 16, 16)">
+  <rect fill="#ffcc00" x="0" y="0" width="32" height="32" />
+  <path fill="#000000" d="m 0,0 l 32,32 l -32,0 z"/>
+ </g>
+ <g transform="translate(0, 32) rotate(90, 16, 16)">
+  <rect fill="#ffcc00" x="0" y="0" width="32" height="32" />
+  <path fill="#000000" d="m 0,0 l 32,32 l -32,0 z"/>
+ </g>
+ <g transform="translate(32, 32) rotate(270, 16, 16)">
+  <rect fill="#ffcc00" x="0" y="0" width="32" height="32" />
+  <path fill="#000000" d="m 0,0 l 32,32 l -32,0 z"/>
+ </g>
+</svg>
