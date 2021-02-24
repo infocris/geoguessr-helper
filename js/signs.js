@@ -225,7 +225,8 @@ signs = {
     { image: "poll/se.png" },
     { image: "sign/nopriority/se.png" },
     { image: "sign/circular/se.png" },
-    { image: "road/se.png" }
+    { image: "road/se.png" },
+    { svg: ["turn", "gold", "black"] }
   ],
   si: [
     {
