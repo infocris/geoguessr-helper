@@ -1,2 +1,2 @@
 # geoguessr-helper
-Created with CodeSandbox
+Created with CodeSandbox: https://migmw.csb.app/
