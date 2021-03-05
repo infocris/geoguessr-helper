@@ -1,0 +1,24 @@
+
+- image: road/comb.png
+  isos: ee,no
+- image: road/uy.png
+  title: Dashed Line inside 2 lines
+  isos: ls,ph,uy,za
+- image: road/europe.png
+  isos: au,cl,gb,gh,id,ie,jp,lk,my,nz,ph,sn
+- image: road/america.png
+  title: Yellow Center Line
+  isos: ar,bo,br,ca,cl,co,ec,fi,ke,kh,no,pe,ph,th,us,uy
+- image: road/africa.png
+  isos: bw,jo,ls,sz,za
+- image: road/dk.png
+  isos: dk
+- image: road/no.png
+  isos: be,no
+- image: road/se.png
+  isos: fi,se
+- image: road/nz.png
+  isos: nz
+- image: road/ae.png
+  isos: ae,il,ng,sg,za
+  

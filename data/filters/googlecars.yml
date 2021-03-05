@@ -1,0 +1,37 @@
+- title: White car 🚗
+  fig: { type: car, color: white }
+  isos: ae,bd,bo,br,bw,ca,cl,il,kh,ls,mk,my,pe,ph,ro,sz,ua,us
+- title: Black car 🚗
+  fig: { type: car, color: black }
+  isos: ar,id,jo,my,pe,ru,uy
+- title: Blue car 🚗
+  fig: { type: car, color: blue }
+  isos: ar,au,br,bg,cz,fi,fr,gr,hr,it,hu,mx,ro,th
+- title: Red car 🚗
+  fig: { type: car, color: red }
+  isos: gb,ua
+- title: Blur Circle 🚗
+  image: misc/blur-circle.png
+  isos: au,dk,ie,lu,za
+- title: Sky Glitches ☁️
+  image: misc/glitch2.png
+  isos: al,hr,kg,me,sn
+- title: Blury Sky ☁️
+  image: misc/sky-blur.png
+  isos: au,it,gr,za
+- name: Glitchy Blur 🚗
+  isos: ar
+- name: v1 cam
+  isos: us,au,nz
+- image: misc/mirror3.png
+  isos: ae,bd,kg,gt,ng,ug
+- image: misc/bar2.png
+  isos: bd,ke,kg,gh,gt,mn,ng,sn
+- image: misc/mirror.png
+  isos: bd,mn
+- name: Visible Antenna Car 📻
+  isos: al,au,bg,br,co,cz,ec,fi,hr,il,lt,lv,me,pl,ro,ru,sk,ua
+- image: car/antenna/pl.png
+  isos: al,cz,hr,hu,me,ro,sk,si,pl
+- image: car/antenna/cz.png
+  isos: bg,cz,ro,sk

@@ -1,0 +1,15 @@
+
+- image: sign/stop/bg.png
+  isos: bg
+- image: sign/stop/mx.png
+  isos: gt,mx
+- image: sign/stop/co.png
+  isos: ar,bo,br,cl,co,ec,pe,uy
+- image: sign/nopriority/pl.png
+  isos: fi,gr,is,lv,me,mk,pl,se,si
+- image: sign/residential/at.svg
+  isos: at,cz,de,ee,es,fi,lv,se,sk,rs
+- image: sign/residential/ru.svg
+  isos: ua,ru
+- svg: [square, black, "#ffcc00"]
+  isos: ar,br,cl,ec,uy

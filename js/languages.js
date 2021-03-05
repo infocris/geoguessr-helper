@@ -1,3 +1,7 @@
+languages2 =
+  "И ß č š ž ň å ø æ ä ë ö ü ć ś á é í ó ú ý â ê à ė ż ū ă ğ ã õ ç ę ş ļ Ł ħ đ ð";
+// https://www.lexilogos.com/clavier/slovensky.htm
+
 languages = [
   [null, "č"],
   [null, "š"],
@@ -28,7 +32,9 @@ languages = [
   [null, "Ł"],
   [null, "ħ"],
   [null, "đ"],
+  [null, "И"],
   //[null, "đ"],
+  /*
   [null, "И", "Й"],
   [null, "И", "Я"],
   [null, "И", "ІЇ"],
@@ -42,5 +48,6 @@ languages = [
   [null, "И", "ЩЬЮЯЙ"],
   [null, "И", "ӨҮ"],
   [null, "И", "ҐЄІЇ"],
+  */
   [null, "ß"]
 ];

@@ -1,0 +1,10 @@
+- image: sign/pedestrian/be.png
+  isos: be,mk,pl,rs,si
+- image: sign/pedestrian/3.png
+  isos: ee,kg,lt,mn,ru,ua
+- image: sign/pedestrian/4.png
+  isos: bg,no,se
+- image: sign/pedestrian/5.png
+  isos: fr,fi,hr,it,lv,mk,nl,pt,ro,rs,si,sk
+- image: sign/pedestrian/es.png
+  isos: ch,es

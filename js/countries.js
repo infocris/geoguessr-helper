@@ -1,3 +1,13 @@
+countryOrdering = (
+  "gb ie be fr lu ch es pt it nl de at pl cz sk si " +
+  "hu hr me al mk rs no se fi is dk lt lv ee " +
+  "gr tr tn jo ae il " +
+  "ro bg ua ru " +
+  "lk bd bt th kh sg my id ph in " +
+  "sn gh ng ug ke bw ls sz za " +
+  "us ca mx gt ec co pe br bo cl uy ar au nz jp kr ad mt kg mn"
+).split(" ");
+
 countries = {
   ad: ["Andorra"],
   ae: ["United Arab Emirates", "الإمارات العربية المتحدة"],

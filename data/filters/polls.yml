@@ -1,0 +1,16 @@
+- svg: [poll1, black, white]
+  isos: ae,bh,lk,lv,mt,pe,th,uy
+- svg: [poll1, black, gold]
+  isos: co
+- image: poll/ee.png
+  isos: ee,fi
+- image: poll/se.png
+  isos: fi,se
+- image: poll/no.png
+  isos: "no"
+- image: poll/hr.png
+  isos: ch,hr,me,si
+- image: poll/nl.png
+  isos: be,nl,pl
+- image: poll/lv.png
+  isos: ee,lv,sk

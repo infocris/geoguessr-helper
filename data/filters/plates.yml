@@ -1,0 +1,23 @@
+
+- fig: { type: car_plate, color: white }
+  title: White 🚗 Plate
+  isos: ae,ar,au,bd,bg,br,cl,cz,ec,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za
+- fig: { type: car_plate }
+  title: Yellow 🚗 Plate
+  isos: bw,co,dk,gb,gh,ke,hu,il,jp,lk,lu,my,nl,ph,th,ua,ug
+- fig: { type: car_plate, content: front }
+  title: Yellow Front Plate
+  isos: au,co,gh,il,lu,nl
+- fig: { type: car_plate, content: back }
+  title: Yellow Back Plate
+  isos: co,gb,gh,il,jp,ke,lk,lu,nl,ug
+- fig: { type: car_plate, color: green, color2: white }
+  title: Green 🚗 Plate
+  isos: bd,no,ph
+- fig: { type: car_plate, color: red, color2: white }
+  title: Red 🚗 Plate
+  isos: bt
+- fig: { type: car_plate, color: black, color2: white }
+  title: Black 🚗 Plate
+  isos: id,my,sg
+  

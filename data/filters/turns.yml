@@ -1,0 +1,23 @@
+
+- svg: [turn, gold, black]
+  isos: br,fi,ie,is,no,pt
+- svg: [turn, black, gold]
+  isos: cl,co,ec,mx,nz,uy
+- svg: [turn, black, "#DFFF00"]
+  isos: co
+- svg: [turn, "#DFFF00", black]
+  isos: tr
+- svg: [turn, white, black]
+  isos: al,ch,gb,gr,it,nz
+- svg: [turn, black, white]
+  isos: ca,ch,co,me,rs,si
+- svg: [turn, red, white]
+  isos: be,bg,bw,hr,lk,lt,lv,mk,pl,ro,si,sk,sz,tr
+- svg: [turn, red, "#DFFF00"]
+  isos: hr,me,sk
+- svg: [turn, white, red]
+  isos: at,ee,hu
+- svg: [turn, white, "#037bfc"]
+  isos: ad,fr
+- svg: [turn, yellow, "#037bfc"]
+  isos: se

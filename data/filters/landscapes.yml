@@ -1,0 +1,16 @@
+- name: Desertic
+  isos: ar,bo,bw,cl,jo,pe,tr
+- name: Tropical
+  isos: br,ec,id,in,kh,lk,my,ph,th
+- name: Dry
+  isos: ae,il,jo,pe
+- name: Snow
+  isos: ad,at,bg,kg,sk
+- name: Limited zone
+  isos: ae,ec,il,in,kg,kr,ph,tn,uy
+- name: Flat
+  isos: be,br,ca,cz,ee,gb,hu,ie,kh,lt,lv,lu,mx,nl,pl,th,us
+- name: Not flat
+  isos: al,ad,bh,bo,ch,co,ec,hr,gr,it,ls,me,mk,mt,pe,pt,ro,rs,si,sk
+- name: Montainous
+  isos: ad,bh,bo,ch,jo,jp,me,mk,pe,si

@@ -1,0 +1,21 @@
+
+- name: Country name(s)
+  key: names
+- name: Alphabet
+  key: alpha
+- name: Bollard
+  key: bollard
+- image: sign/pedestrian/lv.png
+  key: pedestrian
+- image: sign/residential/fi.svg
+  key: residential
+- image: sign/cycle/fr.svg
+  key: cycle
+- image: sign/circular/sk.png
+  key: circular
+- image: sign/nopriority/hr.png
+  key: nopriority
+- image: sign/nopark/bg.png
+  key: nopark
+- image: poll/hr.png
+  key: poll

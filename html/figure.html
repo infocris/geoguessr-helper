@@ -4,6 +4,7 @@
 <img
   ng-if="e.image"
   src="images/{{ e.image }}"
+  ng-class="imageClass(e)"
   ng-style="img_style"
   title="Country ISO codes: [{{ e.isos }}] // {{ e.image }}"
 />
@@ -12,18 +13,21 @@
   ng-if="e.svg[0] == 'poll1'"
   src="'html/poll/poll1.html'"
   title="Country ISO codes: {{ e.isos }}"
+  class="poll"
 ></ng-include>
 
 <ng-include
   ng-if="e.svg[0] == 'turn'"
   src="'html/sign/turn.html'"
   title="Country ISO codes: {{ e.isos }}"
+  class="turn"
 ></ng-include>
 
 <ng-include
   ng-if="e.type == 'bollard'"
   src="'html/bollard/bollard.html'"
   title="Country ISO codes: {{ e.isos }}"
+  class="bollard"
 ></ng-include>
 
 <ng-include
@@ -31,16 +35,17 @@
   ng-if="e.type == 'bollard_' + code"
   src="'html/bollard/' + code + '.html'"
   title="Country ISO codes: {{ e.isos }}"
+  class="bollard"
 ></ng-include>
 
 <svg
-  width="32"
-  height="32"
+  width="48"
+  height="48"
   ng-if="e.svg[0] == 'square'"
   xmlns="http://www.w3.org/2000/svg"
   title="Country ISO codes: {{ e.isos }}"
 >
-  <g transform="translate(16, 0)">
+  <g transform="translate(24, 0) scale(1.4)">
     <rect
       fill="{{ e.svg[2] }}"
       x="0"
@@ -52,6 +57,65 @@
     />
   </g>
 </svg>
+
 <div ng-if="e.figure" ng-style="e.figure.style">
   {{ e.figure.content }}
 </div>
+
+<div
+  ng-if="e.type == 'car_plate'"
+  ng-style="{'background-color': e.color || 'gold', color: e.color2 || 'black', 'border-color': e.color2 || 'black' }"
+  style="
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 20px;
+    overflow: hidden;
+  "
+>
+  {{ e.content || "XXXX"}}
+</div>
+
+<svg
+  width="32"
+  height="32"
+  ng-if="e.type == 'priority'"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g transform="rotate(180 12 15) scale(0.3)">
+    <polygon points="40 15, 80 100, 0 100" fill="red" />
+    <polygon points="40 40, 60 90, 20 90" fill="gold" />
+  </g>
+</svg>
+
+<svg
+  width="48"
+  height="48"
+  ng-if="e.type == 'car'"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g transform="translate(5, 10) scale(0.5)">
+    <rect x="10" y="0" width="50" height="30" fill="{{ e.color }}" />
+    <rect x="0" y="20" width="80" height="30" fill="{{ e.color }}" />
+    <circle
+      cx="20"
+      cy="50"
+      r="10"
+      fill="{{ e.color }}"
+      stroke-width="3"
+      stroke="black"
+    />
+    <circle
+      cx="60"
+      cy="50"
+      r="10"
+      fill="{{ e.color }}"
+      stroke-width="3"
+      stroke="black"
+    />
+    <rect x="40" y="2" width="16" height="16" fill="#69CBFF" />
+    <rect x="20" y="2" width="16" height="16" fill="#69CBFF" />
+  </g>
+</svg>

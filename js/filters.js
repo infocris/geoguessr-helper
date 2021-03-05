@@ -1,7 +1,21 @@
 var groups = [
   {
+    name: "Nord",
+    complementary: true,
+    isos: "ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za"
+    /*
+    isos:
+      "ad,al,ae,at,bd,be,bg,bt,ca,co,cz,de,dk,ee,es,fi,fr,gb," +
+      "gh,gr,gt,hr,hu,ie,is,il,in,it,jo,jp,kg,kh,kr,lk,lt,lu,lv," +
+      "me,mk,mn,mt,mx,my,nl,no,ph,pl,pt,ro,rs,ru,se,sg,si,sn,sk,th,tn,tr,ua,us"
+      */
+  },
+  {
+    name: "Equator.",
+    isos: "br,co,ec,gh,gr,gt,ke,kh,id,in,lk,mx,my,ph,sg,sn,th,tr,ug"
+  },
+  {
     name: "Sud",
-    complement: "Nord",
     isos: "ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za"
   },
   {
@@ -22,40 +36,68 @@ var groups = [
       "ad,al,at,bg,ch,cz,de,dk,ee,es,fi,fr,gb,gr,hr,hu,ie,it,is,lt,lu,lv,me,mk,mt,nl,no,pl,pt,ro,rs,ru,se,si,sk,ua"
   },
   {
+    name: "Central",
+    isos: "at,cz,hu,pl,sk,si"
+  },
+  {
     name: "Nordic",
     isos: "is,dk,ee,fi,no,se,lt,lv"
   },
+  {
+    name: "Mediterranean",
+    isos: "al,il,it,gr,me,mk,pt,rs"
+  },
   { name: "Latin America", isos: "ar,bo,br,cl,co,ec,gt,mx,pe,uy" },
   { name: "Кириллица", isos: "bg,kg,mk,mn,rs,ru,ua" },
+  { name: "العربية", isos: "ae,jo,il,tn" },
   { name: "Other", isos: "bt,in,jp,kh,kr,il,lk,th" },
-  { name: "English usage", isos: "bt,in,ke,ls,my,ph,sg,sz,za" },
+  { name: "English usage", isos: "bt,in,ke,lk,ls,my,ph,sg,sz,za" },
   { name: "Hispanic-sound", isos: "ph" },
   {
     name: "◄ Left-hand driving",
-    complement: "Right ►",
+    /*complement: "Right ►",*/
     isos: "au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za"
   },
-  /*
-        { name: "Latin", isos: "id,my,ph,sg" },
-        */
   {
-    name: "Yellow 🚗 Plate",
-    isos: "co,dk,gb,ke,hu,il,jp,lk,lu,nl,ua,ug",
-    complement: "no",
-    style: { color: "#ffd900" }
+    name: "Right ►",
+    complementary: true,
+    isos: "au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za"
   },
   {
-    name: "Sign",
-    image: "sign/nopriority/se.png",
-    width: 16,
-    isos: "fi,gr,is,lv,me,pl,se,si",
-    complement: "no"
+    fig: { type: "car_plate", color: "white" },
+    title: "White 🚗 Plate",
+    isos:
+      "ae,ar,au,bd,bg,br,cl,cz,ec,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za"
   },
   {
-    name: "Yellow Center Line",
-    isos: "fi,no",
-    complement: "no",
-    style: { color: "#ffd900" }
+    fig: { type: "car_plate" },
+    title: "Yellow 🚗 Plate",
+    isos: "bw,co,dk,gb,gh,ke,hu,il,jp,lk,lu,my,nl,ph,th,ua,ug"
+  },
+  {
+    fig: { type: "car_plate", content: "front" },
+    title: "Yellow Front Plate",
+    isos: "au,co,gh,il,lu,nl"
+  },
+  {
+    fig: { type: "car_plate", content: "back" },
+    title: "Yellow Back Plate",
+    isos: "co,gb,gh,il,jp,ke,lk,lu,nl,ug"
+  },
+  {
+    fig: { type: "car_plate", color: "green", color2: "white" },
+    title: "Green 🚗 Plate",
+    isos: "bd,no,ph"
+  },
+  {
+    fig: { type: "car_plate", color: "red", color2: "white" },
+    title: "Red 🚗 Plate",
+    isos: "bt"
+  },
+  {
+    fig: { type: "car_plate", color: "black", color2: "white" },
+    title: "Black 🚗 Plate",
+    isos: "id,my,sg"
   },
   /*
         {
@@ -65,83 +107,110 @@ var groups = [
         },
         */
   {
-    name: "White 🚗",
-    isos: "ae,bd,bo,br,bw,cl,il,kh,ls,my,pe,ph,sz"
+    title: "White car 🚗",
+    fig: { type: "car", color: "white" },
+    isos: "ae,bd,bo,br,bw,ca,cl,il,kh,ls,mk,my,pe,ph,ro,sz,ua,us"
   },
   {
-    name: "Black 🚗",
-    isos: "ar,id,jo,my,pe,uy"
+    title: "Black car 🚗",
+    fig: { type: "car", color: "black" },
+    isos: "ar,id,jo,my,pe,ru,uy"
   },
   {
-    name: "Blue 🚗",
-    isos: "ar,br,bg,cz,hr,hu,mx"
+    title: "Blue car 🚗",
+    fig: { type: "car", color: "blue" },
+    isos: "ar,au,br,bg,cz,fi,fr,gr,hr,it,hu,mx,ro,th"
   },
   {
-    name: "Red 🚗",
+    title: "Red car 🚗",
+    fig: { type: "car", color: "red" },
     isos: "gb,ua"
   },
   {
-    name: "Blur Circle 🚗",
-    isos: "au,dk,ie,za"
+    title: "Blur Circle 🚗",
+    image: "misc/blur-circle.png",
+    isos: "au,dk,ie,lu,za"
+  },
+  {
+    title: "Sky Glitches ☁️",
+    image: "misc/glitch2.png",
+    isos: "al,hr,kg,me,sn"
+  },
+  {
+    title: "Blury Sky ☁️",
+    image: "misc/sky-blur.png",
+    isos: "au,it,gr,za"
   },
   {
     name: "Glitchy Blur 🚗",
     isos: "ar"
   },
   {
-    name: "Dashed Line inside 2 lines",
-    isos: "ls,uy,za",
-    style: { color: "#ffd900" }
-  },
-  { name: "Sky Glitches ☁️", isos: "al,hr,kg,me,sn" },
-  { name: "Blury Sky ☁️", isos: "au,gr" },
-  {
-    name: "Mirrors",
-    image: "misc/mirror2.png",
-    width: 24,
-    isos: "ae,bd,kg,gt,ng,ug",
-    complement: "no"
+    name: "v1 cam",
+    isos: "us,au,nz"
   },
   {
-    name: "Rear Bars",
-    image: "misc/bar.png",
-    width: 24,
-    isos: "bd,ke,kg,gh,gt,mn,ng,sn",
-    complement: "no"
+    image: "misc/mirror3.png",
+    isos: "ae,bd,kg,gt,ng,ug"
+  },
+  {
+    image: "misc/bar2.png",
+    isos: "bd,ke,kg,gh,gt,mn,ng,sn"
   },
   {
     image: "misc/mirror.png",
-    width: 24,
     isos: "bd,mn"
   },
   {
     name: "Visible Antenna Car 📻",
     isos: "al,au,bg,br,co,cz,ec,fi,hr,il,lt,lv,me,pl,ro,ru,sk,ua"
   },
-  /*
-        {
-          name: "Tape Antenna Car",
-          isos: "bg"
-        },
-        */
+  {
+    image: "car/antenna/pl.png",
+    isos: "al,cz,hr,hu,me,ro,sk,si,pl"
+  },
+  {
+    image: "car/antenna/cz.png",
+    isos: "bg,cz,ro,sk"
+  },
   {
     name: "Desertic",
-    isos: "ar,jo,pe,tr"
+    isos: "ar,bo,bw,cl,jo,pe,tr"
+  },
+  {
+    name: "Tropical",
+    isos: "br,ec,id,in,kh,lk,my,ph,th"
+  },
+  {
+    name: "Dry",
+    isos: "ae,il,jo,pe"
+  },
+  {
+    name: "Snow",
+    isos: "ad,at,bg,kg"
   },
   /*
-        {
-          name: "Flat country",
-          isos: "be,ee,hu,nl"
-        },
-        {
-          name: "Montainous",
-          isos: "al,ad,bo,it,me,mt,pe,pt,rs,si"
-        },
-        {
-          name: "Rivers",
-          isos: "al"
-        },
-        */
+  {
+    name: "Sea",
+    isos: "ec,ph,tn"
+  },
+  */
+  {
+    name: "Limited zone",
+    isos: "ae,ec,il,in,kg,kr,ph,tn,uy"
+  },
+  {
+    name: "Flat",
+    isos: "be,br,ca,cz,ee,gb,hu,ie,kh,lt,lv,lu,mx,nl,pl,th,us"
+  },
+  {
+    name: "Not flat",
+    isos: "al,ad,bh,bo,ch,co,ec,hr,gr,it,ls,me,mk,mt,pe,pt,ro,rs,si,sk"
+  },
+  {
+    name: "Montainous",
+    isos: "ad,bh,bo,ch,jo,jp,me,mk,pe,si"
+  },
   {
     fig: { type: "bollard", color: "white", front: 1 },
     isos: "al,ch,cz,de,ee,fi,gb,gr,hu,hr,il,it,lt,lv,lu,mk,pt,rs,se,sk"
@@ -176,7 +245,11 @@ var groups = [
   },
   {
     fig: { type: "bollard", color: "red", color2: "white", front: 1 },
-    isos: "au,tr"
+    isos: "au,nl,tr"
+  },
+  {
+    fig: { type: "bollard_pl", back: 1 },
+    isos: "pl"
   },
   {
     fig: { type: "bollard_pl", front: 1 },
@@ -188,7 +261,7 @@ var groups = [
   },
   {
     fig: { type: "bollard_rs", front: 1 },
-    isos: "rs"
+    isos: "me,rs"
   },
   {
     fig: ["o", "black", "black"],
@@ -196,7 +269,7 @@ var groups = [
   },
   {
     fig: ["■", "red", "red"],
-    isos: "ec,kh,mn,nz,pl"
+    isos: "al,at,au,ec,gr,hr,hu,it,kh,me,mn,mk,nl,nz,pl,pt,rs,si,tr"
   },
   {
     image: "bollard/fr.png",
@@ -212,11 +285,11 @@ var groups = [
   },
   {
     svg: ["turn", "gold", "black"],
-    isos: "br,fi,ie,no,pt"
+    isos: "br,fi,ie,is,no,pt"
   },
   {
     svg: ["turn", "black", "gold"],
-    isos: "cl,co,ec,mx,nz"
+    isos: "cl,co,ec,mx,nz,uy"
   },
   {
     svg: ["turn", "black", "#DFFF00"],
@@ -228,15 +301,15 @@ var groups = [
   },
   {
     svg: ["turn", "white", "black"],
-    isos: "al,ch,gr,it,nz"
+    isos: "al,ch,gb,gr,it,nz"
   },
   {
     svg: ["turn", "black", "white"],
-    isos: "ch,me,si"
+    isos: "ca,ch,co,me,rs,si"
   },
   {
     svg: ["turn", "red", "white"],
-    isos: "be,bg,hr,lt,lv,mk,ro,si,tr"
+    isos: "be,bg,bw,hr,lk,lt,lv,mk,pl,ro,si,sk,sz,tr"
   },
   {
     svg: ["turn", "red", "#DFFF00"],
@@ -259,14 +332,6 @@ var groups = [
     isos: "ar,br,cl,ec,uy"
   },
   {
-    svg: ["del2", "green", "white"],
-    isos: "pl"
-  },
-  {
-    svg: ["poll1", "black", "white"],
-    isos: "pe,uy"
-  },
-  {
     image: "nordic3.png",
     isos: "fi,se"
   },
@@ -279,16 +344,50 @@ var groups = [
     isos: "ee,no"
   },
   {
+    image: "road/uy.png",
+    title: "Dashed Line inside 2 lines",
+    isos: "ls,ph,uy,za"
+  },
+  {
+    image: "road/europe.png",
+    isos: "au,cl,gb,gh,id,ie,jp,lk,my,nz,ph,sn"
+  },
+  {
+    image: "road/america.png",
+    title: "Yellow Center Line",
+    isos: "ar,bo,br,ca,cl,co,ec,fi,ke,kh,no,pe,ph,th,us,uy"
+  },
+  {
+    image: "road/africa.png",
+    isos: "bw,jo,ls,sz,za"
+  },
+  {
     image: "road/dk.png",
     isos: "dk"
   },
   {
     image: "road/no.png",
-    isos: "no"
+    isos: "be,no"
   },
   {
     image: "road/se.png",
     isos: "fi,se"
+  },
+  {
+    image: "road/nz.png",
+    isos: "nz"
+  },
+  {
+    image: "road/ae.png",
+    isos: "ae,il,ng,sg,za"
+  },
+  {
+    svg: ["poll1", "black", "white"],
+    isos: "ae,bh,lk,lv,mt,pe,th,uy"
+  },
+  {
+    svg: ["poll1", "black", "gold"],
+    isos: "co"
   },
   {
     image: "poll/ee.png",
@@ -312,27 +411,76 @@ var groups = [
   },
   {
     image: "poll/lv.png",
-    isos: "lv"
+    isos: "ee,lv,sk"
   },
   {
     image: "sign/pedestrian/be.png",
-    isos: "be,pl,rs,si"
+    isos: "be,mk,pl,rs,si"
   },
   {
-    image: "sign/pedestrian/lt.png",
-    isos: "lt,ru,ua"
+    // 3
+    image: "sign/pedestrian/3.png",
+    isos: "ee,kg,lt,mn,ru,ua"
   },
   {
-    image: "sign/pedestrian/se.png",
+    // 4
+    image: "sign/pedestrian/4.png",
     isos: "bg,no,se"
   },
   {
-    image: "sign/pedestrian/fi.png",
-    isos: "fr,fi,hr,it,lv,nl,pt,ro,sk"
+    // 5
+    image: "sign/pedestrian/5.png",
+    isos: "fr,fi,hr,it,lv,mk,nl,pt,ro,rs,si,sk"
   },
   {
     image: "sign/pedestrian/es.png",
     isos: "ch,es"
+  },
+  {
+    image: "sign/stop/bg.png",
+    isos: "bg"
+  },
+  {
+    image: "sign/stop/mx.png",
+    isos: "gt,mx"
+  },
+  {
+    image: "sign/stop/co.png",
+    isos: "ar,bo,br,cl,co,ec,pe,uy"
+  },
+  {
+    image: "sign/nopriority/pl.png",
+    isos: "fi,gr,is,lv,me,mk,pl,se,si"
+  },
+  {
+    image: "sign/residential/at.svg",
+    isos: "at,cz,de,ee,es,fi,lv,se,sk,rs"
+  },
+  {
+    image: "sign/residential/ru.svg",
+    isos: "ua,ru"
+  },
+  {
+    title: "Painted tree",
+    image: "misc/tree.png",
+    isos: "kg,lt,ro,ru,ua"
+  },
+  {
+    title: "Painted tree 2",
+    image: "misc/tree2.png",
+    isos: "in"
+  },
+  {
+    image: "electrical/hu-like.png",
+    isos: "hu,pl,ro"
+  },
+  {
+    image: "electrical/lv-like.png",
+    isos: "ee,jp,lk,lv,lt"
+  },
+  {
+    image: "electrical/pl3.png",
+    isos: "hu,pl"
   }
   /*
         {
