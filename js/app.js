@@ -30,8 +30,9 @@ angular.module("app", []).run(function ($rootScope, $http) {
   function loadFilterData(filterFilenames) {
     loadYAMLFile(
       "data/filters/" + filterFilenames.shift(),
-      function (data) {
+      function (data, response) {
         _.each(data, function (v) {
+          v.file = response.config.url.replace(/^.+\/([^\/]+)$/, "$1");
           filters.push(v);
         });
       },
@@ -46,7 +47,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
   function loadYAMLFile(url, callback, complete) {
     $http.get(url).then(function (response) {
       try {
-        callback(jsyaml.load(response.data));
+        callback(jsyaml.load(response.data), response);
       } catch (err) {
         errors.push({ error: err, response: response });
       }
@@ -57,6 +58,15 @@ angular.module("app", []).run(function ($rootScope, $http) {
   }
 
   loadYAMLFile("data/countries.yml", function (data) {
+    var styles = [];
+    _.each(data.list, function (v, k) {
+      styles.push("table." + k + " div.flag." + k);
+    });
+    var style = document.createElement("style");
+    style.type = "text/css";
+    style.innerHTML = styles.join(",") + " { background-color: #D9D933; }";
+    document.getElementsByTagName("head")[0].appendChild(style);
+
     $rootScope.countries = data.list;
     $rootScope.commercialTlds = data.commercialTlds;
     countryOrdering = data.order.replace(/\s$/, "").split(" ");
@@ -69,9 +79,32 @@ angular.module("app", []).run(function ($rootScope, $http) {
   });
 
   $rootScope.texts = texts;
-  $rootScope.selectLang = function (e) {
-    $rootScope.alpha = { selected: true };
+
+  $rootScope.mouseOverFilter = function (e) {
+    _.each(e.isos.split(","), function (v) {
+      $rootScope.toggledClasses[v] = true;
+    });
+  };
+  $rootScope.mouseLeaveFilter = function (e) {
+    _.each(e.isos.split(","), function (v) {
+      $rootScope.toggledClasses[v] = false;
+    });
+  };
+
+  $rootScope.mouseOverChar = function (e) {
+    _.each(e.isos, function (v) {
+      $rootScope.toggledClasses[v] = true;
+    });
+  };
+  $rootScope.mouseLeaveChar = function (e) {
+    _.each(e.isos, function (v) {
+      $rootScope.toggledClasses[v] = false;
+    });
+  };
+
+  $rootScope.selectChar = function (e) {
     e.selected = !e.selected;
+    $rootScope.toggledClasses.alpha = e.selected;
     selectedChar[e.value] = !selectedChar[e.value];
     loadFlags();
     loadLevels();
@@ -79,17 +112,17 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
   $rootScope.selectFilter = function (e) {
     var m;
-    if (e.image) {
-      if ((m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/))) {
-        $rootScope[m[2]] = { selected: true };
-      }
-    }
     /*
     if (e.fig && e.fig.type && e.fig.type.match(/^bollard/)) {
       $rootScope.bollard = { selected: true };
     }
     */
     e.selected = !e.selected;
+    if (e.image) {
+      if ((m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/))) {
+        $rootScope.toggledClasses[m[2]] = e.selected;
+      }
+    }
     loadFlags();
     countMatch();
   };
@@ -185,11 +218,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
     function updateMatch(chars) {
       _.each(chars, function (e) {
         e.match = 0;
-        _.each(matchFlags, function (v) {
+        e.isos = [];
+        _.each(matchFlags, function (v, k) {
           if (
             $rootScope.languages.charsets[v] &&
             $rootScope.languages.charsets[v].match(e.value)
           ) {
+            e.isos.push(k);
             e.match++;
           }
         });

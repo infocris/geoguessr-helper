@@ -6,27 +6,27 @@
   src="images/{{ e.image }}"
   ng-class="imageClass(e)"
   ng-style="img_style"
-  title="Country ISO codes: [{{ e.isos }}] // {{ e.image }}"
+  title="--- Image: {{ e.image }} // File: {{ e.file }}"
 />
 
 <ng-include
   ng-if="e.svg[0] == 'poll1'"
   src="'html/poll/poll1.html'"
-  title="Country ISO codes: {{ e.isos }}"
+  title="--- poll1 // File: {{ e.file }}"
   class="poll"
 ></ng-include>
 
 <ng-include
   ng-if="e.svg[0] == 'turn'"
   src="'html/sign/turn.html'"
-  title="Country ISO codes: {{ e.isos }}"
+  title="--- turn // File: {{ e.file }}"
   class="turn"
 ></ng-include>
 
 <ng-include
   ng-if="e.type == 'bollard'"
   src="'html/bollard/bollard.html'"
-  title="Country ISO codes: {{ e.isos }}"
+  title="--- bollard // File: {{ e.file }}"
   class="bollard"
 ></ng-include>
 
@@ -34,7 +34,7 @@
   ng-repeat="code in ['cz', 'ec1', 'ec2', 'pl', 'rs']"
   ng-if="e.type == 'bollard_' + code"
   src="'html/bollard/' + code + '.html'"
-  title="Country ISO codes: {{ e.isos }}"
+  title="--- bollard_{{ code }} // File: {{ e.file }}"
   class="bollard"
 ></ng-include>
 
@@ -43,7 +43,7 @@
   height="48"
   ng-if="e.svg[0] == 'square'"
   xmlns="http://www.w3.org/2000/svg"
-  title="Country ISO codes: {{ e.isos }}"
+  title="--- square // File: {{ e.file }}"
 >
   <g transform="translate(24, 0) scale(1.4)">
     <rect

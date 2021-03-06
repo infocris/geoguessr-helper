@@ -12,6 +12,6 @@
 - image: electrical/hu-like.png
   isos: hu,pl,ro
 - image: electrical/lv-like.png
-  isos: ee,jp,lk,lv,lt
+  isos: ee,jp,lk,lv,lt,ru
 - image: electrical/pl3.png
   isos: hu,pl

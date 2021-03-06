@@ -163,7 +163,7 @@ list:
   nl:
   - Netherlands
   - Nederland
-  'false':
+  'no':
   - Norway
   - Norge
   nz:

@@ -3,6 +3,8 @@
   ng-class="[e.selected ? 'selected': '', 'match_ratio' + e.match_ratio, 'match' + e.match, !e.selected && e.match == flags.length ? 'full_match': '']"
   ng-style="e.style"
   ng-click="selectFilter(e);"
+  ng-mouseover="mouseOverFilter(e);"
+  ng-mouseleave="mouseLeaveFilter(e);"
 >
   <span>
     <span class="text" ng-if="e.name">{{ e.name }}</span>
