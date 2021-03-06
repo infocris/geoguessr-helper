@@ -114,34 +114,6 @@ div.char,
   text-align: center;
 }
 
-div.filter.selected.complement {
-  color: white;
-}
-div.filter.selected.complement.inverted span.complement,
-div.filter.selected.complement span:not(.complement) {
-  text-decoration: underline white;
-}
-div.filter.selected.complement span.complement,
-div.filter.selected.complement.inverted span:not(.complement) {
-  text-decoration: none;
-}
-
-/*
-div.filter.inverted span.complement,
-div.filter span:not(.complement) {
-  text-decoration: underline white;
-}
-
-div.filter span.complement,
-div.filter.inverted span:not(.complement) {
-  text-decoration: none;
-}
-*/
-
-.complement {
-  border-left: 1px solid black;
-}
-
 div.filter span {
   display: inline-block;
   /*padding: 10px;*/
@@ -150,7 +122,7 @@ div.filter span {
 div.filter {
   padding: 0px;
   font-size: 20px;
-  margin: 2px;
+  /*margin: 2px;*/
   background-color: #ddd;
 }
 

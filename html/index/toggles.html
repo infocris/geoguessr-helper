@@ -1,0 +1,19 @@
+<div
+  class="button"
+  ng-click="toggledClasses[item.key] = !toggledClasses[item.key]"
+  ng-class="toggledClasses[item.key] ? 'selected': ''"
+  ng-repeat="item in toggles"
+>
+  {{ item.name }}
+  <img src="images/{{ item.image }}" style="height: 48px;" ng-if="item.image" />
+</div>
+<div
+  class="button"
+  ng-click="toggledClasses.turn = !toggledClasses.turn"
+  ng-class="[toggledClasses.turn ? 'selected': '']"
+>
+  <ng-include
+    ng-init="e = { svg: ['turn', 'white', 'gray'] }"
+    src="'html/sign/turn.html'"
+  ></ng-include>
+</div>

@@ -1,9 +1,10 @@
+---
 - name: Nord
-  complementary: true
   isos: ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za
+  complementary: true
 - name: Equator.
   isos: br,co,ec,gh,gr,gt,ke,kh,id,in,lk,mx,my,ph,sg,sn,th,tr,ug
-- name: Sud,
+- name: Sud
   isos: ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za
 - name: Africa
   isos: bw,gh,ke,ls,ng,sn,sz,tn,ug,za
@@ -24,5 +25,5 @@
 - name: ◄ Left-hand driving
   isos: au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za
 - name: Right ►
-  complementary: true
   isos: au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za
+  complementary: true

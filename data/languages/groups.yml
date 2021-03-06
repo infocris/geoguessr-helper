@@ -1,3 +1,4 @@
+---
 - name: Кириллица
   isos: bg,kg,mk,mn,rs,ru,ua
 - name: العربية

@@ -1,4 +1,4 @@
-
+---
 - fig: { type: car_plate, color: white }
   title: White 🚗 Plate
   isos: ae,ar,au,bd,bg,br,cl,cz,ec,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za
@@ -20,4 +20,3 @@
 - fig: { type: car_plate, color: black, color2: white }
   title: Black 🚗 Plate
   isos: id,my,sg
-  

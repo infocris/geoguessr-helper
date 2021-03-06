@@ -1,0 +1,19 @@
+<tr ng-repeat="iso in flags" ng-if="flags.length < 20">
+  <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
+  <td>{{ commercialTlds[iso] || iso }}</td>
+  <td class="names">{{ countries[iso][0] }}</td>
+  <td class="names">{{ countries[iso][1] }}</td>
+  <td class="">{{ texts[iso].join(" ") }}</td>
+  <!--
+          <td>{{ tips[iso] }}</td>
+          -->
+  <td>
+    <span ng-repeat="e in signs[iso]">
+      <ng-include
+        src="'html/figure.html'"
+        ng-init="img_style = {height: 72}"
+      ></ng-include>
+    </span>
+  </td>
+  <td class="alpha">{{ languageSpecialCharset[iso] }}</td>
+</tr>

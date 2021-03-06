@@ -1,0 +1,4 @@
+<div ng-repeat="iso in flags" class="flag" style="text-align: center;">
+  <span class="flag-icon" ng-class="'flag-icon-' + iso"></span><br />
+  {{ commercialTlds[iso] || iso }}
+</div>

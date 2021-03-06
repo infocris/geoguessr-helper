@@ -6,90 +6,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
     <link href="./css/flag-icon.css" rel="stylesheet" />
     <link href="./styles.css" rel="stylesheet" />
-    <script src="js/countries.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/languageSpecialCharset.js"></script>
-    <script src="js/languages.js"></script>
     <script src="js/signs.js"></script>
     <script src="js/misc.js"></script>
     <script src="js/app.js"></script>
   </head>
   <body>
-    <table
-      ng-class="[alpha.selected ? 'alpha': '', names.selected ? 'names': '',
-      bollard.selected ? 'bollard': '', pedestrian.selected ? 'pedestrian': '',
-      residential.selected ? 'residential': '', nopriority.selected ? 'nopriority': '',
-      circular.selected ? 'circular': '', nopark.selected ? 'nopark': '', cycle.selected ? 'cycle': '',
-      poll.selected ? 'poll': '', turn.selected ? 'turn': '', stop.selected ? 'stop': '']"
-    >
+    <table ng-class="toggledClasses">
       <thead>
         <tr>
           <td colspan="10" class="sticky">
-            <div class="buttons filters" ng-include="'html/filters.html'"></div>
-            <div ng-repeat="item in errors" class="error">
-              Error in file: {{ item.response.config.url }}
-              <pre>{{ item.error }}</pre>
-            </div>
-            <hr />
             <div
-              ng-repeat="iso in flags"
-              class="flag"
-              style="text-align: center;"
-            >
-              <span class="flag-icon" ng-class="'flag-icon-' + iso"></span
-              ><br />
-              {{ commercialTlds[iso] || iso }}
-            </div>
+              class="buttons filters"
+              ng-include="'html/index/filters.html'"
+            ></div>
+            <ng-include src="'html/index/errors.html'"></ng-include>
+            <hr />
+            <ng-include src="'html/index/flags.html'"></ng-include>
             <hr />
           </td>
         </tr>
       </thead>
-      <tbody>
-        <tr ng-repeat="iso in flags" ng-if="flags.length < 20">
-          <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
-          <td>{{ commercialTlds[iso] || iso }}</td>
-          <td class="names">{{ countries[iso][0] }}</td>
-          <td class="names">{{ countries[iso][1] }}</td>
-          <td class="">{{ texts[iso].join(" ") }}</td>
-          <!--
-        <td>{{ tips[iso] }}</td>
-        -->
-          <td>
-            <span ng-repeat="e in signs[iso]">
-              <ng-include
-                src="'html/figure.html'"
-                ng-init="img_style = {height: 72}"
-              ></ng-include>
-            </span>
-          </td>
-          <td class="alpha">{{ languageSpecialCharset[iso] }}</td>
-        </tr>
-      </tbody>
+      <tbody ng-include="'html/index/tbody.html'"></tbody>
       <tfoot>
         <td colspan="10" class="sticky" style="bottom: 0;">
-          <div
-            class="button"
-            ng-click="$scope[item.key].selected = !$scope[item.key].selected"
-            ng-class="$scope[item.key].selected ? 'selected': ''"
-            ng-repeat="item in toggles"
-          >
-            {{ item.name }}
-            <img
-              src="images/{{ item.image }}"
-              style="height: 48px;"
-              ng-if="item.image"
-            />
-          </div>
-          <div
-            class="button"
-            ng-click="turn.selected = !turn.selected"
-            ng-class="[turn.selected ? 'selected': '']"
-          >
-            <ng-include
-              ng-init="e = { svg: ['turn', 'white', 'gray'] }"
-              src="'html/sign/turn.html'"
-            ></ng-include>
-          </div>
+          <ng-include src="'html/index/toggles.html'"></ng-include>
         </td>
       </tfoot>
     </table>
