@@ -7,9 +7,15 @@
   isos: ar,bo,br,cl,co,ec,pe,uy
 - image: sign/nopriority/pl.png
   isos: fi,gr,is,lv,me,mk,pl,se,si
-- image: sign/residential/at.svg
-  isos: at,cz,de,ee,es,fi,lv,se,sk,rs
+- image: sign/residential/model1.png
+  isos: at,es,de,gr,rs
+- image: sign/residential/model2.png
+  isos: be,cz,ee,fi,pl,se,sk
 - image: sign/residential/ru.svg
-  isos: ua,ru
-- svg: [square, black, "#ffcc00"]
-  isos: ar,br,cl,ec,uy
+  isos: ru,ua
+- image: sign/residential/fr.png
+  isos: fr,gb,ro
+- svg: [square, black, gold]
+  isos: ar,br,cl,ec,ie,uy
+- image: misc/sign_black_back.png
+  isos: br, pe

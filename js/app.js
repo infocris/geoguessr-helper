@@ -13,6 +13,19 @@ angular.module("app", []).run(function ($rootScope, $http) {
     $rootScope.toggles = data;
   });
 
+  loadYAMLFile("data/thematics.yml", function (data) {
+    _.each(data, function (v) {
+      _.each(v, function (v, k) {
+        if (!$rootScope.filtersByCountry[k]) {
+          $rootScope.filtersByCountry[k] = [];
+        }
+        _.each(v, function (v) {
+          $rootScope.filtersByCountry[k].push(v);
+        });
+      });
+    });
+  });
+
   loadFilterData([
     "regions.yml",
     "landscapes.yml",
@@ -24,17 +37,38 @@ angular.module("app", []).run(function ($rootScope, $http) {
     "roads.yml",
     "polls.yml",
     "signs.yml",
+    "cycles.yml",
     "misc.yml"
   ]);
+
+  $rootScope.filtersByCountry = {};
 
   function loadFilterData(filterFilenames) {
     loadYAMLFile(
       "data/filters/" + filterFilenames.shift(),
       function (data, response) {
-        _.each(data, function (v) {
+        _.each(data, function (v, k) {
+          eachValue(v);
+        });
+        function eachValue(v) {
+          v.previous = filters[filters.length - 1] || null;
+          if (v.previous) {
+            v.previous.next = v;
+          }
           v.file = response.config.url.replace(/^.+\/([^\/]+)$/, "$1");
           filters.push(v);
-        });
+          if (v.svg && v.svg[0] == "turn") {
+          } else if (v.fig && v.fig.type && v.fig.type.match(/^bollard/)) {
+          } else {
+            return;
+          }
+          _.each(v.isos.split(","), function (e) {
+            if (!$rootScope.filtersByCountry[e]) {
+              $rootScope.filtersByCountry[e] = [];
+            }
+            $rootScope.filtersByCountry[e].push(v);
+          });
+        }
       },
       function () {
         if (filterFilenames.length > 0) {
@@ -110,22 +144,62 @@ angular.module("app", []).run(function ($rootScope, $http) {
     loadLevels();
     countMatch();
   };
+
+  function getFilterType(e) {
+    if (e.image && (m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/))) {
+      return m[2];
+    }
+    if (e.svg) {
+      return e.svg[0];
+    }
+    if (e.fig && e.fig.type.match(/^bollard/)) {
+      return "bollard";
+    }
+    if (e.fig && e.fig.type) {
+      return e.fig.type;
+    }
+    return "unknown";
+  }
+
   $rootScope.selectFilter = function (e) {
     var m;
-    /*
-    if (e.fig && e.fig.type && e.fig.type.match(/^bollard/)) {
-      $rootScope.bollard = { selected: true };
-    }
-    */
     e.selected = !e.selected;
-    if (e.image) {
-      if ((m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/))) {
-        $rootScope.toggledClasses[m[2]] = e.selected;
+    $rootScope.toggledClasses[getFilterType(e)] = e.selected;
+    if (e.selected && e.match == 0) {
+      if (deselectExclusiveFilter(e)) {
+        return;
       }
     }
     loadFlags();
     countMatch();
+    _.each(filters, function (e) {
+      if (e.selected) {
+        $rootScope.toggledClasses[getFilterType(e)] = true;
+      }
+    });
   };
+  function deselectExclusiveFilter(e) {
+    if (e.next) {
+      if (e.next.selected) {
+        $rootScope.selectFilter(e.next);
+        return true;
+      }
+      if (e.next.next && e.next.next.selected) {
+        $rootScope.selectFilter(e.next.next);
+        return true;
+      }
+    }
+    if (e.previous) {
+      if (e.previous.selected) {
+        $rootScope.selectFilter(e.previous);
+        return true;
+      }
+      if (e.previous.previous && e.previous.previous.selected) {
+        $rootScope.selectFilter(e.previous.previous);
+        return true;
+      }
+    }
+  }
   $rootScope.updateSearchText = function (text) {
     $rootScope.search_text = text;
     loadFlags();

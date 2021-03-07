@@ -166,46 +166,24 @@ tr:nth-child(2n + 1) td {
   background-color: #bbb;
 }
 
-table:not(.alpha) tbody td.alpha {
-  display: none;
-}
 td.alpha {
   letter-spacing: 4px;
   word-break: break-all;
   text-align: right;
 }
 
-table:not(.names) tbody td.names {
-  display: none;
-}
-table:not(.pedestrian) tbody img.pedestrian {
-  display: none;
-}
-table:not(.residential) tbody img.residential {
-  display: none;
-}
-table:not(.bollard) tbody .bollard {
-  display: none;
-}
-table:not(.circular) tbody .circular {
-  display: none;
-}
-table:not(.nopark) tbody .nopark {
-  display: none;
-}
-table:not(.nopriority) tbody .nopriority {
-  display: none;
-}
-table:not(.stop) tbody .stop {
-  display: none;
-}
-table:not(.poll) tbody .poll {
-  display: none;
-}
-table:not(.cycle) tbody .cycle {
-  display: none;
-}
-table:not(.turn) tbody .turn {
+table:not(.alpha) tbody td.alpha,
+table:not(.names) tbody td.names,
+table:not(.pedestrian) tbody .signs img.pedestrian,
+table:not(.residential) tbody .signs img.residential,
+table:not(.bollard) tbody .signs .bollard,
+table:not(.circular) tbody .signs .circular,
+table:not(.nopark) tbody .signs .nopark,
+table:not(.nopriority) tbody .signs .nopriority,
+/*table:not(.stop) tbody .signs .stop,*/
+/*table:not(.poll) tbody .signs .poll,*/
+/*table:not(.cycle) tbody .signs .cycle,*/
+table:not(.turn) tbody .signs .turn {
   display: none;
 }
 
@@ -231,4 +209,8 @@ div.filter_count .inner_filter_count {
 }
 div.filter_count .inner_filter_count span:nth-child(4n + 1) {
   background-color: #00399c;
+}
+
+tbody .selected {
+  display: none;
 }

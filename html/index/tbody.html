@@ -7,13 +7,21 @@
   <!--
           <td>{{ tips[iso] }}</td>
           -->
-  <td>
-    <span ng-repeat="e in signs[iso]">
+  <td class="signs">
+    <span ng-repeat="e in signs[iso]" ng-if="e.svg[0] != 'turn'">
       <ng-include
         src="'html/figure.html'"
         ng-init="img_style = {height: 72}"
       ></ng-include>
     </span>
+    <span ng-repeat="e in filtersByCountry[iso]">
+      <ng-include
+        src="'html/figure.html'"
+        ng-class="[e.selected ? 'selected': '']"
+        ng-init="img_style = {height: 72}"
+        ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+      ></ng-include>
+    </span>
   </td>
-  <td class="alpha">{{ languageSpecialCharset[iso] }}</td>
+  <td class="alpha">{{ languages.charsets[iso] }}</td>
 </tr>

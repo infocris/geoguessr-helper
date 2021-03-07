@@ -7,7 +7,7 @@
   isos: ar,id,jo,my,pe,ru,uy
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,br,bg,cz,fi,fr,gr,hr,it,hu,mx,ro,th
+  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
 - title: Red car 🚗
   fig: { type: car, color: red }
   isos: gb,ua
