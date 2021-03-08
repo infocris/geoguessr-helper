@@ -5,12 +5,21 @@
 >
   {{ e.fig[0] }}
 </div>
+
 <img
   ng-if="e.image"
   src="images/{{ e.image }}"
   ng-class="imageClass(e)"
   ng-style="img_style"
   title="--- Image: {{ e.image }} // File: {{ e.file }}"
+/>
+
+<img
+  ng-if="e.image2"
+  src="{{ e.image2 }}"
+  ng-class="imageClass(e)"
+  ng-style="img_style"
+  title="--- Image: {{ e.image2 }} // File: {{ e.file }}"
 />
 
 <ng-include

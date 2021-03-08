@@ -10,7 +10,7 @@
   image: misc/tree2.png
   isos: in
 - image: electrical/hu-like.png
-  isos: hu,pl,ro
+  isos: hu,pl,ro,sk
 - image: electrical/lv-like.png
   isos: ee,jp,lk,lv,lt,ru
 - image: electrical/pl3.png

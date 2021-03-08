@@ -12,7 +12,7 @@
 - svg: [turn, black, white]
   isos: ca,ch,co,me,rs,si
 - svg: [turn, red, white]
-  isos: be,bg,bw,hr,lk,lt,lv,mk,pl,ro,si,sk,sz,tr
+  isos: be,bg,bw,de,hr,lk,lt,lv,mk,pl,ro,si,sk,sz,tr
 - svg: [turn, red, "#DFFF00"]
   isos: hr,me,sk
 - svg: [turn, white, red]
