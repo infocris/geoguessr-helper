@@ -1,4 +1,4 @@
-<div class="container">
+<div class="mycontainer">
   <div
     class="char level1"
     ng-repeat="e in levels1"
@@ -35,11 +35,20 @@
   ></ng-include>
 </div>
 <ng-include src="'html/filter.html'" ng-repeat="e in filters"></ng-include>
-<span style="float: right;">
-  Search text:
+<div style="float: right; display: inline-block; padding: 10px;">
   <input
     type="text"
-    ng-model="search_text"
-    ng-change="updateSearchText(search_text);"
+    ng-model="$scope.search_text"
+    ng-change="updateSearchText($scope.search_text);"
+    class="form-control"
+    placeholder="Search text or iso code"
+    style="display: inline-block; width: 200px;"
   />
-</span>
+  <button
+    class="btn btn-primary"
+    style="font-size: 16pt;"
+    ng-click="resetFilters();"
+  >
+    Reset all filters
+  </button>
+</div>

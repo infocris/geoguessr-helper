@@ -242,6 +242,17 @@ angular.module("app", []).run(function ($rootScope, $http) {
     return m[2];
   };
 
+  $rootScope.resetFilters = function () {
+    _.each(filters, function (e) {
+      e.selected = false;
+    });
+    selectedChar = {};
+    $rootScope.search_text = "";
+    loadFlags();
+    loadLevels();
+    countMatch();
+  };
+
   function isFlagMatch(k) {
     var matched = true;
     _.each(selectedChar, function (v, k2) {
