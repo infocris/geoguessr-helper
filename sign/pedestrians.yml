@@ -1,0 +1,47 @@
+---
+filters:
+  - image2: sign/pedestrian/be.png
+    isos: be,mk,pl,rs,si
+  - image2: sign/pedestrian/3.png
+    isos: ee,kg,lt,mn,ru,ua
+  - image2: sign/pedestrian/4.png
+    isos: bg,is,no,se
+  - image2: sign/pedestrian/5.png
+    isos: al,at,be,ch,de,dk,es,fr,fi,gr,hr,hu,it,lu,lv,me,mk,nl,pt,ro,rs,si,sk
+  #  isos: fr,fi,hr,it,lv,mk,nl,pt,ro,rs,si,sk
+  - image2: sign/pedestrian/es.png
+    isos: ch,es
+countries:
+  be: {image2: sign/pedestrian/be.png}
+  bg: {image2: sign/pedestrian/bg.png}
+  ch: {image2: sign/pedestrian/ch.png}
+  co: {image2: sign/pedestrian/co.png}
+  ee: {image2: sign/pedestrian/ee.png}
+  es: {image2: sign/pedestrian/es.png}
+  fi: {image2: sign/pedestrian/fi.png}
+  fr:
+    - image2: sign/pedestrian/fr.png
+    - image2: sign/pedestrian/be.png
+  hr: {image2: sign/pedestrian/hr.png}
+  is: {image2: sign/pedestrian/is.png}
+  it: {image2: sign/pedestrian/it.png}
+  kg: {image2: sign/pedestrian/ee.png}
+  lt: {image2: sign/pedestrian/lt.png}
+  lv: {image2: sign/pedestrian/lv.png}
+  mk:
+    - image2: sign/pedestrian/fi.png
+    - image2: sign/pedestrian/rs.png
+    - image2: sign/pedestrian/be.png
+  nl: {image2: sign/pedestrian/nl.png}
+  no: {image2: sign/pedestrian/no.png}
+  pl: {image2: sign/pedestrian/pl.png}
+  pt: {image2: sign/pedestrian/pt.png}
+  ro: {image2: sign/pedestrian/ro.png}
+  rs: {image2: sign/pedestrian/rs.png}
+  ru: {image2: sign/pedestrian/lt.png}
+  se: {image2: sign/pedestrian/se.png}
+  si:
+    - image2: sign/pedestrian/rs.png
+    - image2: sign/pedestrian/it.png
+  sk: {image2: sign/pedestrian/sk.png}
+  ua: {image2: sign/pedestrian/lt.png}

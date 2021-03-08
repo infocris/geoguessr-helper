@@ -1,0 +1,145 @@
+---
+al:
+- policia
+- shkollë
+- rruga
+at:
+- zone
+- ausgenommen
+- einbahn
+- polizei
+- gasse
+- straße
+- weg
+- stadt
+bg:
+- улица
+ch:
+- zona
+- zone
+- strasse
+- ausgenommen
+- gasse
+- straße
+- weg
+- stadt
+cz:
+- pozor
+- škola
+- policie
+- pěší zóna
+- zóna
+- parkoviště
+- ova
+- ská
+- ulice
+dk:
+- politi
+- museet
+- undtaget
+- zone
+- gade
+- vej
+- allé
+ee:
+- politsei
+- jalakäijate tsoon
+- tee
+es:
+- carrer
+- calle
+fi:
+- katu
+- ntie
+hr:
+- policija
+- škola
+- Pješačka zona
+- parkiralište
+- ulica
+- utca
+- zóna
+hu:
+- rendőrség
+- gyalogos zóna
+- zóná
+- parkoló
+- út
+- utca
+it:
+- scuola
+- aeroporto
+- polizia
+- via
+- viale
+lt:
+- policija
+- gatvėje
+lv:
+- policija
+- iela
+- gatve
+- bulvāris
+my:
+- awas
+- behrenti
+nl:
+- weg
+- straat
+- laan
+- dijk
+- boulevard
+'no':
+- skole
+- sone
+- gata
+- gate
+- vei
+- veien
+- veg
+- vegen
+ph:
+- st.
+- ave.
+pl:
+- szkoła
+- Koniec
+- Nie dotyczy
+- ulica
+pt:
+- aeroporto
+- rua
+ro:
+- şcoală
+- parcare
+- Str.
+- Strada
+- Bulevardul
+- Calea
+rs:
+- улица
+ru:
+- парковка
+- улица
+se:
+- gatan
+- ägen
+- äg
+si:
+- policijo
+- cona za pešce
+- cona
+- parkirnih
+- ulica
+- cesta
+- pot
+sk:
+- policía
+- pešia zóna
+- zona
+- zóna
+- ova
+- ská
+- ulica
+tr:
+- dur

@@ -1,0 +1,35 @@
+---
+filters:
+  - image2: sign/residential/model1.png
+    isos: at,es,de,gr,rs
+  - image2: sign/residential/model2.png
+    isos: be,cz,ee,fi,pl,se,sk
+  - image2: sign/residential/ru.svg
+    isos: ie,ru,ua
+  - image2: sign/residential/fr.png
+    isos: fr,gb,ro
+countries:
+  at: {image2: sign/residential/at.svg}
+  be: {image2: sign/residential/be.svg}
+  ch: {image2: sign/residential/ch.svg}
+  cz: {image2: sign/residential/cz.jpg}
+  de: {image2: sign/residential/de.svg}
+  dk: {image2: sign/residential/dk.svg}
+  ee: {image2: sign/residential/ee.png}
+  es: {image2: sign/residential/es.svg}
+  fi: {image2: sign/residential/fi.svg}
+  fr: {image2: sign/residential/fr.png}
+  gb: {image2: sign/residential/gb.svg}
+  gr: {image2: sign/residential/gr.svg}
+  ie: {image2: sign/residential/ie.png}
+  it: {image2: sign/residential/it.svg}
+  lv: {image2: sign/residential/lv.png}
+  nl: {image2: sign/residential/nl.svg}
+  no: {image2: sign/residential/no.svg}
+  pl: {image2: sign/residential/pl.svg}
+  ro: {image2: sign/residential/ro.svg}
+  rs: {image2: sign/residential/rs.svg}
+  ru: {image2: sign/residential/ru.svg}
+  se: {image2: sign/residential/se.svg}
+  sk: {image2: sign/residential/sk.png}
+  ua: {image2: sign/residential/ua.gif}

@@ -1,9 +1,10 @@
 angular.module("app", []).run(function ($rootScope, $http) {
   var selectedChar = {};
   var matchFlags = {};
+  var errors, tips, filters;
   $rootScope.$scope = $rootScope;
   $rootScope.matchFlags = matchFlags;
-  $rootScope.signs = signs;
+  //$rootScope.signs = signs;
   $rootScope.errors = errors = [];
   $rootScope.tips = tips;
   $rootScope.filters = filters = [];
@@ -13,40 +14,67 @@ angular.module("app", []).run(function ($rootScope, $http) {
     $rootScope.toggles = data;
   });
 
-  loadYAMLFile("data/thematics.yml", function (data) {
-    _.each(data, function (v) {
-      _.each(v, function (v, k) {
-        if (!$rootScope.filtersByCountry[k]) {
-          $rootScope.filtersByCountry[k] = [];
-        }
-        _.each(v, function (v) {
-          $rootScope.filtersByCountry[k].push(v);
-        });
-      });
+  function appendDataCountry(k, v) {
+    if (!$rootScope.filtersByCountry[k]) {
+      $rootScope.filtersByCountry[k] = [];
+    }
+    if (!v.length) {
+      $rootScope.filtersByCountry[k].push(v);
+      return;
+    }
+    _.each(v, function (v) {
+      $rootScope.filtersByCountry[k].push(v);
+    });
+  }
+
+  loadYAMLFile("data/texts.yml", function (data) {
+    $rootScope.texts = data;
+  });
+
+  loadYAMLFile("data/misc.yml", function (data) {
+    $rootScope.signs = data.countries;
+  });
+
+  loadYAMLFile("sign/pedestrians.yml", function (data) {
+    _.each(data.countries, function (v, k) {
+      appendDataCountry(k, v);
+    });
+  });
+
+  loadYAMLFile("sign/residentials.yml", function (data) {
+    _.each(data.countries, function (v, k) {
+      appendDataCountry(k, v);
     });
   });
 
   loadFilterData([
-    "regions.yml",
-    "landscapes.yml",
-    "googlecars.yml",
-    "plates.yml",
-    "bollards.yml",
-    "turns.yml",
-    "pedestrians.yml",
-    "roads.yml",
-    "polls.yml",
-    "signs.yml",
-    "cycles.yml",
-    "misc.yml"
+    "data/filters/regions.yml",
+    "data/filters/landscapes.yml",
+    "data/filters/googlecars.yml",
+    "data/filters/plates.yml",
+    "data/filters/bollards.yml",
+    "data/filters/turns.yml",
+    "sign/pedestrians.yml",
+    "sign/residentials.yml",
+    "data/filters/roads.yml",
+    "data/filters/polls.yml",
+    "data/filters/signs.yml",
+    "data/filters/cycles.yml",
+    "data/filters/misc.yml"
   ]);
 
   $rootScope.filtersByCountry = {};
 
   function loadFilterData(filterFilenames) {
     loadYAMLFile(
-      "data/filters/" + filterFilenames.shift(),
+      filterFilenames.shift(),
       function (data, response) {
+        if (data.filters) {
+          _.each(data.filters, function (v, k) {
+            eachValue(v);
+          });
+          return;
+        }
         _.each(data, function (v, k) {
           eachValue(v);
         });
@@ -57,12 +85,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
           }
           v.file = response.config.url.replace(/^.+\/([^\/]+)$/, "$1");
           filters.push(v);
-          if (v.svg && v.svg[0] == "turn") {
+          if (v.svg && v.svg[0] === "turn") {
           } else if (v.fig && v.fig.type && v.fig.type.match(/^bollard/)) {
           } else {
             return;
           }
           _.each(v.isos.split(","), function (e) {
+            //appendDataCountry(e, v);
             if (!$rootScope.filtersByCountry[e]) {
               $rootScope.filtersByCountry[e] = [];
             }
@@ -112,8 +141,6 @@ angular.module("app", []).run(function ($rootScope, $http) {
     });
   });
 
-  $rootScope.texts = texts;
-
   $rootScope.mouseOverFilter = function (e) {
     _.each(e.isos.split(","), function (v) {
       $rootScope.toggledClasses[v] = true;
@@ -146,8 +173,8 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   function getFilterType(e) {
-    if (e.image && (m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/))) {
-      return m[2];
+    if (e.image || e.image2) {
+      return $rootScope.imageClass(e);
     }
     if (e.svg) {
       return e.svg[0];
@@ -165,7 +192,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     var m;
     e.selected = !e.selected;
     $rootScope.toggledClasses[getFilterType(e)] = e.selected;
-    if (e.selected && e.match == 0) {
+    if (e.selected && e.match === 0) {
       if (deselectExclusiveFilter(e)) {
         return;
       }
@@ -207,7 +234,8 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   $rootScope.imageClass = function (e) {
-    var m = e.image.match(/(\/|^)([^\/]+)\/([^\/]+)$/);
+    var image = e.image || e.image2;
+    var m = image.match(/(\/|^)([^\/]+)\/([^\/]+)$/);
     if (!m) {
       return "";
     }
@@ -354,7 +382,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
       }
     }); // endforeach $rootScope.languageSpecialCharset
 
-    if (count == 0) {
+    if (count === 0) {
       return;
     }
 
