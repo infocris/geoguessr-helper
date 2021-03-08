@@ -1,4 +1,4 @@
 # geoguessr-helper
 
-Stable version: https://wkex9.csb.app/
+Stable version: https://qumn8.csb.app/
 Development version: https://ivslc.csb.app/
