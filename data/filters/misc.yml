@@ -1,8 +1,8 @@
 ---
-- image: nordic3.png
-  isos: fi,se
-- image: village.png
-  isos: pl
+#- image: nordic3.png
+#  isos: fi,se
+#- image: village.png
+#  isos: pl
 - title: Painted tree
   image: misc/tree.png
   isos: kg,lt,ro,ru,ua

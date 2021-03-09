@@ -37,12 +37,14 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
   loadYAMLFile("sign/pedestrians.yml", function (data) {
     _.each(data.countries, function (v, k) {
+      v.file = "pedestrians.yml";
       appendDataCountry(k, v);
     });
   });
 
   loadYAMLFile("sign/residentials.yml", function (data) {
     _.each(data.countries, function (v, k) {
+      v.file = "residentials.yml";
       appendDataCountry(k, v);
     });
   });
