@@ -13,7 +13,7 @@
 - name: Orient
   isos: bd,bt,id,in,jp,kg,kh,kr,lk,mn,my,ph,sg,th
 - name: Europe
-  isos: ad,al,at,bg,ch,cz,de,dk,ee,es,fi,fr,gb,gr,hr,hu,ie,it,is,lt,lu,lv,me,mk,mt,nl,no,pl,pt,ro,rs,ru,se,si,sk,ua
+  isos: ad,al,at,be,bg,ch,cz,de,dk,ee,es,fi,fr,gb,gr,hr,hu,ie,it,is,lt,lu,lv,me,mk,mt,nl,no,pl,pt,ro,rs,ru,se,si,sk,ua
 - name: Central
   isos: at,cz,hu,pl,sk,si
 - name: Nordic

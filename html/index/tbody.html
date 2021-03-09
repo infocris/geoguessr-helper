@@ -14,10 +14,12 @@
         ng-init="img_style = {height: 72}"
       ></ng-include>
     </span>
-    <span ng-repeat="e in filtersByCountry[iso]">
+    <span
+      ng-repeat="e in filtersByCountry[iso]"
+      ng-class="[e.selected ? 'selected': '']"
+    >
       <ng-include
         src="'html/figure.html'"
-        ng-class="[e.selected ? 'selected': '']"
         ng-init="img_style = {height: 72}"
         ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
       ></ng-include>

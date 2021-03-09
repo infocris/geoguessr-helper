@@ -7,8 +7,6 @@
   isos: ae,il,jo,pe
 - name: Snow
   isos: ad,at,bg,kg,sk
-- name: Limited zone
-  isos: ae,ec,il,in,kg,kr,ph,tn,uy
 - name: Flat
   isos: be,br,ca,cz,ee,gb,hu,ie,kh,lt,lv,lu,mx,nl,pl,th,us
 - name: Not flat

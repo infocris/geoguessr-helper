@@ -32,7 +32,6 @@ countries:
     - { image: "road/dk.png" }
   ec:
     - { type: "bollard_ec1", front: 1, back: 1 }
-    - { type: "bollard_ec2", front: 1 }
   ee:
     - { image: "sign/cycle/ee.png" }
     - { image: "poll/ee.png" }
@@ -89,8 +88,6 @@ countries:
     - { image: "road/no.png" }
     - { image: "road/comb.png" }
   nz:
-    - { type: "bollard_pl", front: 1 }
-    - { type: "bollard_pl", back: 1 }
     - { image: "road/nz.png" }
   pe:
     - { image: "landscapes/desertic/pe.png" }

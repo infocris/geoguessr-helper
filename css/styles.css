@@ -3,14 +3,23 @@
   font-size: 12pt;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1200px) and (min-height: 700px) {
   .sticky {
     position: sticky;
-    top: 0px;
-    background-color: white;
-    z-index: 10000;
-    user-select: none;
   }
+}
+
+@media screen and (min-width: 700px) and (min-height: 1200px) {
+  .sticky {
+    position: sticky;
+  }
+}
+
+.sticky {
+  top: 0px;
+  background-color: white;
+  z-index: 10000;
+  user-select: none;
 }
 
 .flag-icon-kg {
