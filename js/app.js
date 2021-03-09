@@ -49,22 +49,6 @@ angular.module("app", []).run(function ($rootScope, $http) {
     });
   });
 
-  loadFilterData([
-    "data/filters/regions.yml",
-    "data/filters/landscapes.yml",
-    "data/filters/googlecars.yml",
-    "data/filters/plates.yml",
-    "data/filters/bollards.yml",
-    "data/filters/turns.yml",
-    "sign/pedestrians.yml",
-    "sign/residentials.yml",
-    "data/filters/roads.yml",
-    "data/filters/polls.yml",
-    "data/filters/signs.yml",
-    "data/filters/cycles.yml",
-    "data/filters/misc.yml"
-  ]);
-
   $rootScope.filtersByCountry = {};
 
   function loadFilterData(filterFilenames) {
@@ -81,6 +65,19 @@ angular.module("app", []).run(function ($rootScope, $http) {
           eachValue(v);
         });
         function eachValue(v) {
+          if (v.complementary) {
+            var isos = [];
+            var isos2 = {};
+            _.each(v.isos.split(","), function (e) {
+              isos2[e] = true;
+            });
+            _.each($rootScope.countries, function (v2, k) {
+              if (!isos2[k]) {
+                isos.push(k);
+              }
+            });
+            v.isos = isos.join(",");
+          }
           v.previous = filters[filters.length - 1] || null;
           if (v.previous) {
             v.previous.next = v;
@@ -141,6 +138,22 @@ angular.module("app", []).run(function ($rootScope, $http) {
       loadFlags();
       countMatch();
     });
+
+    loadFilterData([
+      "data/filters/regions.yml",
+      "data/filters/landscapes.yml",
+      "data/filters/googlecars.yml",
+      "data/filters/plates.yml",
+      "data/filters/bollards.yml",
+      "data/filters/turns.yml",
+      "sign/pedestrians.yml",
+      "sign/residentials.yml",
+      "data/filters/roads.yml",
+      "data/filters/polls.yml",
+      "data/filters/signs.yml",
+      "data/filters/cycles.yml",
+      "data/filters/misc.yml"
+    ]);
   });
 
   $rootScope.mouseOverFilter = function (e) {
@@ -274,11 +287,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
         if (!filter.selected) {
           return;
         }
-        if (filter.complementary) {
-          if (filter.isos.match(k)) {
-            matched = false;
-          }
-        } else if (!filter.isos.match(k) && !filter.inverted) {
+        if (!filter.isos.match(k) && !filter.inverted) {
           matched = false;
         } else if (filter.isos.match(k) && filter.inverted) {
           matched = false;
@@ -318,11 +327,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
       _.each(collection, function (g) {
         g.match = 0;
         _.each(matchFlags, function (e) {
-          if (g.complementary) {
-            if (!g.isos.match(e)) {
-              g.match++;
-            }
-          } else if (g.isos.match(e)) {
+          if (g.isos.match(e)) {
             g.match++;
           }
         }); // endforeach filters
