@@ -4,7 +4,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
   var errors, tips, filters;
   $rootScope.$scope = $rootScope;
   $rootScope.matchFlags = matchFlags;
-  //$rootScope.signs = signs;
+
   $rootScope.errors = errors = [];
   $rootScope.tips = tips;
   $rootScope.filters = filters = [];
@@ -15,9 +15,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
   });
 
   function appendDataCountry(k, v) {
-    if (!$rootScope.filtersByCountry[k]) {
-      $rootScope.filtersByCountry[k] = [];
-    }
+    readFilterValue(v);
     if (!v.length) {
       $rootScope.filtersByCountry[k].push(v);
       return;
@@ -35,89 +33,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     $rootScope.signs = data.countries;
   });
 
-  loadYAMLFile("sign/pedestrians.yml", function (data) {
-    _.each(data.countries, function (v, k) {
-      v.file = "pedestrians.yml";
-      appendDataCountry(k, v);
-    });
-  });
-
-  loadYAMLFile("sign/residentials.yml", function (data) {
-    _.each(data.countries, function (v, k) {
-      v.file = "residentials.yml";
-      appendDataCountry(k, v);
-    });
-  });
-
   $rootScope.filtersByCountry = {};
-
-  function loadFilterData(filterFilenames) {
-    loadYAMLFile(
-      filterFilenames.shift(),
-      function (data, response) {
-        if (data.filters) {
-          _.each(data.filters, function (v, k) {
-            eachValue(v);
-          });
-          return;
-        }
-        _.each(data, function (v, k) {
-          eachValue(v);
-        });
-        function eachValue(v) {
-          if (v.complementary) {
-            var isos = [];
-            var isos2 = {};
-            _.each(v.isos.split(","), function (e) {
-              isos2[e] = true;
-            });
-            _.each($rootScope.countries, function (v2, k) {
-              if (!isos2[k]) {
-                isos.push(k);
-              }
-            });
-            v.isos = isos.join(",");
-          }
-          v.previous = filters[filters.length - 1] || null;
-          if (v.previous) {
-            v.previous.next = v;
-          }
-          v.file = response.config.url.replace(/^.+\/([^\/]+)$/, "$1");
-          filters.push(v);
-          if (v.svg && v.svg[0] === "turn") {
-          } else if (v.fig && v.fig.type && v.fig.type.match(/^bollard/)) {
-          } else {
-            return;
-          }
-          _.each(v.isos.split(","), function (e) {
-            //appendDataCountry(e, v);
-            if (!$rootScope.filtersByCountry[e]) {
-              $rootScope.filtersByCountry[e] = [];
-            }
-            $rootScope.filtersByCountry[e].push(v);
-          });
-        }
-      },
-      function () {
-        if (filterFilenames.length > 0) {
-          loadFilterData(filterFilenames);
-        }
-      }
-    );
-  }
-
-  function loadYAMLFile(url, callback, complete) {
-    $http.get(url).then(function (response) {
-      try {
-        callback(jsyaml.load(response.data), response);
-      } catch (err) {
-        errors.push({ error: err, response: response });
-      }
-      if (complete) {
-        complete();
-      }
-    });
-  }
 
   loadYAMLFile("data/countries.yml", function (data) {
     var styles = [];
@@ -131,9 +47,20 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
     $rootScope.countries = data.list;
     $rootScope.commercialTlds = data.commercialTlds;
+
+    _.each($rootScope.countries, function (v, k) {
+      if (!$rootScope.filtersByCountry[k]) {
+        $rootScope.filtersByCountry[k] = [];
+      }
+    });
+
     countryOrdering = data.order.replace(/\s$/, "").split(" ");
     loadYAMLFile("data/languages.yml", function (data) {
       $rootScope.languages = data;
+      _.each(data.groups, function (v) {
+        readFilterValue(v);
+        v.file = "languages.yml";
+      });
       loadLevels();
       loadFlags();
       countMatch();
@@ -154,7 +81,101 @@ angular.module("app", []).run(function ($rootScope, $http) {
       "data/filters/cycles.yml",
       "data/filters/misc.yml"
     ]);
+
+    loadYAMLFile("sign/pedestrians.yml", function (data) {
+      _.each(data.countries, function (v, k) {
+        v.file = "pedestrians.yml";
+        appendDataCountry(k, v);
+      });
+    });
+
+    loadYAMLFile("sign/residentials.yml", function (data) {
+      _.each(data.countries, function (v, k) {
+        v.file = "residentials.yml";
+        appendDataCountry(k, v);
+      });
+    });
   });
+
+  function readFilterValue(v) {
+    if (!v.isos) {
+      return;
+    }
+    v.isos2 = {};
+    _.each(v.isos.split(/\s*,\s*/), function (e) {
+      v.isos2[e] = e;
+    });
+
+    if (!v.complementary) {
+      return;
+    }
+    var isos = [];
+    var isos2 = {};
+    _.each(v.isos.split(/\s*,\s*/), function (e) {
+      isos2[e] = true;
+    });
+    v.isos2 = {};
+    _.each($rootScope.countries, function (v2, k) {
+      if (!isos2[k]) {
+        v.isos2[k] = k;
+        isos.push(k);
+      }
+    });
+    v.isos = isos.join(",");
+  } // endfunction readFilterValue
+
+  function loadFilterData(filterFilenames) {
+    loadYAMLFile(
+      filterFilenames.shift(),
+      function (data, response) {
+        if (data.filters) {
+          _.each(data.filters, function (v, k) {
+            eachValue(v);
+          });
+          return;
+        }
+        _.each(data, function (v, k) {
+          eachValue(v);
+        });
+        function eachValue(v) {
+          readFilterValue(v);
+          v.previous = filters[filters.length - 1] || null;
+          if (v.previous) {
+            v.previous.next = v;
+          }
+          v.file = response.config.url.replace(/^.+\/([^\/]+)$/, "$1");
+          filters.push(v);
+          if (v.svg && v.svg[0] === "turn") {
+          } else if (v.fig && v.fig.type && v.fig.type.match(/^bollard/)) {
+          } else {
+            return;
+          }
+          _.each(v.isos2, function (v2, k) {
+            $rootScope.filtersByCountry[k].push(v);
+          });
+        }
+      },
+      function () {
+        if (filterFilenames.length > 0) {
+          loadFilterData(filterFilenames);
+        }
+      }
+    );
+  } // endfunction loadFilterData
+
+  function loadYAMLFile(url, callback, complete) {
+    $http.get(url).then(function (response) {
+      try {
+        callback(jsyaml.load(response.data), response);
+      } catch (err) {
+        console.error(err);
+        errors.push({ error: err, response: response });
+      }
+      if (complete) {
+        complete();
+      }
+    });
+  }
 
   $rootScope.mouseOverFilter = function (e) {
     _.each(e.isos.split(","), function (v) {
@@ -180,8 +201,11 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.selectChar = function (e) {
     e.selected = !e.selected;
-    $rootScope.toggledClasses.alpha = e.selected;
     selectedChar[e.value] = !selectedChar[e.value];
+    if (!selectedChar[e.value]) {
+      delete selectedChar[e.value];
+    }
+    $rootScope.toggledClasses.alpha = Object.values(selectedChar).length > 0;
     loadFlags();
     loadLevels();
     countMatch();
@@ -287,9 +311,8 @@ angular.module("app", []).run(function ($rootScope, $http) {
         if (!filter.selected) {
           return;
         }
-        if (!filter.isos.match(k) && !filter.inverted) {
-          matched = false;
-        } else if (filter.isos.match(k) && filter.inverted) {
+        if (!filter.isos2[k]) {
+          //if (filter.isos2[k]) {
           matched = false;
         }
       });
