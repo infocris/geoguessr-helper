@@ -6,8 +6,8 @@
 - image: sign/stop/co.png
   isos: ar,bo,br,cl,co,ec,pe,uy
 - image: sign/nopriority/pl.png
-  isos: fi,gr,is,lv,me,mk,pl,se,si
+  isos: fi.8,gr,is.9,lv,me,mk,pl,se.8,si.1
 - svg: [square, black, gold]
-  isos: ar,br,cl,ec,ie,my,uy
+  isos: ar,bo,br,ca,cl,ec,gt,ie,mx,my,pe,uy,us
 - image: misc/sign_black_back.png
-  isos: br, pe
+  isos: br.9, pe

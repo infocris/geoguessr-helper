@@ -5,13 +5,13 @@
 #  isos: pl
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt,ro,ru,ua
+  isos: kg,lt.6,ro.8,ru.7,ua.9
 - title: Painted tree 2
   image: misc/tree2.png
   isos: in
 - image: electrical/hu-like.png
-  isos: hu,pl,ro,sk
+  isos: hu.9,pl.8,ro.7,sk
 - image: electrical/lv-like.png
-  isos: ee,jp,lk,lv,lt,ru
+  isos: ee.8,jp,lk.3,lv.9,lt.8,ru.5
 - image: electrical/pl3.png
   isos: hu,pl

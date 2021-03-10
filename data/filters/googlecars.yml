@@ -3,10 +3,10 @@
   isos: ae,ec,il,in,kg,kr,ph,tn,uy
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo,br,bw,ca,cl,il,kh,ls,mk,my,pe,ph,ro,sz,ua,us
+  isos: ae,bd,bo.8,br.9,bw,ca,cl,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar,id,jo,my,pe,ru,uy
+  isos: ar.9,id,jo,my.3,pe.7,ph,ru.9,uy.9
 - title: Blue car 🚗
   fig: { type: car, color: blue }
   isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
@@ -15,10 +15,10 @@
   isos: gb,ua
 - title: Blur Circle 🚗
   image: misc/blur-circle.png
-  isos: au,dk,ie,lu,za
+  isos: au,dk,ie,lu,za.9
 - title: Sky Glitches ☁️
   image: misc/glitch2.png
-  isos: al,hr,kg,me,sn
+  isos: al.9,hr,kg,me.9,sn.9
 - title: Blury Sky ☁️
   image: misc/sky-blur.png
   isos: au,it,gr,za
@@ -27,14 +27,12 @@
 - name: v1 cam
   isos: us,au,nz
 - image: misc/mirror3.png
-  isos: ae,bd,kg,gt,ng,ug
+  isos: ae,bd.1,kg.8,gt.8,ng,ug.9,mn.1
 - image: misc/bar2.png
-  isos: bd,ke,kg,gh,gt,mn,ng,sn
+  isos: bd,ke.1,kg.8,gh.9,gt.8,mn.7,ng,sn.7
 - image: misc/mirror.png
-  isos: bd,mn
-- name: Visible Antenna Car 📻
-  isos: al,au,bg,br,co,cz,ec,fi,hr,il,lt,lv,me,pl,ro,ru,sk,ua
-- image: car/antenna/pl.png
-  isos: al,cz,hr,hu,me,ro,sk,si,pl
-- image: car/antenna/cz.png
+  isos: bd.9,mn.9
+- image: car/antenna/antenna.png
+  isos: al,au,bg,br,co,cz,ec,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
+- image: car/antenna/antenna-taped.png
   isos: bg,cz,ro,sk

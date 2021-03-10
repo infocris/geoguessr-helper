@@ -14,9 +14,9 @@
 - svg: [turn, red, white]
   isos: be,bg,bw,de,hr,lk,lt,lv,mk,pl,ro,si,sk,sz,tr
 - svg: [turn, red, "#DFFF00"]
-  isos: hr,me,sk
+  isos: at,hr,me,sk
 - svg: [turn, white, red]
-  isos: at,ee,hu
+  isos: at,ee,hu,ru,ua
 - svg: [turn, white, "#037bfc"]
   isos: ad,fr
 - svg: [turn, yellow, "#037bfc"]

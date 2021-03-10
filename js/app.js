@@ -103,7 +103,12 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }
     v.isos2 = {};
     _.each(v.isos.split(/\s*,\s*/), function (e) {
-      v.isos2[e] = e;
+      var m = e.match(/(.+)\.(.+)/);
+      if (m) {
+        v.isos2[m[1]] = m[2];
+      } else {
+        v.isos2[e] = 5;
+      }
     });
 
     if (!v.complementary) {
@@ -112,7 +117,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     var isos = [];
     var isos2 = {};
     _.each(v.isos.split(/\s*,\s*/), function (e) {
-      isos2[e] = true;
+      isos2[e] = 1;
     });
     v.isos2 = {};
     _.each($rootScope.countries, function (v2, k) {
@@ -292,52 +297,61 @@ angular.module("app", []).run(function ($rootScope, $http) {
     countMatch();
   };
 
-  function isFlagMatch(k) {
-    var matched = true;
-    _.each(selectedChar, function (v, k2) {
-      if (!v) {
-        return;
-      }
-      if (!$rootScope.languages.charsets[k]) {
-        matched = false;
-        return;
-      }
-      if (!$rootScope.languages.charsets[k].match(k2)) {
-        matched = false;
-      }
-    });
-    _.each([filters, $rootScope.languages.groups], function (collection) {
-      _.each(collection, function (filter) {
-        if (!filter.selected) {
-          return;
-        }
-        if (!filter.isos2[k]) {
-          //if (filter.isos2[k]) {
-          matched = false;
-        }
-      });
-    });
-    if ($rootScope.search_text) {
-      if (
-        !(($rootScope.texts[k] || []).join(",") + "," + k)
-          .toLowerCase()
-          .match($rootScope.search_text.toLowerCase())
-      ) {
-        matched = false;
-      }
-    } // endif search_text
-    return matched;
-  } // endfunction isFlagMatch
-
   function loadFlags() {
     $rootScope.flags = [];
     matchFlags = {};
+    var weights = {};
     _.each(countryOrdering, function (k) {
       if (isFlagMatch(k)) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
       }
     });
+
+    $rootScope.flags = _.sortBy($rootScope.flags, function (k) {
+      return 10 - (weights[k] || 5);
+    });
+
+    function isFlagMatch(k) {
+      var matched = true;
+      _.each(selectedChar, function (v, k2) {
+        if (!v) {
+          return;
+        }
+        if (!$rootScope.languages.charsets[k]) {
+          matched = false;
+          return;
+        }
+        if (!$rootScope.languages.charsets[k].match(k2)) {
+          matched = false;
+        }
+      });
+      _.each([filters, $rootScope.languages.groups], function (collection) {
+        _.each(collection, function (filter) {
+          if (!filter.selected) {
+            return;
+          }
+          if (!filter.isos2[k]) {
+            matched = false;
+            return;
+          }
+          if (!weights[k]) {
+            weights[k] = 0;
+          }
+          weights[k] += filter.isos2[k];
+        });
+      });
+      if ($rootScope.search_text) {
+        if (
+          !(($rootScope.texts[k] || []).join(",") + "," + k)
+            .toLowerCase()
+            .match($rootScope.search_text.toLowerCase())
+        ) {
+          matched = false;
+        }
+      } // endif search_text
+      return matched;
+    } // endfunction isFlagMatch
   } // endfunction loadFlags
 
   function countMatch() {
