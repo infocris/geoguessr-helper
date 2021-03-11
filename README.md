@@ -1,7 +1,13 @@
 # geoguessr-helper
 
-Stable version: https://qumn8.csb.app/
+Latest stable version: https://qumn8.csb.app/
 
 Development version: https://cdi44.csb.app/
 
+Release 1 (2020-03-09): https://r9nj8.csb.app/
+
 [Bug report, suggestion, data improvement](https://github.com/infocris/geoguessr-helper/issues)
+
+![preview image][preview]
+
+[preview]: https://raw.githubusercontent.com/infocris/geoguessr-helper/dev/images/preview.png "Preview image"
