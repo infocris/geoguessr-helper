@@ -31,7 +31,7 @@
 - fig: { type: bollard_pl, front: 1 }
   isos: nz,pl
 - fig: { type: bollard, color: red, color2: white, front: 1, hat: 1 }
-  isos: at.1,me.9,rs,si.9
+  isos: at.1,me.9,mk,rs,si.9
 - fig: { type: bollard_rs, front: 1 }
   isos: me,rs.9
 - fig: [o, black, black]

@@ -25,6 +25,9 @@
 - name: Christianism
   level: 3
   isos: hr
+- name: Buddhism
+  level: 3
+  isos: th
 - name: Yellow fire hydrant
   level: 3
   isos: ca

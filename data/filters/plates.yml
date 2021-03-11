@@ -18,7 +18,7 @@
   isos: bd,kr.1,no.9,ph
 - fig: { type: car_plate, color: red, color2: white }
   title: Red 🚗 Plate
-  isos: bt.9,tn.1
+  isos: bt.9,tn.1,br.1
 - fig: { type: car_plate, color: black, color2: white }
   title: Black 🚗 Plate
   isos: id.9,my.9,sg

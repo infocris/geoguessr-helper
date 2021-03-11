@@ -3,16 +3,16 @@
   isos: ae,ec,gt,il,in.9,jo,kg,kr,ph,tn,uy
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo.8,br.9,bw,ca,cl,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo.8,br.9,bw,ca,cl,fr,id,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
 - title: Black car 🚗
   fig: { type: car, color: black }
   isos: ar.9,id,jo,my.3,pe.7,ph,ru.9,tr,uy.9
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
+  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,nz,ro,th
 - title: Red car 🚗
   fig: { type: car, color: red }
-  isos: br,co,gb,is,mx,ru.8,ua.9
+  isos: br,co,ec,gb,is,mx,ru.8,sk,ua.9
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
@@ -44,14 +44,14 @@
 - image: car/antenna/taped.png
   isos: bg,cz,ro,sk
 - image: car/antenna/drilled.png
-  isos: gr,hr,hu,is,ro.3,ru,sk,ua
+  isos: gr,hr,hu,is,ro.3,ru,si,sk,ua
 - image: car/antenna/none.png
-  isos: mx,ph
+  isos: br,mx,ph
 - name: no back antenna
   isos: cl
   level: 3
 - name: clearly visible back
-  isos: ae,bd,cl
+  isos: ae,bd,cl,id
   level: 3
 - name: clearly visible front
   level: 3

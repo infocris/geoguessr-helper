@@ -23,8 +23,9 @@
   isos: fi,se
 - image: road/nz.png
   isos: nz
-- image: road/ae.png
-  isos: ae,es,il,it.1,ng,sg,za,mk.1
+- tile: road border black and white
+  image: road/ae.png
+  isos: ae,es,il,it.1,lk,lt,ng,sg,za,mk.1
 - name: road border black and yellow
   isos: ae,gr
   level: 3
