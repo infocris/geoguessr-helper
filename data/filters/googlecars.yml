@@ -12,7 +12,7 @@
   isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
 - title: Red car 🚗
   fig: { type: car, color: red }
-  isos: br,co,gb,is,mx,ru,ua.9
+  isos: br,co,gb,is,mx,ru.8,ua.9
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
@@ -34,11 +34,11 @@
   level: 3
   isos: us,au,nz
 - image: misc/mirror3.png
-  isos: ae,bd.1,kg.8,gt.8,ng,ug.9,mn.1
+  isos: ae.1,bd.2,kg.8,gt.7,ng,ug.9,mn.2
 - image: misc/bar2.png
-  isos: bd,ke.1,kg.8,gh.9,gt.8,mn.7,ng,sn.7
+  isos: bd,ke.1,kg.8,gh.9,gt.8,mn.7,ng.3,sn
 - image: misc/mirror.png
-  isos: bd.9,mn.9,se
+  isos: bd.8,mn.9,sn
 - image: car/antenna/antenna.png
   isos: al,au,bg,br,co,cz,ec,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
 - image: car/antenna/taped.png

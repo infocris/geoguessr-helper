@@ -95,7 +95,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
         appendDataCountry(k, v);
       });
     });
-  });
+  }); // endfunction loadYAMLFile("data/countries.yml"
 
   function readFilterValue(v) {
     if (!v.isos) {
@@ -143,6 +143,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
           eachValue(v);
         });
         function eachValue(v) {
+          if (!v.isos) {
+            console.error("empty isos", v);
+            return;
+          }
           readFilterValue(v);
           v.previous = filters[filters.length - 1] || null;
           if (v.previous) {
@@ -182,14 +186,25 @@ angular.module("app", []).run(function ($rootScope, $http) {
     });
   }
 
+  $rootScope.level = localStorage.level || 1;
+  $rootScope.toggledClasses["level" + $rootScope.level] = true;
+  $rootScope.updateLevel = function (level) {
+    $rootScope.toggledClasses["level1"] = false;
+    $rootScope.toggledClasses["level2"] = false;
+    $rootScope.toggledClasses["level3"] = false;
+    $rootScope.toggledClasses["level" + level] = true;
+    localStorage.level = level;
+    $rootScope.level = level;
+  };
+
   $rootScope.mouseOverFilter = function (e) {
-    _.each(e.isos.split(","), function (v) {
-      $rootScope.toggledClasses[v] = true;
+    _.each(e.isos2, function (v, k) {
+      $rootScope.toggledClasses[k] = true;
     });
   };
   $rootScope.mouseLeaveFilter = function (e) {
-    _.each(e.isos.split(","), function (v) {
-      $rootScope.toggledClasses[v] = false;
+    _.each(e.isos2, function (v, k) {
+      $rootScope.toggledClasses[k] = false;
     });
   };
 
@@ -223,10 +238,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
     if (e.svg) {
       return e.svg[0];
     }
-    if (e.fig && e.fig.type.match(/^bollard/)) {
-      return "bollard";
-    }
     if (e.fig && e.fig.type) {
+      if (e.fig.type.match(/^bollard/)) {
+        return "bollard";
+      }
       return e.fig.type;
     }
     return "unknown";
@@ -287,8 +302,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   $rootScope.resetFilters = function () {
-    _.each(filters, function (e) {
-      e.selected = false;
+    _.each([filters, $rootScope.languages.groups], function (collection) {
+      _.each(collection, function (e) {
+        e.selected = false;
+      });
     });
     selectedChar = {};
     $rootScope.search_text = "";
@@ -419,7 +436,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }); // endforeach selectedChar
 
     var matchedCharsets = [];
-    _.each($rootScope.languageSpecialCharset, function (v, k) {
+    _.each($rootScope.languages.charsets, function (v, k) {
       var matched = true;
       _.each($rootScope.levels1, function (v2, k2) {
         if (v.match(k2)) {
@@ -435,7 +452,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
       if (matched) {
         matchedCharsets.push(v);
       }
-    }); // endforeach $rootScope.languageSpecialCharset
+    }); // endforeach $rootScope.languages.charsets
 
     if (count === 0) {
       return;

@@ -1,6 +1,12 @@
 <div
   class="filter"
-  ng-class="[e.selected ? 'selected': '', 'match_ratio' + e.match_ratio, 'match' + e.match, !e.selected && e.match == flags.length ? 'full_match': '']"
+  ng-class="[
+    e.selected ? 'selected': '',
+    'match_ratio' + e.match_ratio,
+    'match' + e.match,
+    !e.selected && e.match == flags.length ? 'full_match': '',
+    'level' + (e.level || 1)
+  ]"
   ng-style="e.style"
   ng-click="selectFilter(e);"
   ng-mouseover="mouseOverFilter(e);"

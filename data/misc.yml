@@ -1,7 +1,5 @@
 ---
 countries:
-  ar:
-    - { image: "road/ar.png" }
   be:
     - { image: "poll/be.png" }
   bg: 
@@ -11,11 +9,11 @@ countries:
     - { image: "sign/nopark/bg.png" }
     - { image: "sign/nopriority/bg.png" }
     - { image: "sign/priority/bg.png" }
-    - { image: "country/bg/trash.png" }
-    - { image: "country/bg/trash2.png" }
-    - { image: "electrical/bg1.png" }
-    - { image: "electrical/bg2.png" }
-    - { image: "electrical/bg3.png" }
+    #- { image: "country/bg/trash.png" }
+    #- { image: "country/bg/trash2.png" }
+    #- { image: "electrical/bg1.png" }
+    #- { image: "electrical/bg2.png" }
+    #- { image: "electrical/bg3.png" }
   bo:
     - { image: "landscapes/desertic/bo.png" }
   ch:
@@ -26,8 +24,8 @@ countries:
     - { image: "sign/child/cz.png" }
     - { image: "sign/cycle/cz.png" }
     - { image: "sign/stop/cz.png" }
-    - { image: "country/cz/trash1.png" }
-    - { image: "country/cz/trash2.png" }
+    #- { image: "country/cz/trash1.png" }
+    #- { image: "country/cz/trash2.png" }
   dk:
     - { image: "road/dk.png" }
   ec:
@@ -36,14 +34,12 @@ countries:
     - { image: "sign/cycle/ee.png" }
     - { image: "poll/ee.png" }
     - { image: "poll/lv.png" }
-    - { image: "road/comb.png" }
   fi:
     - { image: "sign/child/fi.png" }
     - { image: "sign/cycle/fi.png" }
     - { image: "sign/nopriority/fi.png" }
     - { image: "sign/circular/fi.png" }
     - { image: "poll/fi.png" }
-    - { image: "road/se.png" }
   hr:
     - { image: "sign/child/hr.png" }
     - { image: "sign/cycle/hr.png" }
@@ -85,10 +81,6 @@ countries:
     - { image: "sign/nopriority/no.png" }
     - { image: "sign/circular/no.png" }
     - { image: "poll/no.png" }
-    - { image: "road/no.png" }
-    - { image: "road/comb.png" }
-  nz:
-    - { image: "road/nz.png" }
   pe:
     - { image: "landscapes/desertic/pe.png" }
   pl:
@@ -107,7 +99,6 @@ countries:
     - { image: "sign/nopriority/se.png" }
     - { image: "sign/circular/se.png" }
     - { image: "poll/se.png" }
-    - { image: "road/se.png" }
   si:
     - { image: "sign/nopriority/si.png" }
     - { image: "sign/circular/si.png" }

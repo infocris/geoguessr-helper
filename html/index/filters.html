@@ -51,4 +51,14 @@
   >
     Reset all filters
   </button>
+  <div class="btn-group">
+    <div
+      class="btn"
+      ng-repeat="e in [1,2,3]"
+      ng-class="level == e ? 'btn-primary': 'btn-info'"
+      ng-click="updateLevel(e);"
+    >
+      {{ e }}
+    </div>
+  </div>
 </div>
