@@ -1,40 +1,60 @@
 ---
 - name: Pedestr. cam
-  isos: ae,ec,il,in,kg,kr,ph,tn,uy
+  isos: ae,ec,gt,il,in.9,jo,kg,kr,ph,tn,uy
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo,br,bw,ca,cl,il,kh,ls,mk,my,pe,ph,ro,sz,ua,us
+  isos: ae,bd,bo.8,br.9,bw,ca,cl,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar,id,jo,my,pe,ru,uy
+  isos: ar.9,id,jo,my.3,pe.7,ph,ru.9,tr,uy.9
 - title: Blue car 🚗
   fig: { type: car, color: blue }
   isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
 - title: Red car 🚗
   fig: { type: car, color: red }
-  isos: gb,ua
+  isos: br,co,gb,is,mx,ru.8,ua.9
 - title: Blur Circle 🚗
+  level: 2
   image: misc/blur-circle.png
-  isos: au,dk,ie,lu,za
+  isos: au,dk,fi,fr,ie,lu,se,za.9
+- name: Blur Shaped 🚗
+  level: 3
+  isos: tr
 - title: Sky Glitches ☁️
   image: misc/glitch2.png
-  isos: al,hr,kg,me,sn
+  isos: al.9,hr,kg,me.9,sn.9
 - title: Blury Sky ☁️
+  level: 2
   image: misc/sky-blur.png
   isos: au,it,gr,za
 - name: Glitchy Blur 🚗
+  level: 3
   isos: ar
 - name: v1 cam
+  level: 3
   isos: us,au,nz
 - image: misc/mirror3.png
-  isos: ae,bd,kg,gt,ng,ug
+  isos: ae.1,bd.2,kg.8,gt.7,ng,ug.9,mn.2
 - image: misc/bar2.png
-  isos: bd,ke,kg,gh,gt,mn,ng,sn
+  isos: bd,ke.1,kg.8,gh.9,gt.8,mn.7,ng.3,sn
 - image: misc/mirror.png
-  isos: bd,mn
-- name: Visible Antenna Car 📻
-  isos: al,au,bg,br,co,cz,ec,fi,hr,il,lt,lv,me,pl,ro,ru,sk,ua
-- image: car/antenna/pl.png
-  isos: al,cz,hr,hu,me,ro,sk,si,pl
-- image: car/antenna/cz.png
+  isos: bd.8,mn.9,sn
+- image: car/antenna/antenna.png
+  isos: al,au,bg,br,co,cz,ec,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
+- image: car/antenna/taped.png
   isos: bg,cz,ro,sk
+- image: car/antenna/drilled.png
+  isos: gr,hr,hu,is,ro.3,ru,sk,ua
+- image: car/antenna/none.png
+  isos: mx,ph
+- name: no back antenna
+  isos: cl
+  level: 3
+- name: clearly visible back
+  isos: ae,bd,cl
+  level: 3
+- name: clearly visible front
+  level: 3
+- name: Sea photosphere
+  level: 3
+  isos: ec,ph,tn

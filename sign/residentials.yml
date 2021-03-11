@@ -2,15 +2,15 @@
 # Files copy from wikipedia.org
 filters:
   - image2: sign/residential/model1.png
-    isos: at,es,de,gr,rs
+    isos: at,es,gb.3,de,gr,rs
   - image2: sign/residential/model2.png
-    isos: be,ch,cz,ee,fi,pl,se,sk
+    isos: be,ch,cz,dk.3,ee,fi,pl,ro.3,se,sk
   - image2: sign/residential/ru.svg
     isos: ie,ru,ua
   - image2: sign/residential/fr.png
-    isos: dk,fr,it,gb,ro
+    isos: dk,fr.6,it,gb,ro
   - image2: sign/residential/lv.png
-    isos: lv
+    isos: lv.6,it
 countries:
   at: {image2: sign/residential/at.svg}
   be: {image2: sign/residential/be.svg}

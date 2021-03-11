@@ -1,3 +1,9 @@
+table.level1 .filter.level2,
+table.level1 .filter.level3,
+table.level2 .filter.level3 {
+  display: none;
+}
+
 .error {
   color: red;
   font-size: 12pt;

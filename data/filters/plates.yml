@@ -1,22 +1,24 @@
 ---
 - fig: { type: car_plate, color: white }
   title: White 🚗 Plate
-  isos: ae,ar,au,bd,bg,br,cl,cz,ec,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za
+  isos: ae,ar,au,bd,bg,br,cl,cz,ec,fr,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za
 - fig: { type: car_plate }
   title: Yellow 🚗 Plate
-  isos: bw,co,dk,gb,gh,ke,hu,il,jp,lk,lu,my,nl,ph,th,ua,ug
+  isos: bw,co.9,dk.6,gb.7,gh,ke,kr.1,hu.1,il.9,jp,lk,lu.9,my,nl.8,ph.1,th.1,ua.1,ug
 - fig: { type: car_plate, content: front }
   title: Yellow Front Plate
   isos: au,co,gh,il,lu,nl
+  level: 2
 - fig: { type: car_plate, content: back }
   title: Yellow Back Plate
-  isos: co,gb,gh,il,jp,ke,lk,lu,nl,ug
+  isos: co.9,gb.7,gh,il.9,jp.6,ke,kr.1,lk,lu.9,nl.9,ug
+  level: 2
 - fig: { type: car_plate, color: green, color2: white }
   title: Green 🚗 Plate
-  isos: bd,no,ph
+  isos: bd,kr.1,no.9,ph
 - fig: { type: car_plate, color: red, color2: white }
   title: Red 🚗 Plate
-  isos: bt
+  isos: bt.9,tn.1
 - fig: { type: car_plate, color: black, color2: white }
   title: Black 🚗 Plate
-  isos: id,my,sg
+  isos: id.9,my.9,sg

@@ -95,7 +95,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
         appendDataCountry(k, v);
       });
     });
-  });
+  }); // endfunction loadYAMLFile("data/countries.yml"
 
   function readFilterValue(v) {
     if (!v.isos) {
@@ -103,7 +103,12 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }
     v.isos2 = {};
     _.each(v.isos.split(/\s*,\s*/), function (e) {
-      v.isos2[e] = e;
+      var m = e.match(/(.+)\.(.+)/);
+      if (m) {
+        v.isos2[m[1]] = m[2];
+      } else {
+        v.isos2[e] = 5;
+      }
     });
 
     if (!v.complementary) {
@@ -112,7 +117,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     var isos = [];
     var isos2 = {};
     _.each(v.isos.split(/\s*,\s*/), function (e) {
-      isos2[e] = true;
+      isos2[e] = 1;
     });
     v.isos2 = {};
     _.each($rootScope.countries, function (v2, k) {
@@ -138,6 +143,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
           eachValue(v);
         });
         function eachValue(v) {
+          if (!v.isos) {
+            console.error("empty isos", v);
+            return;
+          }
           readFilterValue(v);
           v.previous = filters[filters.length - 1] || null;
           if (v.previous) {
@@ -177,14 +186,25 @@ angular.module("app", []).run(function ($rootScope, $http) {
     });
   }
 
+  $rootScope.level = localStorage.level || 1;
+  $rootScope.toggledClasses["level" + $rootScope.level] = true;
+  $rootScope.updateLevel = function (level) {
+    $rootScope.toggledClasses["level1"] = false;
+    $rootScope.toggledClasses["level2"] = false;
+    $rootScope.toggledClasses["level3"] = false;
+    $rootScope.toggledClasses["level" + level] = true;
+    localStorage.level = level;
+    $rootScope.level = level;
+  };
+
   $rootScope.mouseOverFilter = function (e) {
-    _.each(e.isos.split(","), function (v) {
-      $rootScope.toggledClasses[v] = true;
+    _.each(e.isos2, function (v, k) {
+      $rootScope.toggledClasses[k] = true;
     });
   };
   $rootScope.mouseLeaveFilter = function (e) {
-    _.each(e.isos.split(","), function (v) {
-      $rootScope.toggledClasses[v] = false;
+    _.each(e.isos2, function (v, k) {
+      $rootScope.toggledClasses[k] = false;
     });
   };
 
@@ -218,10 +238,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
     if (e.svg) {
       return e.svg[0];
     }
-    if (e.fig && e.fig.type.match(/^bollard/)) {
-      return "bollard";
-    }
     if (e.fig && e.fig.type) {
+      if (e.fig.type.match(/^bollard/)) {
+        return "bollard";
+      }
       return e.fig.type;
     }
     return "unknown";
@@ -282,8 +302,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   $rootScope.resetFilters = function () {
-    _.each(filters, function (e) {
-      e.selected = false;
+    _.each([filters, $rootScope.languages.groups], function (collection) {
+      _.each(collection, function (e) {
+        e.selected = false;
+      });
     });
     selectedChar = {};
     $rootScope.search_text = "";
@@ -292,52 +314,61 @@ angular.module("app", []).run(function ($rootScope, $http) {
     countMatch();
   };
 
-  function isFlagMatch(k) {
-    var matched = true;
-    _.each(selectedChar, function (v, k2) {
-      if (!v) {
-        return;
-      }
-      if (!$rootScope.languages.charsets[k]) {
-        matched = false;
-        return;
-      }
-      if (!$rootScope.languages.charsets[k].match(k2)) {
-        matched = false;
-      }
-    });
-    _.each([filters, $rootScope.languages.groups], function (collection) {
-      _.each(collection, function (filter) {
-        if (!filter.selected) {
-          return;
-        }
-        if (!filter.isos2[k]) {
-          //if (filter.isos2[k]) {
-          matched = false;
-        }
-      });
-    });
-    if ($rootScope.search_text) {
-      if (
-        !(($rootScope.texts[k] || []).join(",") + "," + k)
-          .toLowerCase()
-          .match($rootScope.search_text.toLowerCase())
-      ) {
-        matched = false;
-      }
-    } // endif search_text
-    return matched;
-  } // endfunction isFlagMatch
-
   function loadFlags() {
     $rootScope.flags = [];
     matchFlags = {};
+    var weights = {};
     _.each(countryOrdering, function (k) {
       if (isFlagMatch(k)) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
       }
     });
+
+    $rootScope.flags = _.sortBy($rootScope.flags, function (k) {
+      return 10 - (weights[k] || 5);
+    });
+
+    function isFlagMatch(k) {
+      var matched = true;
+      _.each(selectedChar, function (v, k2) {
+        if (!v) {
+          return;
+        }
+        if (!$rootScope.languages.charsets[k]) {
+          matched = false;
+          return;
+        }
+        if (!$rootScope.languages.charsets[k].match(k2)) {
+          matched = false;
+        }
+      });
+      _.each([filters, $rootScope.languages.groups], function (collection) {
+        _.each(collection, function (filter) {
+          if (!filter.selected) {
+            return;
+          }
+          if (!filter.isos2[k]) {
+            matched = false;
+            return;
+          }
+          if (!weights[k]) {
+            weights[k] = 0;
+          }
+          weights[k] += filter.isos2[k];
+        });
+      });
+      if ($rootScope.search_text) {
+        if (
+          !(($rootScope.texts[k] || []).join(",") + "," + k)
+            .toLowerCase()
+            .match($rootScope.search_text.toLowerCase())
+        ) {
+          matched = false;
+        }
+      } // endif search_text
+      return matched;
+    } // endfunction isFlagMatch
   } // endfunction loadFlags
 
   function countMatch() {
@@ -405,7 +436,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }); // endforeach selectedChar
 
     var matchedCharsets = [];
-    _.each($rootScope.languageSpecialCharset, function (v, k) {
+    _.each($rootScope.languages.charsets, function (v, k) {
       var matched = true;
       _.each($rootScope.levels1, function (v2, k2) {
         if (v.match(k2)) {
@@ -421,7 +452,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
       if (matched) {
         matchedCharsets.push(v);
       }
-    }); // endforeach $rootScope.languageSpecialCharset
+    }); // endforeach $rootScope.languages.charsets
 
     if (count === 0) {
       return;
