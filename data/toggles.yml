@@ -9,7 +9,7 @@
   key: pedestrian
 - image2: sign/residential/fi.svg
   key: residential
-- image: sign/cycle/fr.svg
+- image2: sign/cycle/fr.svg
   key: cycle
 - image: sign/circular/sk.png
   key: circular

@@ -2,7 +2,7 @@
 
 Latest stable version: https://qumn8.csb.app/
 
-Development version: https://cdi44.csb.app/
+Development version: https://m2tup.csb.app/
 
 Release 1 (2020-03-09): https://r9nj8.csb.app/
 
