@@ -4,16 +4,18 @@
   isos: ae,ar,au,bd,bg,br,cl,cz,ec,fr,gh,gt,hr,ie,jo,ke,kh,kr,me,mk,mx,ng,nz,pe,sk,th,ug,uy,za
 - fig: { type: car_plate }
   title: Yellow 🚗 Plate
-  isos: bw,co.9,dk.6,gb.7,gh,ke,hu.1,il.9,jp,lk,lu.9,my,nl.8,ph.1,th.1,ua.1,ug
+  isos: bw,co.9,dk.6,gb.7,gh,ke,kr.1,hu.1,il.9,jp,lk,lu.9,my,nl.8,ph.1,th.1,ua.1,ug
 - fig: { type: car_plate, content: front }
   title: Yellow Front Plate
   isos: au,co,gh,il,lu,nl
+  level: 2
 - fig: { type: car_plate, content: back }
   title: Yellow Back Plate
-  isos: co.9,gb.7,gh,il.9,jp.6,ke,lk,lu.9,nl.9,ug
+  isos: co.9,gb.7,gh,il.9,jp.6,ke,kr.1,lk,lu.9,nl.9,ug
+  level: 2
 - fig: { type: car_plate, color: green, color2: white }
   title: Green 🚗 Plate
-  isos: bd,no.9,ph
+  isos: bd,kr.1,no.9,ph
 - fig: { type: car_plate, color: red, color2: white }
   title: Red 🚗 Plate
   isos: bt.9,tn.1

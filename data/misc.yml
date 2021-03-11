@@ -70,13 +70,13 @@ countries:
   me:
     - { image: "sign/nopriority/me.png" }
     - { image: "poll/hr.png" }
-    - { image: "trash/me.png" }
+    #- { image: "trash/me.png" }
   mk:
     - { image: "sign/child/mk.png" }
     - { image: "sign/cycle/mk.png" }
     - { image: "sign/nopriority/mk.png" }
-    - { image: "trash/mk1.png" }
-    - { image: "trash/mk2.png" }
+    #- { image: "trash/mk1.png" }
+    #- { image: "trash/mk2.png" }
   nl:
     - { image: "poll/nl.png" }
   no:
@@ -112,12 +112,12 @@ countries:
     - { image: "sign/nopriority/si.png" }
     - { image: "sign/circular/si.png" }
     - { image: "poll/hr.png" }
-    - { image: "trash/si1.png" }
-    - { image: "trash/si2.png" }
-    - { image: "trash/si3.png" }
+    #- { image: "trash/si1.png" }
+    #- { image: "trash/si2.png" }
+    #- { image: "trash/si3.png" }
   sk:
     - { image: "sign/child/sk.png" }
     - { image: "sign/cycle/sk.png" }
     - { image: "sign/circular/sk.png" }
     - { image: "poll/lv.png" }
-    - { image: "trash/sk.png" }
+    #- { image: "trash/sk.png" }

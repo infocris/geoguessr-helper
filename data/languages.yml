@@ -45,7 +45,7 @@ charsets:
 
 groups:
   - name: Кириллица
-    isos: bg,kg,mk,mn,rs,ru,ua
+    isos: bg,kg,mk.8,mn,rs,ru.7,ua.9
   - name: العربية
     isos: ae,il,jo,my,tn
   - name: Other

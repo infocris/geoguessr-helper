@@ -17,7 +17,7 @@
 - name: Central
   isos: at,cz,hu,pl,sk,si
 - name: Nordic
-  isos: ca,is,dk,ee,fi,no,se,lt,lv
+  isos: ca,cl,is.9,dk.7,ee.8,fi.9,no.9,se.9,lt.8,lv.8
 - name: Mediterranean
   isos: al,il,it,gr,me,mk,pt,rs
 - name: Latin America
