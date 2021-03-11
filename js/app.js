@@ -75,24 +75,19 @@ angular.module("app", []).run(function ($rootScope, $http) {
       "data/filters/turns.yml",
       "sign/pedestrians.yml",
       "sign/residentials.yml",
+      "sign/cycles.yml",
       "data/filters/roads.yml",
       "data/filters/polls.yml",
       "data/filters/signs.yml",
-      "data/filters/cycles.yml",
       "data/filters/misc.yml"
     ]);
 
-    loadYAMLFile("sign/pedestrians.yml", function (data) {
-      _.each(data.countries, function (v, k) {
-        v.file = "pedestrians.yml";
-        appendDataCountry(k, v);
-      });
-    });
-
-    loadYAMLFile("sign/residentials.yml", function (data) {
-      _.each(data.countries, function (v, k) {
-        v.file = "residentials.yml";
-        appendDataCountry(k, v);
+    _.each(["pedestrians", "residentials", "cycles"], function (e) {
+      loadYAMLFile("sign/" + e + ".yml", function (data) {
+        _.each(data.countries, function (v, k) {
+          v.file = e + ".yml";
+          appendDataCountry(k, v);
+        });
       });
     });
   }); // endfunction loadYAMLFile("data/countries.yml"

@@ -1,19 +1,27 @@
 ---
 filters:
-  - image2: sign/child/hr.png
+  - title: Woman with boy
+    image2: sign/child/hr.png
     isos: at,ee,de,hr,mk
-  - image2: sign/child/fi.png
-    isos: fi,no,se,is
-  - image2: sign/child/cz.png
+  - title: Man with boy
+    image2: sign/child/fi.png
+    isos: fi,lt,no,se,is
+  - title: Man with girl
+    image2: sign/child/cz.png
     isos: cz,sk
-  - image2: sign/cycle/bg.png
-    isos: bg,lv
+  - title: Man alone
+    image2: sign/cycle/bg.png
+    isos: bg,lv,nz
 countries:
+  at: 
+    - { image2: "sign/cycle/at.png" }
   bg: 
     - { image2: "sign/cycle/bg.png" }
   cz:
     - { image2: "sign/child/cz.png" }
     - { image2: "sign/cycle/cz.png" }
+  de:
+    - { image2: "sign/child/de.png" }
   ee:
     - { image2: "sign/cycle/ee.png" }
   fi:
@@ -25,6 +33,8 @@ countries:
   is:
     - { image2: "sign/child/is.png" }
     - { image2: "sign/cycle/se.png" }
+  lt:
+    - { image2: "sign/cycle/lt.png" }
   lv:
     - { image2: "sign/cycle/lv.png" }
   mk:
