@@ -1,0 +1,67 @@
+---
+
+- name: Sign have outside and inner white border
+  isos: bg
+  level: 3
+  group: sign_caract
+- name: Sign have outside white border
+  isos: it,lu,sk,tr
+  level: 3
+  group: sign_caract
+- name: Sign have minimal border
+  isos: at,es,gr
+  level: 3
+  group: sign_caract
+
+- name: Flat sign
+  isos: ae,at,bt,bw,ca,ch,es,fi.2,gr,hu,ie,is,mx,my,no,nz,tr,ua,us,uy,za
+  level: 2
+  group: sign_caract
+
+- name: Not Flat sign
+  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,mk,nl,pl,ro,ru,se,si,sk,ua
+  level: 2
+  group: sign_caract
+
+- name: White street sign
+  isos: sk
+  level: 3
+  group: street_sign
+
+- name: Yellow house
+  level: 3
+  isos: 
+#- image: village.png
+#  isos: pl
+- name: Green trashbin
+  level: 3
+  isos: 
+- name: Christianism
+  level: 3
+  isos: hr
+- name: Buddhism
+  level: 3
+  isos: th
+- name: Yellow fire hydrant
+  level: 3
+  isos: ca
+
+- tile: Road border black and white
+  image: road/ae.png
+  isos: ae,es,id,il,it.1,lk,lt,ng,sg,za,mk.1
+  group: road_border_separation
+- name: Road border black and yellow
+  isos: ae,gr
+  level: 3
+  group: road_border_separation
+- name: Road border red and white
+  isos: mk,sk
+  level: 3
+  group: road_border_separation
+
+- name: Sea
+  isos: ec,ph,tn
+- name: Camera glitch
+  isos: ae
+- name: Gomette voiture
+  isos: cz,hr
