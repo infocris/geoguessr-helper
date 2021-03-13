@@ -19,6 +19,10 @@
   isos: hu,pl
   group: misc
 
+- image: electrical/tri.png
+  isos: lv
+  group: misc
+
 - image: electrical/white-foot.png
   isos: br,ro
   level: 3

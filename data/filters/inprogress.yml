@@ -65,7 +65,7 @@
   isos: dk
 
 - image: road/border-white-black.png
-  isos: ae,es,id,il,it.1,lk,lt,my,ng,sg,si,za,mk.1
+  isos: ae,es,id,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
   group: road_border_separation
 
 - image: road/border-yellow-black.png
@@ -74,7 +74,7 @@
   group: road_border_separation
 
 - image: road/border-white-red.png
-  isos: il,mk,sk
+  isos: il,mk,sk,tn
   level: 3
   group: road_border_separation
 

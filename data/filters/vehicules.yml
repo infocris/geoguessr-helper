@@ -1,7 +1,7 @@
 ---
 - name: Tuktuk
   level: 3
-  isos: bd
+  isos: bd,lk
 - name: Side-car
   level: 3
   isos: ph

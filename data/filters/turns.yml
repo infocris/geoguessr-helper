@@ -3,7 +3,7 @@
   isos: br,fi,ie,is,lu,no,pt
   
 - svg: [turn, black, gold]
-  isos: cl,co,ec,mx,nz,uy
+  isos: cl,co,ec,mx,nz,th,uy
 
 - svg: [turn, black, "#DFFF00"]
   isos: co
