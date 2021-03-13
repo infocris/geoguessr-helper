@@ -1,18 +1,25 @@
 ---
 - name: Desertic
   isos: ar,bo,bw,cl,jo,pe,tr
+
 - name: Tropical
   isos: br,ec,id,in,kh,lk,my,ph,th
+
 - name: Dry
   isos: ae,il,jo,pe
+
 - name: Snow
   isos: ad,at,bg,kg,sk
+
 - name: Flat
-  isos: be,br,ca,cz,ee,gb,hu,ie,kh,lt,lv,lu,mx,nl,pl,th,us
+  isos: be,br,ca,cl,cz,ee,gb,hu,ie,kh,lt,lv,lu,mx,nl,pl,th,us
+
 - name: Not flat
   isos: al,ad,bh,bo,ch,co,ec,hr,gr,it,ls,me,mk,mt,pe,pt,ro,rs,si,sk
+
 - name: Montainous
   isos: ad,bt,bo,ch,jo,jp,me,mk,pe,si
+
 - name: Sea
   level: 3
   isos: hr

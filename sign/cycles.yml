@@ -4,17 +4,21 @@ filters:
     image2: sign/child/hr.png
     isos: at,ee,de,hr,mk
     group: cycle
+
   - title: Man with boy
     image2: sign/child/fi.png
-    isos: fi,lt,no,se,is
+    isos: dk,fi,lt,no,se,is
     group: cycle
+
   - title: Man with girl
     image2: sign/child/cz.png
     isos: cz,sk
     group: cycle
+    
   - title: Man alone
     image2: sign/cycle/bg.png
     isos: bg,lv,nz
+
 countries:
   at: 
     - { image2: "sign/cycle/at.png" }
@@ -25,6 +29,8 @@ countries:
     - { image2: "sign/cycle/cz.png" }
   de:
     - { image2: "sign/child/de.png" }
+  dk:
+    - { image2: "sign/cycle/dk.png" }
   ee:
     - { image2: "sign/cycle/ee.png" }
   fi:

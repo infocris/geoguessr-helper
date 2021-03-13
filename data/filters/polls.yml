@@ -2,12 +2,15 @@
 - svg: [poll1, black, white]
   isos: ae,bh,bt,ie,lk,lt,lv,mt,my,nl,pe,th,uy
   group: poll
+
 - svg: [poll1, black, gold]
   isos: ch,co,hr,me,no,si
   group: poll
+
 - svg: [poll1, "#037bfc", white]
   isos: ee,fi,se
   group: poll
+
 #- image: poll/ee.png
 #  isos: ee,fi
 #- image: poll/se.png
@@ -16,7 +19,10 @@
 #  isos: "no"
 #- image: poll/hr.png
 #  isos: ch,hr,me,si
+
 - image: poll/nl.png
   isos: be,nl,pl
-- image: poll/lv.png
-  isos: cz,de,ee,lv,sk
+
+- title: stripped red and white
+  image: poll/lv.png
+  isos: cz,de,dk,ee,lv,sk

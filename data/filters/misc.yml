@@ -1,22 +1,28 @@
 ---
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt.6,ro.8,ru.7,ua.9
+  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.1
+
 - title: Painted tree 2
   image: misc/tree2.png
   isos: in
+
 - image: electrical/hu-like.png
   isos: hu.9,pl.8,ro.7,sk
   group: misc
+
 - image: electrical/lv-like.png
   isos: ar.1,ee.8,jp,kg.1,lk.3,lv.9,lt.8,ru.5,ua.1
   group: misc
+
 - image: electrical/pl3.png
   isos: hu,pl
   group: misc
-- name: Electrical poll with white paint at bottom
+
+- image: electrical/white-foot.png
   isos: br,ro
   level: 3
+
 - image: nordic3.png
   isos: fi,is,no,se
   level: 3

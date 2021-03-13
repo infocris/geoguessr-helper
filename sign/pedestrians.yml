@@ -1,19 +1,25 @@
 ---
 filters:
   - image2: sign/pedestrian/rs.png
-    isos: gr,mk,rs,si
+    isos: gr,me,mk,rs,si
     level: 2
+
   - image2: sign/pedestrian/be.png
     isos: be,mk,pl,rs,si
+
   - image2: sign/pedestrian/3.png
     isos: ee,kg,lt,mn,ru,ua
+
   - image2: sign/pedestrian/4.png
     isos: bg,is,no,se
+
   - image2: sign/pedestrian/5.png
     isos: al,at,be,ch,cz,de,dk,es,fr,fi,hr,hu,is,it,lu,lv,me,mk,nl,pt,ro,rs,si,sk
 #   isos: fr,fi,hr,it,lv,mk,nl,pt,ro,rs,si,sk
+
   - image2: sign/pedestrian/es.png
     isos: ch,es.9,sk.1
+
 countries:
   be: {image2: sign/pedestrian/be.png}
   bg: {image2: sign/pedestrian/bg.png}
