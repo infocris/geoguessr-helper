@@ -1,56 +1,47 @@
 ---
 filters:
   - image2: sign/pedestrian/rs.png
-    isos: gr,me,mk,rs,si
+    isos: at,be.2,gr,lk,me,mk,pl.1,rs.9,si,sg
     level: 2
 
   - image2: sign/pedestrian/be.png
-    isos: be,mk,pl,rs,si
+    isos: at,be.9,gr.1,lk,me,mk,pl.1,rs,si,sg
 
   - image2: sign/pedestrian/3.png
-    isos: ee,kg,lt,mn,ru,ua
+    isos: ee,kg.4,lt,mn.4,ru,ua
 
   - image2: sign/pedestrian/4.png
-    isos: bg,is,no,se
+    isos: bg,is.1,no,se
 
   - image2: sign/pedestrian/5.png
-    isos: al,at,be,ch,cz,de,dk,es,fr,fi,hr,hu,is,it,lu,lv,me,mk,nl,pt,ro,rs,si,sk
-#   isos: fr,fi,hr,it,lv,mk,nl,pt,ro,rs,si,sk
+    isos: al,at,be,ch,cz,de,dk,es,fr,fi,hr,hu,is,it,lu,lv,me,mk,nl,pt,ro,rs,si,sk,th,tr
 
   - image2: sign/pedestrian/es.png
     isos: ch,es.9,sk.1
 
+  - image2: sign/pedestrian/br.png
+    isos: ar.1,br,co,cl.1,gt,id,my,mx,nz,pe,uy
+
+  - image2: sign/pedestrian/ec.png
+    isos: bo,ec,ie.3,th.1
+
+  - image2: sign/pedestrian/za.png
+    isos: ae,bw,ke.1,sn.4,sz,tn.4,tr.4,za
+
 countries:
+  ar: {image2: sign/pedestrian/ar.png}
+  at: {image2: sign/pedestrian/at.png}
   be: {image2: sign/pedestrian/be.png}
   bg: {image2: sign/pedestrian/bg.png}
+  ca: {image2: sign/pedestrian/ca.png}
   ch: {image2: sign/pedestrian/ch.png}
+  cl: {image2: sign/pedestrian/cl.png}
   co: {image2: sign/pedestrian/co.png}
-  ee: {image2: sign/pedestrian/ee.png}
   es: {image2: sign/pedestrian/es.png}
-  fi: {image2: sign/pedestrian/fi.png}
-  fr:
-    - image2: sign/pedestrian/fr.png
-    - image2: sign/pedestrian/be.png
-  hr: {image2: sign/pedestrian/hr.png}
+  gr: {image2: sign/pedestrian/gr.png}
+  ie: {image2: sign/pedestrian/ie.png}
   is: {image2: sign/pedestrian/is.png}
-  it: {image2: sign/pedestrian/it.png}
-  kg: {image2: sign/pedestrian/ee.png}
-  lt: {image2: sign/pedestrian/lt.png}
-  lv: {image2: sign/pedestrian/lv.png}
-  mk:
-    - image2: sign/pedestrian/fi.png
-    - image2: sign/pedestrian/rs.png
-    - image2: sign/pedestrian/be.png
-  nl: {image2: sign/pedestrian/nl.png}
   no: {image2: sign/pedestrian/no.png}
   pl: {image2: sign/pedestrian/pl.png}
-  pt: {image2: sign/pedestrian/pt.png}
-  ro: {image2: sign/pedestrian/ro.png}
   rs: {image2: sign/pedestrian/rs.png}
-  ru: {image2: sign/pedestrian/lt.png}
   se: {image2: sign/pedestrian/se.png}
-  si:
-    - image2: sign/pedestrian/rs.png
-    - image2: sign/pedestrian/it.png
-  sk: {image2: sign/pedestrian/sk.png}
-  ua: {image2: sign/pedestrian/lt.png}
