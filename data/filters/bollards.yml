@@ -22,7 +22,7 @@
 - fig: { type: bollard_ec2, front: 1 }
   isos: ec
 - fig: { type: bollard, color: red, color2: white, front: 1 }
-  isos: au,nl,ro.1,tr
+  isos: au.8,nl,ro.2,tr.9,nz.1
 - fig: { type: bollard, color: white, color2: white, back: 1 }
   level: 3
   isos: au
@@ -36,8 +36,10 @@
   isos: me,rs.9
 - fig: [o, black, black]
   isos: al,hr,kg,lk,se,th
+  group: bollard
 - fig: [■, red, red]
   isos: al,at,au,ec,gr,hr,hu,it,kh,me,mn,mk,nl,nz,pl,pt,rs,si,tr
+  group: bollard
 - image: bollard/fr.png
   isos: fr.9,sn
 - image: bollard/ad.png

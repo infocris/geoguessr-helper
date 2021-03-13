@@ -1,19 +1,19 @@
 ---
-- image: road/comb.png
-  level: 2
-  isos: ee,no
-- image: road/uy.png
-  title: Dashed Line inside 2 lines
-  isos: ls,ph,sz,uy,za
 - image: road/europe.png
   title: White Lines
   isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,my,nz,ph,sn
+  group: road_lines_color
 - image: road/america.png
   title: Yellow Center Line
-  isos: ar,bo,br,ca,cl,co,ec,fi,ke,kh,kr,no,pe,ph,th,us,uy
+  isos: ar,bo,br,ca,cl,co,ec,fi,ke,kh,kr,no,nz,pe,ph,th,us,uy
+  group: road_lines_color
 - image: road/africa.png
   title: Yellow Border Lines
   isos: bw,es.1,jo,ls,sz,tr.1,za
+  group: road_lines_color
+- image: road/uy.png
+  title: Dashed Line inside 2 lines
+  isos: ls,ph,sz,uy,za
 - image: road/dk.png
   isos: dk
 - image: road/no.png
@@ -23,14 +23,8 @@
   isos: fi,se
 - image: road/nz.png
   isos: nz
-- tile: road border black and white
-  image: road/ae.png
-  isos: ae,es,il,it.1,lk,lt,ng,sg,za,mk.1
-- name: road border black and yellow
-  isos: ae,gr
-  level: 3
-- name: road border red and white
-  isos: mk,sk
-  level: 3
+- image: road/comb.png
+  level: 2
+  isos: ee,no
 - image: road/long-space.png
   isos: se

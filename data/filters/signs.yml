@@ -9,24 +9,7 @@
 - image: sign/nopriority/pl.png
   isos: fi.8,gr,is.9,lv,me,mk,pl,se.8,si.1
 - svg: [square, black, gold]
-  isos: ar,bo,br,ca,cl,ec,gt,ie,mx,my,pe,uy,us
+  isos: ar,bo,br,ca,cl,ec,gt,ie,mx,my,nz,pe,uy,us
 - image: misc/sign_black_back.png
   isos: br.9, pe
-- name: sign have outside and inner white border
-  isos: bg
-  level: 3
-- name: sign have outside white border
-  isos: it,lu,sk,tr
-  level: 3
-- name: sign have minimal border
-  isos: at,es,gr
-  level: 3
-- name: Flat sign
-  isos: ae,at,ca,ch,es,fi.2,gr,hu,ie,is,mx,my,no,nz,tr,ua,us,uy,za
-  level: 2
-- name: Not Flat sign
-  isos: al,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,mk,ro,ru,se,si,sk
-  level: 2
-- name: White street sign
-  isos: sk
-  level: 3
+  group: sign_caract

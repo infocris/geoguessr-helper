@@ -9,7 +9,7 @@
 <img
   ng-if="e.image"
   src="images/{{ e.image }}"
-  ng-class="imageClass(e)"
+  ng-class="e.imageClass"
   ng-style="img_style"
   title="--- Image: {{ e.image }}"
 />
@@ -17,7 +17,7 @@
 <img
   ng-if="e.image2"
   src="{{ e.image2 }}"
-  ng-class="imageClass(e)"
+  ng-class="e.imageClass"
   ng-style="img_style"
   title="--- Image: {{ e.image2 }}"
 />

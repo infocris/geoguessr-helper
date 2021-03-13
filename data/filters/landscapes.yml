@@ -12,7 +12,7 @@
 - name: Not flat
   isos: al,ad,bh,bo,ch,co,ec,hr,gr,it,ls,me,mk,mt,pe,pt,ro,rs,si,sk
 - name: Montainous
-  isos: ad,bh,bo,ch,jo,jp,me,mk,pe,si
+  isos: ad,bt,bo,ch,jo,jp,me,mk,pe,si
 - name: Sea
   level: 3
   isos: hr

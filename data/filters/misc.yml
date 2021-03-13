@@ -7,27 +7,17 @@
   isos: in
 - image: electrical/hu-like.png
   isos: hu.9,pl.8,ro.7,sk
+  group: misc
 - image: electrical/lv-like.png
   isos: ar.1,ee.8,jp,kg.1,lk.3,lv.9,lt.8,ru.5,ua.1
+  group: misc
 - image: electrical/pl3.png
   isos: hu,pl
+  group: misc
+- name: Electrical poll with white paint at bottom
+  isos: br,ro
+  level: 3
 - image: nordic3.png
   isos: fi,is,no,se
   level: 3
-- name: Yellow house
-  level: 3
-  isos: 
-#- image: village.png
-#  isos: pl
-- name: Green trashbin
-  level: 3
-  isos: 
-- name: Christianism
-  level: 3
-  isos: hr
-- name: Buddhism
-  level: 3
-  isos: th
-- name: Yellow fire hydrant
-  level: 3
-  isos: ca
+  group: misc

@@ -2,6 +2,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
   var selectedChar = {};
   var matchFlags = {};
   var errors, tips, filters;
+  var filterCoverage = {};
   $rootScope.$scope = $rootScope;
   $rootScope.matchFlags = matchFlags;
 
@@ -37,12 +38,18 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
   loadYAMLFile("data/countries.yml", function (data) {
     var styles = [];
+    var styles_covered = [];
     _.each(data.list, function (v, k) {
-      styles.push("table." + k + " div.flag." + k);
+      styles.push("table." + k + "_select div.flag." + k);
+      styles_covered.push("table." + k + "_covered div.flag." + k);
     });
     var style = document.createElement("style");
     style.type = "text/css";
-    style.innerHTML = styles.join(",") + " { background-color: #D9D933; }";
+    style.innerHTML =
+      styles.join(",") +
+      " { background-color: #D9D933; opacity: 1; } " +
+      styles_covered.join(",") +
+      " { opacity: 1; } ";
     document.getElementsByTagName("head")[0].appendChild(style);
 
     $rootScope.countries = data.list;
@@ -79,7 +86,8 @@ angular.module("app", []).run(function ($rootScope, $http) {
       "data/filters/roads.yml",
       "data/filters/polls.yml",
       "data/filters/signs.yml",
-      "data/filters/misc.yml"
+      "data/filters/misc.yml",
+      "data/filters/inprogress.yml"
     ]);
 
     _.each(["pedestrians", "residentials", "cycles"], function (e) {
@@ -93,6 +101,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
   }); // endfunction loadYAMLFile("data/countries.yml"
 
   function readFilterValue(v) {
+    v.filterType = getFilterType(v);
+    if (v.image || v.image2) {
+      v.imageClass = $rootScope.imageClass(v);
+    }
+    if (!filterCoverage[v.filterType]) {
+      filterCoverage[v.filterType] = {};
+    }
     if (!v.isos) {
       return;
     }
@@ -100,13 +115,16 @@ angular.module("app", []).run(function ($rootScope, $http) {
     _.each(v.isos.split(/\s*,\s*/), function (e) {
       var m = e.match(/(.+)\.(.+)/);
       if (m) {
-        v.isos2[m[1]] = m[2];
+        v.isos2[m[1]] = parseInt(m[2], 10);
       } else {
         v.isos2[e] = 5;
       }
     });
 
     if (!v.complementary) {
+      _.each(v.isos2, function (v2, k) {
+        filterCoverage[v.filterType][k] = true;
+      });
       return;
     }
     var isos = [];
@@ -118,13 +136,14 @@ angular.module("app", []).run(function ($rootScope, $http) {
     _.each($rootScope.countries, function (v2, k) {
       if (!isos2[k]) {
         v.isos2[k] = k;
+        filterCoverage[v.filterType][k] = true;
         isos.push(k);
       }
     });
     v.isos = isos.join(",");
   } // endfunction readFilterValue
 
-  function loadFilterData(filterFilenames) {
+  function loadFilterData(filterFilenames, onComplete) {
     loadYAMLFile(
       filterFilenames.shift(),
       function (data, response) {
@@ -161,7 +180,11 @@ angular.module("app", []).run(function ($rootScope, $http) {
       },
       function () {
         if (filterFilenames.length > 0) {
-          loadFilterData(filterFilenames);
+          loadFilterData(filterFilenames, onComplete);
+          return;
+        }
+        if (onComplete) {
+          onComplete();
         }
       }
     );
@@ -193,19 +216,37 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   $rootScope.mouseOverFilter = function (e) {
-    _.each(e.isos2, function (v, k) {
-      $rootScope.toggledClasses[k] = true;
+    _.each($rootScope.toggledClasses, function (v, k) {
+      if (k.match(/_covered$|_select$/)) {
+        $rootScope.toggledClasses[k] = false;
+      }
     });
-  };
-  $rootScope.mouseLeaveFilter = function (e) {
+    _.each(filterCoverage[e.filterType], function (v, k) {
+      $rootScope.toggledClasses[k + "_covered"] = true;
+    });
     _.each(e.isos2, function (v, k) {
-      $rootScope.toggledClasses[k] = false;
+      $rootScope.toggledClasses[k + "_select"] = true;
+    });
+    $rootScope.toggledClasses["overFilter"] = true;
+  };
+
+  $rootScope.mouseLeaveFilter = function (e) {
+    $rootScope.toggledClasses["overFilter"] = false;
+    _.each($rootScope.toggledClasses, function (v, k) {
+      if (k.match(/_select$/)) {
+        $rootScope.toggledClasses[k] = false;
+      }
     });
   };
 
   $rootScope.mouseOverChar = function (e) {
+    _.each($rootScope.toggledClasses, function (v, k) {
+      if (k.match(/_covered$|_select$/)) {
+        $rootScope.toggledClasses[k] = false;
+      }
+    });
     _.each(e.isos, function (v) {
-      $rootScope.toggledClasses[v] = true;
+      $rootScope.toggledClasses[v + "_select"] = true;
     });
   };
   $rootScope.mouseLeaveChar = function (e) {
@@ -227,6 +268,9 @@ angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   function getFilterType(e) {
+    if (e.group) {
+      return e.group;
+    }
     if (e.image || e.image2) {
       return $rootScope.imageClass(e);
     }
@@ -239,13 +283,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
       }
       return e.fig.type;
     }
-    return "unknown";
+    return "misc";
   }
 
   $rootScope.selectFilter = function (e) {
     var m;
     e.selected = !e.selected;
-    $rootScope.toggledClasses[getFilterType(e)] = e.selected;
+    $rootScope.toggledClasses[e.filterType] = e.selected;
     if (e.selected && e.match === 0) {
       if (deselectExclusiveFilter(e)) {
         return;
@@ -255,7 +299,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
     countMatch();
     _.each(filters, function (e) {
       if (e.selected) {
-        $rootScope.toggledClasses[getFilterType(e)] = true;
+        $rootScope.toggledClasses[e.filterType] = true;
       }
     });
   };
@@ -312,11 +356,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
   function loadFlags() {
     $rootScope.flags = [];
     matchFlags = {};
-    var weights = {};
+    var weights = ($rootScope.weightFlags = {});
+    $rootScope.sumWeight = 0;
     _.each(countryOrdering, function (k) {
       if (isFlagMatch(k)) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
+        $rootScope.sumWeight += weights[k];
       }
     });
 
