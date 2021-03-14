@@ -1,16 +1,5 @@
 ---
 
-- image: sign/nopark/white-lines.png
-  title: Sign have outside and inner white border
-  isos: al,bg,lv
-  level: 3
-  group: sign_caract
-
-- image: sign/nopark/dk.png
-  isos: dk,me
-  level: 3
-  group: sign_caract
-
 - name: Sign have outside white border
   isos: it,lu,sk,tr
   level: 3
@@ -26,18 +15,6 @@
   level: 3
   group: sign_caract
 
-- title: Flat sign
-  image: sign/flat.png
-  isos: ae,at,bt,bw,ca,ch,de,dk,es,fi.2,gr,hu,ie,is,mx,my,no,nz,tr,ua,us,uy,za
-  level: 2
-  group: sign_caract
-
-- title: Not Flat sign
-  image: sign/not-flat.png
-  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,me,mk,nl,pl,pt,ro,ru,se,si,sk,ua
-  level: 2
-  group: sign_caract
-
 - name: White street sign
   isos: sk
   level: 3
@@ -48,35 +25,26 @@
   isos: 
 #- image: village.png
 #  isos: pl
+
 - name: Green trashbin
   level: 3
   isos: 
+
 - name: Christianism
   level: 3
   isos: hr
+
 - name: Buddhism
   level: 3
   isos: th
+
 - name: Yellow fire hydrant
   level: 3
   isos: ca,us
+
 - name: Red fire hydrant
   level: 3
   isos: dk
-
-- image: road/border-white-black.png
-  isos: ae,es,id,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
-  group: road_border_separation
-
-- image: road/border-yellow-black.png
-  isos: ae,gr
-  level: 3
-  group: road_border_separation
-
-- image: road/border-white-red.png
-  isos: il,mk,sk,tn
-  level: 3
-  group: road_border_separation
 
 - name: Sea pedestr.
   isos: ec,ph,tn
@@ -92,8 +60,8 @@
 
 - name: Latin car.
   isos: bg,mk
-  level: 2
+  level: 3
 
 - name: Blue line parking
   isos: it
-  level: 2
+  level: 3
