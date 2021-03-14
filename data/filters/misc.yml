@@ -1,33 +1,40 @@
 ---
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.1
+  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.2,in.1
 
-- title: Painted tree 2
+- title: Painted tree (India)
   image: misc/tree2.png
   isos: in
+  level: 2
 
 - image: electrical/hu-like.png
+  title: Electrical poll
   isos: hu.9,pl.8,ro.7,sk
   group: misc
 
 - image: electrical/lv-like.png
+  title: Electrical poll
   isos: ar.1,ee.8,jp,kg.1,lk.3,lv.9,lt.8,ru.5,ua.1
   group: misc
 
 - image: electrical/pl3.png
+  title: Electrical poll
   isos: hu,pl
   group: misc
 
 - image: electrical/tri.png
+  title: Electrical poll
   isos: lv
   group: misc
 
 - image: electrical/white-foot.png
+  title: Electrical poll
   isos: br,ro
   level: 3
 
 - image: nordic3.png
+  title: Nordic style house
   isos: fi,is,no,se
   level: 3
   group: misc

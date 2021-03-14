@@ -10,12 +10,12 @@
   isos: ar,bo,br,cl,co,ec,pe,uy
 
 - image: sign/nopriority/pl.png
-  title: yellow sign
+  title: Yellow filled sign
   isos: fi.8,gr,is.9,lv,me,mk,pl.9,se.8,si.1
   group: nopriority_sign
 
 - image: sign/nopriority/hr.png
-  title: white sign
+  title: White filled sign
   isos: ad,al,at,be,bg,ch,cz,de,dk,fr,ee,es,hr,hu,it,lt,lu,nl,no,pt,ro,rs,ru,sk,ua
   level: 2
   group: nopriority_sign
@@ -30,12 +30,12 @@
 - image: sign/nopark/white-lines.png
   title: Sign have outside and inner white border
   isos: al,bg,lv
-  level: 3
+  level: 2
   group: nopark
 
 - image: sign/nopark/dk.png
   isos: dk,me
-  level: 3
+  level: 2
   group: nopark
 
 - title: Flat sign
