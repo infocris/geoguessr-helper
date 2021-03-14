@@ -15,16 +15,16 @@
 >
   <span>
     <span class="text" ng-if="e.name">{{ e.name }}</span>
-    <ng-include
-      class="figure"
-      src="'html/figure.html'"
-      ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
-      ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
-    ></ng-include>
   </span>
+  <ng-include
+    class="figure"
+    src="'html/figure.html'"
+    ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+    ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+  ></ng-include>
   <div class="filter_count" ng-class="['count' + e.isos.split(',').length]">
     <div class="inner_filter_count">
-      <span ng-repeat="ee in e.isos.split(',')"></span>
+      <span ng-repeat="ee in e.isos.split(',')|limitTo:30"></span>
     </div>
   </div>
 </div>

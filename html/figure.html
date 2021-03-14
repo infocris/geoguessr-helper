@@ -8,7 +8,7 @@
 
 <img
   ng-if="e.image"
-  src="images/{{ e.image }}"
+  ng-src="images/{{ e.image }}"
   ng-class="e.imageClass"
   ng-style="img_style"
   title="{{ e.title }}"
@@ -16,25 +16,45 @@
 
 <img
   ng-if="e.image2"
-  src="{{ e.image2 }}"
+  ng-src="{{ e.image2 }}"
   ng-class="e.imageClass"
   ng-style="img_style"
   title="{{ e.title }}"
 />
 
-<ng-include
+<svg
   ng-if="e.svg[0] == 'poll1'"
-  src="'html/poll/poll1.html'"
   title="{{ e.title }}"
   class="poll"
-></ng-include>
+  width="8"
+  height="48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g transform="scale(5 0.6)">
+    <rect fill="{{ e.svg[1] }}" x="0" y="0" width="4" height="80" />
+    <rect fill="{{ e.svg[2] }}" x="0" y="10" width="4" height="10" />
+    <rect fill="{{ e.svg[2] }}" x="0" y="30" width="4" height="10" />
+    <rect fill="{{ e.svg[2] }}" x="0" y="50" width="4" height="10" />
+    <rect fill="{{ e.svg[2] }}" x="0" y="70" width="4" height="10" />
+  </g>
+</svg>
 
-<ng-include
+<svg
   ng-if="e.svg[0] == 'turn'"
-  src="'html/sign/turn.html'"
-  class="turn"
   title="{{ e.title }}"
-></ng-include>
+  width="32"
+  height="32"
+  xmlns="http://www.w3.org/2000/svg"
+  class="turn"
+>
+  <g transform="scale(0.5)">
+    <rect fill="{{ e.svg[2] }}" x="0" y="0" width="64" height="64" />
+    <path
+      fill="{{ e.svg[1] }}"
+      d="m 0,0 l 32,0 l 32,32 l -32,32 l -32,0 l 32,-32 z"
+    />
+  </g>
+</svg>
 
 <ng-include
   ng-if="e.type == 'bollard'"

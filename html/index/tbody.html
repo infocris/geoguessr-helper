@@ -3,7 +3,11 @@
   <td>{{ commercialTlds[iso] || iso }}</td>
   <td class="names">{{ countries[iso][0] }}</td>
   <td class="names">{{ countries[iso][1] }}</td>
-  <td>{{ weightFlags[iso]/sumWeight*100|number:0 }}%</td>
+  <td>
+    <span ng-if="sumWeight > 0"
+      >{{ weightFlags[iso]/sumWeight*100|number:0 }}%</span
+    >
+  </td>
   <td class="">{{ texts[iso].join(" ") }}</td>
   <!--
           <td>{{ tips[iso] }}</td>
