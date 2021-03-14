@@ -285,12 +285,13 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }
     return "misc";
   }
+  $rootScope.exclusiveFiltering = true;
 
   $rootScope.selectFilter = function (e) {
     var m;
     e.selected = !e.selected;
     $rootScope.toggledClasses[e.filterType] = e.selected;
-    if (e.selected && e.match === 0) {
+    if ($rootScope.exclusiveFiltering && e.selected && e.match === 0) {
       if (deselectExclusiveFilter(e)) {
         return;
       }
@@ -353,13 +354,26 @@ angular.module("app", []).run(function ($rootScope, $http) {
     countMatch();
   };
 
+  $rootScope.updateExclusiveFiltering = function () {
+    $rootScope.exclusiveFiltering = !$rootScope.exclusiveFiltering;
+    loadFlags();
+    countMatch();
+  };
+
   function loadFlags() {
     $rootScope.flags = [];
     matchFlags = {};
     var weights = ($rootScope.weightFlags = {});
     $rootScope.sumWeight = 0;
     _.each(countryOrdering, function (k) {
+      weights[k] = 0;
+    });
+    _.each(countryOrdering, function (k) {
       if (isFlagMatch(k)) {
+        $rootScope.flags.push(k);
+        matchFlags[k] = k;
+        $rootScope.sumWeight += weights[k];
+      } else if (!$rootScope.exclusiveFiltering && weights[k] > 0) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
         $rootScope.sumWeight += weights[k];
@@ -382,7 +396,9 @@ angular.module("app", []).run(function ($rootScope, $http) {
         }
         if (!$rootScope.languages.charsets[k].match(k2)) {
           matched = false;
+          return;
         }
+        weights[k] += 5;
       });
       _.each([filters, $rootScope.languages.groups], function (collection) {
         _.each(collection, function (filter) {
@@ -392,9 +408,6 @@ angular.module("app", []).run(function ($rootScope, $http) {
           if (!filter.isos2[k]) {
             matched = false;
             return;
-          }
-          if (!weights[k]) {
-            weights[k] = 0;
           }
           weights[k] += filter.isos2[k];
         });
@@ -406,7 +419,9 @@ angular.module("app", []).run(function ($rootScope, $http) {
             .match($rootScope.search_text.toLowerCase())
         ) {
           matched = false;
+          return;
         }
+        weights[k] += 5;
       } // endif search_text
       return matched;
     } // endfunction isFlagMatch

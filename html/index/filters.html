@@ -36,6 +36,23 @@
 </div>
 <ng-include src="'html/filter.html'" ng-repeat="e in filters"></ng-include>
 <div style="float: right; display: inline-block; padding: 10px;">
+  <div class="btn-group">
+    <div
+      class="btn"
+      ng-repeat="e in [1,2,3]"
+      ng-class="level == e ? 'btn-primary': 'btn-link'"
+      ng-click="updateLevel(e);"
+    >
+      {{ e }}
+    </div>
+  </div>
+  <div
+    class="btn"
+    ng-class="exclusiveFiltering ? 'btn-primary': 'btn-link'"
+    ng-click="updateExclusiveFiltering();"
+  >
+    Exclusive
+  </div>
   <input
     type="text"
     ng-model="$scope.search_text"
@@ -51,14 +68,4 @@
   >
     Reset all filters
   </button>
-  <div class="btn-group">
-    <div
-      class="btn"
-      ng-repeat="e in [1,2,3]"
-      ng-class="level == e ? 'btn-primary': 'btn-info'"
-      ng-click="updateLevel(e);"
-    >
-      {{ e }}
-    </div>
-  </div>
 </div>
