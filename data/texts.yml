@@ -123,6 +123,7 @@ ro:
 - Calea
 rs:
 - улица
+- ulica
 ru:
 - парковка
 - улица
@@ -148,3 +149,4 @@ sk:
 - ulica
 tr:
 - dur
+- mahallesi

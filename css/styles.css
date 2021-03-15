@@ -1,3 +1,10 @@
+.buttons div.filter.mouseovered:not(.selected) {
+  background-color: #999;
+}
+.buttons div.filter.mouseovered {
+  border-color: gold;
+}
+
 div.flag {
   opacity: 0.2;
 }

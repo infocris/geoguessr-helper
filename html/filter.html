@@ -5,17 +5,16 @@
     'match_ratio' + e.match_ratio,
     'match' + e.match,
     !e.selected && e.match == flags.length ? 'full_match': '',
-    'level' + (e.level || 1)
+    'level' + (e.level || 1),
+    e.mouseovered ? 'mouseovered': ''
   ]"
   ng-style="e.style"
   ng-click="selectFilter(e);"
-  ng-mouseover="mouseOverFilter(e);"
+  ng-mouseover="mouseOverFilter(e, this);"
   ng-mouseleave="mouseLeaveFilter(e);"
   title="{{ e.title || e.image || e.image2 }}"
 >
-  <span>
-    <span class="text" ng-if="e.name">{{ e.name }}</span>
-  </span>
+  <span ng-if="e.name">{{ e.name }}</span>
   <ng-include
     class="figure"
     src="'html/figure.html'"

@@ -4,7 +4,7 @@
   group: road_artifact
 
 - svg: [poll1, black, gold]
-  isos: ch,co,hr,me,no,si
+  isos: ch,co,hr,me,no,rs,si
   group: road_artifact
 
 - svg: [poll1, "#037bfc", white]
@@ -21,10 +21,10 @@
 #  isos: ch,hr,me,si
 
 - image: poll/nl.png
-  isos: be,nl,pl
+  isos: be,it,nl,pl
   group: road_artifact
 
 - title: Stripped red and white poll
   image: poll/lv.png
-  isos: cz,de,dk,ee,lv,sk
+  isos: bg,cz,de,dk,ee,hr,lv,sk
   group: road_artifact

@@ -12,7 +12,7 @@
   level: 2
 
 - name: Snow
-  isos: ad,at,bg,kg,sk
+  isos: ad,at,bg,fi.1,kg,sk
   level: 2
 
 - name: Flat
@@ -28,5 +28,5 @@
   level: 2
 
 - name: Sea
-  isos: hr
+  isos: ae,hr
   level: 2

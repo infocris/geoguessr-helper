@@ -20,30 +20,32 @@
   level: 2
   group: nopriority_sign
 
-- svg: [square, black, gold]
-  isos: ar,bo,br,ca,cl,ec,gt,ie,mx,my,nz,pe,uy,us
+- title: Diamond yellow sign
+  svg: [square, black, gold]
+  isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,mx,my,nz,pe,uy,us
 
 - image: misc/sign_black_back.png
   isos: br.9, pe
   group: sign_caract
 
-- image: sign/nopark/white-lines.png
-  title: Sign have outside and inner white border
-  isos: al,bg,lv
+- title: Forbidden park sign with inner white border line
+  image: sign/nopark/white-lines.png
+  isos: al,bg,hu,it,lt,lv
   level: 2
   group: nopark
 
-- image: sign/nopark/dk.png
-  isos: dk,me
+- title: Forbidden park sign
+  image: sign/nopark/dk.png
+  isos: at,cz,de,dk,hr,me,rs,sk
   level: 2
   group: nopark
 
 - title: Flat sign
   image: sign/flat.png
-  isos: ae,at,bt,bw,ca,ch,de,dk,es,fi.2,gr,hu,ie,is,mx,my,no,nz,tr,ua,us,uy,za
+  isos: ae,at,bg,bt,bw,ca,ch,co,de,dk,es,fi.2,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
   image: sign/not-flat.png
-  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,me,mk,nl,pl,pt,ro,ru,se,si,sk,ua
+  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,lv,me,mk,nl,pl,pt,ro,rs,ru,se,si,sk,ua
   group: sign_flatness

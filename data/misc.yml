@@ -79,6 +79,7 @@ countries:
     - { image: "electrical/ro.png" }
   rs:
     - { image: "electrical/rs.png" }
+    - { image: "poll/hr.png" }
   se:
     - { image: "sign/nopriority/se.png" }
     - { image: "sign/circular/se.png" }

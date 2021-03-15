@@ -36,6 +36,12 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.filtersByCountry = {};
 
+  function appendCssRule(content) {
+    var style = document.createElement("style");
+    style.type = "text/css";
+    style.innerHTML = content;
+    document.getElementsByTagName("head")[0].appendChild(style);
+  }
   loadYAMLFile("data/countries.yml", function (data) {
     var styles = [];
     var styles_covered = [];
@@ -43,14 +49,12 @@ angular.module("app", []).run(function ($rootScope, $http) {
       styles.push("table." + k + "_select div.flag." + k);
       styles_covered.push("table." + k + "_covered div.flag." + k);
     });
-    var style = document.createElement("style");
-    style.type = "text/css";
-    style.innerHTML =
+    appendCssRule(
       styles.join(",") +
-      " { background-color: #D9D933; opacity: 1; } " +
-      styles_covered.join(",") +
-      " { opacity: 1; } ";
-    document.getElementsByTagName("head")[0].appendChild(style);
+        " { background-color: #D9D933; opacity: 1; } " +
+        styles_covered.join(",") +
+        " { opacity: 1; } "
+    );
 
     $rootScope.countries = data.list;
     $rootScope.commercialTlds = data.commercialTlds;
@@ -112,12 +116,16 @@ angular.module("app", []).run(function ($rootScope, $http) {
       return;
     }
     v.isos2 = {};
+    var defaultWeight = 5;
+    if (v.isos.split(/\s*,\s*/).length > 20) {
+      defaultWeight = 0.0001;
+    }
     _.each(v.isos.split(/\s*,\s*/), function (e) {
       var m = e.match(/(.+)\.(.+)/);
       if (m) {
         v.isos2[m[1]] = parseInt(m[2], 10);
       } else {
-        v.isos2[e] = 5;
+        v.isos2[e] = defaultWeight;
       }
     });
 
@@ -133,9 +141,16 @@ angular.module("app", []).run(function ($rootScope, $http) {
       isos2[e] = 1;
     });
     v.isos2 = {};
+    defaultWeight = 5;
+    if (
+      Object.values($rootScope.countries).length - Object.values(isos2).length >
+      20
+    ) {
+      defaultWeight = 0.0001;
+    }
     _.each($rootScope.countries, function (v2, k) {
       if (!isos2[k]) {
-        v.isos2[k] = k;
+        v.isos2[k] = defaultWeight;
         filterCoverage[v.filterType][k] = true;
         isos.push(k);
       }
@@ -215,7 +230,17 @@ angular.module("app", []).run(function ($rootScope, $http) {
     $rootScope.level = level;
   };
 
-  $rootScope.mouseOverFilter = function (e) {
+  var currentMouseOverFilter = null;
+
+  $rootScope.mouseOverFilter = function (e, elt) {
+    if (e.match === 0) {
+      return;
+    }
+    if (currentMouseOverFilter) {
+      currentMouseOverFilter.mouseovered = false;
+    }
+    currentMouseOverFilter = e;
+    e.mouseovered = true;
     _.each($rootScope.toggledClasses, function (v, k) {
       if (k.match(/_covered$|_select$/)) {
         $rootScope.toggledClasses[k] = false;
@@ -232,6 +257,9 @@ angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.mouseLeaveFilter = function (e) {
     $rootScope.toggledClasses["overFilter"] = false;
+    if (!e.selected) {
+      return;
+    }
     _.each($rootScope.toggledClasses, function (v, k) {
       if (k.match(/_select$/)) {
         $rootScope.toggledClasses[k] = false;
@@ -285,7 +313,16 @@ angular.module("app", []).run(function ($rootScope, $http) {
     }
     return "misc";
   }
-  $rootScope.exclusiveFiltering = true;
+  $rootScope.exclusiveFiltering = localStorage.exclusiveFiltering != "disabled";
+
+  $rootScope.updateExclusiveFiltering = function () {
+    $rootScope.exclusiveFiltering = !$rootScope.exclusiveFiltering;
+    localStorage.exclusiveFiltering = !$rootScope.exclusiveFiltering
+      ? "disabled"
+      : "enabled";
+    loadFlags();
+    countMatch();
+  };
 
   $rootScope.selectFilter = function (e) {
     var m;
@@ -354,12 +391,6 @@ angular.module("app", []).run(function ($rootScope, $http) {
     countMatch();
   };
 
-  $rootScope.updateExclusiveFiltering = function () {
-    $rootScope.exclusiveFiltering = !$rootScope.exclusiveFiltering;
-    loadFlags();
-    countMatch();
-  };
-
   function loadFlags() {
     $rootScope.flags = [];
     matchFlags = {};
@@ -373,7 +404,7 @@ angular.module("app", []).run(function ($rootScope, $http) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
         $rootScope.sumWeight += weights[k];
-      } else if (!$rootScope.exclusiveFiltering && weights[k] > 0) {
+      } else if (!$rootScope.exclusiveFiltering && weights[k] > 0.01) {
         $rootScope.flags.push(k);
         matchFlags[k] = k;
         $rootScope.sumWeight += weights[k];
@@ -396,9 +427,10 @@ angular.module("app", []).run(function ($rootScope, $http) {
         }
         if (!$rootScope.languages.charsets[k].match(k2)) {
           matched = false;
+          weights[k] -= 1;
           return;
         }
-        weights[k] += 5;
+        weights[k] += 10;
       });
       _.each([filters, $rootScope.languages.groups], function (collection) {
         _.each(collection, function (filter) {
@@ -406,6 +438,11 @@ angular.module("app", []).run(function ($rootScope, $http) {
             return;
           }
           if (!filter.isos2[k]) {
+            if (filterCoverage[filter.filterType][k]) {
+              weights[k] -= 5;
+            } else {
+              weights[k] -= 1;
+            }
             matched = false;
             return;
           }

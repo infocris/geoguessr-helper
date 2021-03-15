@@ -19,7 +19,7 @@
 
 - fig: { type: car_plate, color: green, color2: white }
   title: Green 🚗 Plate
-  isos: bd,kr.1,no.9,ph
+  isos: bd,kr.1,ng,no.9,ph
 
 - fig: { type: car_plate, color: red, color2: white }
   title: Red 🚗 Plate

@@ -32,3 +32,8 @@
 - name: Right ►
   isos: au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za
   complementary: true
+- name: mph
+  isos: gb,us
+- name: km/h
+  isos: gb,us
+  complementary: true

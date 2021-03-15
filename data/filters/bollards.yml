@@ -11,10 +11,10 @@
   isos: be.7,dk.9,is.2,uy,mx.1
 - fig: { type: bollard, color: gold, color2: white, front: 1, hat: 1 }
   isos: mx
-  level: 3
+  level: 2
 - fig: { type: bollard, color: white, color2: white, front: 1, hat: 1 }
-  isos: mx
-  level: 3
+  isos: at,mx
+  level: 2
 - fig: { type: bollard, color: gold, back: 1, circ: 1 }
   isos: ee,fi,lv
 - fig: { type: bollard, color: gold, front: 1 }
@@ -24,14 +24,14 @@
 - fig: { type: bollard, color: red, color2: white, front: 1 }
   isos: au.8,nl,ro.2,tr.9,nz.1
 - fig: { type: bollard, color: white, color2: white, back: 1 }
-  level: 3
-  isos: au
+  isos: au,be,tr,uy
+  level: 2
 - fig: { type: bollard_pl, back: 1 }
   isos: pl,nz.1
 - fig: { type: bollard_pl, front: 1 }
   isos: nz,pl
 - fig: { type: bollard, color: red, color2: white, front: 1, hat: 1 }
-  isos: at.1,me.9,mk,rs,si.9
+  isos: at,me.9,mk,rs,si.9
 - fig: { type: bollard_rs, front: 1 }
   isos: me,rs.9
 - fig: [o, black, black]

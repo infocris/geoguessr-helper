@@ -15,23 +15,24 @@
 
 - image: electrical/lv-like.png
   title: Electrical poll
-  isos: ar.1,ee.8,jp,kg.1,lk.3,lv.9,lt.8,ru.5,ua.1
+  isos: ar.1,ee.8,jp,kg.2,lk.3,lv.9,lt.8,ru.5,ua.2
   group: misc
 
 - image: electrical/pl3.png
   title: Electrical poll
-  isos: hu,pl
+  isos: ee,hu,lv.3,pl
   group: misc
 
 - image: electrical/tri.png
   title: Electrical poll
-  isos: lv
+  isos: lt,lv
   group: misc
+  level: 2
 
 - image: electrical/white-foot.png
   title: Electrical poll
-  isos: br,ro
-  level: 3
+  isos: br,kg.3,ro,ua
+  level: 2
 
 - image: nordic3.png
   title: Nordic style house

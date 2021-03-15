@@ -4,12 +4,12 @@
 
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo.8,br.9,bt,bw,ca,cl,fr,id,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo.8,br.9,bt,bw,ca,cl,fr,id,il,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
   group: car_color
 
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar.9,id,jo,my.3,pe.7,ph,ru.9,tr,uy.9
+  isos: ar.9,id,kr,jo,my.3,pe.7,ph,ru.9,tr,uy.9
   group: car_color
 
 - title: Blue car 🚗
@@ -25,7 +25,7 @@
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
-  isos: au,be,dk,fi,fr,ie,it,lu,se,za.9
+  isos: au,be,dk,fi,fr,ie,it,lu,se,za
 
 - name: Blur Shaped 🚗
   level: 3
@@ -65,7 +65,7 @@
   group: car_meta
 
 - image: car/antenna/antenna.png
-  isos: al,au,bg,br,co,cz,ec,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
+  isos: al,au,bg,br,co,cz,ec,ee,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
   group: car_meta
 
 - image: car/antenna/taped.png
@@ -73,7 +73,7 @@
   group: car_meta
 
 - image: car/antenna/drilled.png
-  isos: gr,hr,hu,is,ro.3,ru,si,sk,ua
+  isos: ee,gr,hr,hu,is,ro.3,ru,si,sk,ua
   group: car_meta
 
 - image: car/antenna/none.png

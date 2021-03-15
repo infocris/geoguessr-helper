@@ -109,6 +109,22 @@
   {{ e.content || "XXXX"}}
 </div>
 
+<div
+  ng-if="e.type == 'street_sign'"
+  ng-style="{'background-color': e.color || 'gold', color: e.color2 || 'black', 'border-color': e.color2 || 'black' }"
+  style="
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 20px;
+    overflow: hidden;
+  "
+>
+  {{ e.content || "street"}}
+</div>
+
 <svg
   width="32"
   height="32"

@@ -6,12 +6,12 @@
 
 - image: road/america.png
   title: Yellow Center Line
-  isos: ar,bo,br,ca,cl,co,ec,fi,ke,kh,kr,no,nz,pe,ph,th,us,uy
+  isos: ar,bo,br,ca,cl,co,ec,fi,gt,ke,kh,kr,mx,no,nz,pe,ph,th,us,uy
   group: road_lines_color
 
 - image: road/africa.png
   title: Yellow Border Lines
-  isos: bw,es.1,jo,ls,sz,tr.1,za
+  isos: bw,es.1,ie,jo,ls,sz,tr.1,za
   group: road_lines_color
 
 - image: road/uy.png
@@ -37,27 +37,30 @@
   group: road_artifact
 
 - image: road/be.png
-  level: 2
   isos: be,nl
   group: road_artifact
+  level: 2
 
 - image: road/comb.png
-  level: 2
   isos: ee,no
   group: road_artifact
+  level: 2
 
 - image: road/long-space.png
-  isos: se
+  isos: ee.3,se
   group: road_artifact
   
 - image: road/border-white-black.png
-  isos: ae,es,id,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
+  isos: ae,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
   group: road_artifact
+  level: 2
 
 - image: road/border-yellow-black.png
   isos: ae,gr
   group: road_artifact
+  level: 2
 
 - image: road/border-white-red.png
   isos: il,mk,sk,tn
   group: road_artifact
+  level: 2
