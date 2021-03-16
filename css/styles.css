@@ -1,3 +1,31 @@
+.filters .filter.customFilter,
+.customFilter {
+  padding: 10px;
+  margin: 5px;
+  display: inline-block;
+  overflow: hidden;
+  max-height: 70px;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid #555;
+  background-color: #ddd;
+}
+
+.customFilter.overwrite {
+  background-color: yellow;
+}
+
+tbody td {
+  padding: 10px;
+}
+tbody td:last-child {
+  padding: 20px;
+}
+
+tr.deleted td {
+  background-color: rgb(255, 139, 139) !important;
+}
+
 .buttons div.filter.mouseovered:not(.selected) {
   background-color: #999;
 }
@@ -53,11 +81,18 @@ div.mycontainer {
   border: 0px;
 }
 
+.flag.exactMatch {
+  color: #003fac;
+  font-style: normal;
+}
+
 .flag {
   font-size: 16pt;
   display: inline-block;
   background-color: #999;
   padding-bottom: 5px;
+  color: #333;
+  font-style: italic;
 }
 .flag:nth-child(2n + 1) {
   background-color: #aaa;
@@ -178,9 +213,17 @@ div.filter {
 body,
 td {
   font-weight: bold;
-  font-size: 30px;
   padding-left: 10px;
   background-color: #999;
+}
+
+.countriesList {
+  font-size: 30px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
 }
 
 tbody td:nth-child(1) {

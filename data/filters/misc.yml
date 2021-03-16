@@ -34,6 +34,16 @@
   isos: br,kg.3,ro,ua
   level: 2
 
+- title: Parallepedic eletrical poll
+  image: electrical/parallelepipedic.png
+  isos: lk,th,ru
+  level: 2
+
+- title: Cylinder steel eletrical poll
+  image: electrical/cylindric.png
+  isos: bd,br,sk,ua
+  level: 2
+
 - image: nordic3.png
   title: Nordic style house
   isos: fi,is,no,se

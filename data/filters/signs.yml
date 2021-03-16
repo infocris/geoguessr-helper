@@ -25,8 +25,18 @@
   isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,mx,my,nz,pe,uy,us
 
 - image: misc/sign_black_back.png
-  isos: br.9, pe
+  isos: br.9,mk.4,pe
   group: sign_caract
+
+- title: Flat sign
+  image: sign/flat.png
+  isos: ae,at,bg,bt,bw,ca,ch,co,de,dk,es,fi.2,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
+  group: sign_flatness
+
+- title: Not Flat sign
+  image: sign/not-flat.png
+  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,lv,me,mk,nl,pl,pt,ro,rs,ru,se,si,sk,ua
+  group: sign_flatness
 
 - title: Forbidden park sign with inner white border line
   image: sign/nopark/white-lines.png
@@ -40,12 +50,14 @@
   level: 2
   group: nopark
 
-- title: Flat sign
-  image: sign/flat.png
-  isos: ae,at,bg,bt,bw,ca,ch,co,de,dk,es,fi.2,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
-  group: sign_flatness
+- title: Forbidden dir. with white border line
+  image: sign/forbidden/white-border.png
+  isos: de,it
+  level: 2
+  group: sign_caract
 
-- title: Not Flat sign
-  image: sign/not-flat.png
-  isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,lv,me,mk,nl,pl,pt,ro,rs,ru,se,si,sk,ua
-  group: sign_flatness
+- title: Forbidden dir. has no white border line
+  image: sign/forbidden/no-border.png
+  isos: at,dk
+  level: 2
+  group: sign_caract

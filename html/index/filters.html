@@ -48,10 +48,15 @@
   </div>
   <div
     class="btn"
-    ng-class="exclusiveFiltering ? 'btn-primary': 'btn-link'"
+    ng-class="exclusiveFiltering ? 'btn-link': 'btn-link'"
     ng-click="updateExclusiveFiltering();"
   >
-    Exclusive
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="exclusiveFiltering"
+    />
+    Exact filters match
   </div>
   <input
     type="text"

@@ -11,6 +11,10 @@
   isos: ee,fi,se
   group: road_artifact
 
+- svg: [poll1, red, white]
+  isos: sk
+  group: road_artifact
+
 #- image: poll/ee.png
 #  isos: ee,fi
 #- image: poll/se.png

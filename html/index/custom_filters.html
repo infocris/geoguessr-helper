@@ -1,0 +1,48 @@
+<tr>
+  <td colspan="10">
+    <h1>Custom filters</h1>
+  </td>
+</tr>
+<tr ng-repeat="item in customFilters" ng-class="item.deleted ? 'deleted': ''">
+  <td><span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span></td>
+  <td>{{ commercialTlds[item.iso] || item.iso }}</td>
+  <td class="names">{{ countries[item.iso][0] }}</td>
+  <td class="names">{{ countries[item.iso][1] }}</td>
+  <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
+    {{ item.date }}
+  </td>
+  <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
+    {{ item.filters.length }} filters
+  </td>
+  <td>
+    <span ng-repeat="e in item.filters">
+      <span
+        ng-repeat="e in [e.filter]"
+        class="customFilter"
+        ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
+      >
+        <span ng-if="e.name">{{ e.name }}</span>
+        <ng-include
+          class="figure"
+          src="'html/figure.html'"
+          ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+          ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+        ></ng-include>
+      </span>
+    </span>
+  </td>
+  <td>
+    <div
+      class="btn btn-danger glyphicon glyphicon-trash"
+      ng-show="!item.deleted"
+      ng-click="item.deleted = true; updateCustomFilter(item);"
+    ></div>
+    <div
+      class="btn btn-success glyphicon glyphicon-repeat"
+      ng-show="item.deleted"
+      ng-click="item.deleted = false; updateCustomFilter(item);"
+    >
+      Cancel
+    </div>
+  </td>
+</tr>

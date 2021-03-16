@@ -6,8 +6,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
     <link href="./css/flag-icon.css" rel="stylesheet" />
@@ -16,7 +16,7 @@
   </head>
   <body>
     <table ng-class="toggledClasses">
-      <thead>
+      <thead ng-show="!view">
         <tr>
           <td colspan="10" class="sticky">
             <div
@@ -28,7 +28,7 @@
           </td>
         </tr>
       </thead>
-      <thead>
+      <thead ng-show="!view">
         <tr>
           <td colspan="10">
             <ng-include src="'html/index/flags.html'"></ng-include>
@@ -36,14 +36,54 @@
           </td>
         </tr>
       </thead>
-      <tbody ng-include="'html/index/tbody.html'"></tbody>
+      <tbody
+        ng-include="'html/index/tbody.html'"
+        ng-show="!view"
+        class="countriesList"
+      ></tbody>
+      <tbody
+        ng-include="'html/index/custom_filters.html'"
+        ng-show="view == 'manageCustomFilter'"
+      ></tbody>
       <tfoot>
-        <td colspan="10" class="sticky" style="bottom: 0;">
+        <td
+          colspan="10"
+          style="
+            bottom: 0;
+            padding: 5px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+          "
+        >
           <ng-include src="'html/index/toggles.html'"></ng-include>
+          <div style="float: right;">
+            <div
+              class="btn btn-lg btn-link"
+              ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                ng-model="toggledClasses.saveFiltersEnabled"
+              />
+              Save custom filters
+            </div>
+            <div
+              class="btn btn-lg btn-link"
+              ng-click="view='manageCustomFilter'"
+              ng-show="!view && customFilters.length > 0"
+            >
+              Manage {{ customFilters.length }} Custom filters
+            </div>
+            <div class="btn btn-primary" ng-click="view=false" ng-show="view">
+              Return to main page
+            </div>
+          </div>
         </td>
       </tfoot>
     </table>
-    <p style="font-size: 12pt;">
+    <p style="font-size: 12pt; padding: 10px; background-color: #bbb;">
       Sources available at:
       <a href="https://github.com/infocris/geoguessr-helper"
         >https://github.com/infocris/geoguessr-helper</a

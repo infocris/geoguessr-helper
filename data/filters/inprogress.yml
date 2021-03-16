@@ -5,16 +5,6 @@
   level: 3
   group: sign_caract
 
-- name: Forbidden dir. with white border line
-  isos: de,it
-  level: 3
-  group: sign_caract
-
-- name: Forbidden dir. has no white border line
-  isos: at,dk
-  level: 3
-  group: sign_caract
-
 - name: Sign have minimal border
   isos: at,es,gr
   level: 3
@@ -87,12 +77,4 @@
 
 - name: Blue line parking
   isos: it
-  level: 3
-
-- name: Parallepedic eletrical poll
-  isos: lk,th,ru
-  level: 3
-
-- name: Cylinder steel eletrical poll
-  isos: bd,br,sk,ua
   level: 3

@@ -14,7 +14,7 @@
 
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,nl,nz,ro,th
+  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,ie,it,mx,nl,nz,ro,th
   group: car_color
 
 - title: Red car 🚗
@@ -25,7 +25,8 @@
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
-  isos: au,be,dk,fi,fr,ie,it,lu,se,za
+  isos: au,be,ch,dk,fi,fr,ie,it,lu,se,za
+  group: blur_circle
 
 - name: Blur Shaped 🚗
   level: 3
