@@ -24,28 +24,32 @@
   svg: [square, black, gold]
   isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,mx,my,nz,pe,uy,us
 
-- image: misc/sign_black_back.png
+- image: sign/misc/black-back.svg
   isos: br.9,mk.4,pe
   group: sign_caract
 
+- image: sign/misc/light-back.svg
+  isos: fr
+  group: sign_caract
+
 - title: Flat sign
-  image: sign/flat.png
+  image: sign/flat.svg
   isos: ae,at,bg,bt,bw,ca,ch,co,de,dk,es,fi.2,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
-  image: sign/not-flat.png
+  image: sign/not-flat.svg
   isos: al,be,bg,cz,de,ee,es,fr,fi.2,hr,it,lt,lu,lv,me,mk,nl,pl,pt,ro,rs,ru,se,si,sk,ua
   group: sign_flatness
 
 - title: Forbidden park sign with inner white border line
-  image: sign/nopark/white-lines.png
+  image: sign/nopark/white-lines.svg
   isos: al,bg,hu,it,lt,lv
   level: 2
   group: nopark
 
 - title: Forbidden park sign
-  image: sign/nopark/dk.png
+  image: sign/nopark/no-white-lines.svg
   isos: at,cz,de,dk,hr,me,rs,sk
   level: 2
   group: nopark

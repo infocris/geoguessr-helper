@@ -15,9 +15,10 @@
     {{ item.filters.length }} filters
   </td>
   <td>
-    <span ng-repeat="e in item.filters">
+    <span ng-repeat="record in item.filters">
       <span
-        ng-repeat="e in [e.filter]"
+        ng-if="e"
+        ng-repeat="e in [record.filter]"
         class="customFilter"
         ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
       >

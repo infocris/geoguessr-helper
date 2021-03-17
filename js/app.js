@@ -354,7 +354,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   return;
 
-  // start angular run inner functions
+  // start angular.run inner functions
 
   function afterFiltersLoaded() {
     customFilters = JSON.parse(localStorage.filters);
@@ -377,8 +377,11 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
             e2.isos2[e3.iso] = 5;
             e2.customIsos[e3.iso] = true;
           }
-          data.filters.push(e);
         }); // endforeach loaded filters
+        if (!e.filter) {
+          console.warn("filter not found", e);
+        }
+        data.filters.push(e);
       }); // endforeach saved filters
       $rootScope.customFilters.push(data);
     }); // endforeach saved record

@@ -35,12 +35,12 @@
   level: 2
 
 - title: Parallepedic eletrical poll
-  image: electrical/parallelepipedic.png
+  image: electrical/parallelepipedic.svg
   isos: lk,th,ru
   level: 2
 
 - title: Cylinder steel eletrical poll
-  image: electrical/cylindric.png
+  image: electrical/cylindric.svg
   isos: bd,br,sk,ua
   level: 2
 

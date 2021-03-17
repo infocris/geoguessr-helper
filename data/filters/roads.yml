@@ -1,7 +1,7 @@
 ---
 - image: road/europe.png
   title: White Lines
-  isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,my,nz,ph,sn
+  isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,my,nz,ph,sn,uy
   group: road_lines_color
 
 - image: road/america.png
