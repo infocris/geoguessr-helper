@@ -357,6 +357,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   // start angular.run inner functions
 
   function afterFiltersLoaded() {
+    if (!localStorage.filters) {
+      return;
+    }
     customFilters = JSON.parse(localStorage.filters);
     //console.log(localStorage.filters);
     $rootScope.customFilters = [];
