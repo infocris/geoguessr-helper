@@ -56,19 +56,11 @@
             width: 100%;
           "
         >
-          <ng-include src="'html/index/toggles.html'"></ng-include>
+          <ng-include
+            src="'html/index/toggles.html'"
+            ng-show="!view"
+          ></ng-include>
           <div style="float: right; padding-right: 130px;">
-            <div
-              class="btn btn-lg btn-link"
-              ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
-            >
-              <input
-                class="form-check-input"
-                type="checkbox"
-                ng-model="toggledClasses.saveFiltersEnabled"
-              />
-              Save custom filters
-            </div>
             <div
               class="btn btn-lg btn-link"
               ng-click="view='manageCustomFilter'"

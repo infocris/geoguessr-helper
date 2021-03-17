@@ -28,4 +28,16 @@
       ng-if="e.selected"
     ></ng-include>
   </div>
+  <div
+    class="btn btn-lg btn-link"
+    ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
+    ng-show="similarityCount > 0"
+  >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="toggledClasses.saveFiltersEnabled"
+    />
+    Add custom filters
+  </div>
 </center>

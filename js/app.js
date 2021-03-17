@@ -314,21 +314,23 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           }
           e.customIsos[iso] = true;
         }
-        res.filters.push({
-          filter: e,
-          isos: e.isos,
-          fig: e.fig || null,
-          filterType: e.filterType,
-          file: e.file
+        var data = { isos: e.isos, filterType: e.filterType, file: e.file };
+        _.each(["fig", "svg", "image", "image2", "title", "name"], function (
+          ee
+        ) {
+          if (e[ee]) {
+            data[ee] = e[ee];
+          }
         });
-        savedValue.filters.push({
-          $$hashKey: e.$$hashKey,
-          isos: e.isos,
-          fig: e.fig || null,
-          svg: e.svg || null,
-          filterType: e.filterType,
-          file: e.file
-        });
+        res.filters.push(_.extend({ filter: e }, data));
+        savedValue.filters.push(
+          _.extend(
+            {
+              $$hashKey: e.$$hashKey
+            },
+            data
+          )
+        );
       }); // endforeach
     }); // endforeach filters
     $rootScope.customFilters.push(res);
@@ -364,30 +366,126 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     //console.log(localStorage.filters);
     $rootScope.customFilters = [];
     _.each(customFilters, function (e3) {
-      var data = { iso: e3.iso, filters: [], date: e3.date };
+      var data = { iso: e3.iso, filters: [], date: e3.date, errors: 0 };
       data.savedValue = e3;
       _.each(e3.filters, function (e) {
         e = _.clone(e);
         _.each(filters, function (e2) {
-          if (e2.filterType !== e.filterType || e2.isos !== e.isos) {
-            return;
-          }
-          e.filter = e2;
-          if (!e2.isos2[e3.iso]) {
-            if (!e2.customIsos) {
-              e2.customIsos = {};
-            }
-            e2.isos2[e3.iso] = 5;
-            e2.customIsos[e3.iso] = true;
+          if (
+            !e.filter &&
+            e2.filterType === e.filterType &&
+            e2.isos === e.isos
+          ) {
+            e.filter = e2;
           }
         }); // endforeach loaded filters
         if (!e.filter) {
+          _.each(filters, function (e2) {
+            if (e.filter || e2.filterType !== e.filterType) {
+              return;
+            }
+            var similarity = similar_text(e2.isos, e.isos, true);
+            if (similarity < 75) {
+              return;
+            }
+            e.similarity = similarity;
+            e.filter = e2;
+          }); // endforeach loaded filters
+        } // endif trying to find filter by approximation
+        if (e.filter && e.filter.isos2[e3.iso]) {
+          delete e.similarity;
+        }
+        if (e.filter && !e.filter.isos2[e3.iso]) {
+          if (!e.filter.customIsos) {
+            e.filter.customIsos = {};
+          }
+          e.filter.isos2[e3.iso] = 5;
+          e.filter.customIsos[e3.iso] = true;
+        }
+        if (!e.filter) {
           console.warn("filter not found", e);
+          data.errors++;
         }
         data.filters.push(e);
       }); // endforeach saved filters
       $rootScope.customFilters.push(data);
     }); // endforeach saved record
+
+    function similar_text(first, second, percent) {
+      // eslint-disable-line camelcase
+      //  discuss at: https://locutus.io/php/similar_text/
+      // original by: Rafał Kukawski (https://blog.kukawski.pl)
+      // bugfixed by: Chris McMacken
+      // bugfixed by: Jarkko Rantavuori original by findings in stackoverflow (https://stackoverflow.com/questions/14136349/how-does-similar-text-work)
+      // improved by: Markus Padourek (taken from https://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
+      //   example 1: similar_text('Hello World!', 'Hello locutus!')
+      //   returns 1: 8
+      //   example 2: similar_text('Hello World!', null)
+      //   returns 2: 0
+
+      if (
+        first === null ||
+        second === null ||
+        typeof first === "undefined" ||
+        typeof second === "undefined"
+      ) {
+        return 0;
+      }
+
+      first += "";
+      second += "";
+
+      let pos1 = 0;
+      let pos2 = 0;
+      let max = 0;
+      const firstLength = first.length;
+      const secondLength = second.length;
+      let p;
+      let q;
+      let l;
+      let sum;
+
+      for (p = 0; p < firstLength; p++) {
+        for (q = 0; q < secondLength; q++) {
+          for (
+            l = 0;
+            p + l < firstLength &&
+            q + l < secondLength &&
+            first.charAt(p + l) === second.charAt(q + l);
+            l++
+          ) {
+            // eslint-disable-line max-len
+            // @todo: ^-- break up this crazy for loop and put the logic in its body
+          }
+          if (l > max) {
+            max = l;
+            pos1 = p;
+            pos2 = q;
+          }
+        }
+      }
+
+      sum = max;
+
+      if (sum) {
+        if (pos1 && pos2) {
+          sum += similar_text(first.substr(0, pos1), second.substr(0, pos2));
+        }
+
+        if (pos1 + max < firstLength && pos2 + max < secondLength) {
+          sum += similar_text(
+            first.substr(pos1 + max, firstLength - pos1 - max),
+            second.substr(pos2 + max, secondLength - pos2 - max)
+          );
+        }
+      }
+
+      if (!percent) {
+        return sum;
+      }
+
+      return (sum * 200) / (firstLength + secondLength);
+    } // endfunction similar_text
   } // endfunction afterFiltersLoaded
 
   function readFilterValue(v) {

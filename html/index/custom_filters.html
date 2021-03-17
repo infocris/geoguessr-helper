@@ -3,7 +3,10 @@
     <h1>Custom filters</h1>
   </td>
 </tr>
-<tr ng-repeat="item in customFilters" ng-class="item.deleted ? 'deleted': ''">
+<tr
+  ng-repeat="item in customFilters|orderBy:'-'"
+  ng-class="item.deleted ? 'deleted': ''"
+>
   <td><span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span></td>
   <td>{{ commercialTlds[item.iso] || item.iso }}</td>
   <td class="names">{{ countries[item.iso][0] }}</td>
@@ -21,6 +24,7 @@
         ng-repeat="e in [record.filter]"
         class="customFilter"
         ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
+        ng-title="record.similarity ? record.similarity|number:1 + '%': null"
       >
         <span ng-if="e.name">{{ e.name }}</span>
         <ng-include
@@ -29,8 +33,26 @@
           ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
           ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
         ></ng-include>
+        <span ng-if="record.similarity"
+          >({{ record.similarity|number:1 }} %)</span
+        >
       </span>
     </span>
+    <div ng-show="item.errors > 0" class="alert alert-danger">
+      <strong>Following filters were not found:</strong>
+      <ul ng-repeat="record in item.filters">
+        <li ng-if="!record.filter">
+          type "{{ record.filterType }}" located in {{ record.file }}
+          <ng-include
+            class="figure"
+            src="'html/figure.html'"
+            ng-repeat="e in [record.fig && record.fig.type ? record.fig: record]"
+            ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+          ></ng-include>
+        </li>
+      </ul>
+      <strong>It seems that data may be outdated.</strong>
+    </div>
   </td>
   <td>
     <div
