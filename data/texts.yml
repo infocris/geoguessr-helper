@@ -82,6 +82,9 @@ lv:
 - iela
 - gatve
 - bulvāris
+me:
+- ulica
+- zona
 my:
 - awas
 - behrenti
@@ -120,6 +123,7 @@ ro:
 - Calea
 rs:
 - улица
+- ulica
 ru:
 - парковка
 - улица
@@ -145,3 +149,4 @@ sk:
 - ulica
 tr:
 - dur
+- mahallesi

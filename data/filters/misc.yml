@@ -1,30 +1,51 @@
 ---
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt.6,ro.8,ru.7,ua.9
-- title: Painted tree 2
+  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.2,in.1
+
+- title: Painted tree (India)
   image: misc/tree2.png
   isos: in
+  level: 2
+
 - image: electrical/hu-like.png
+  title: Electrical poll
   isos: hu.9,pl.8,ro.7,sk
+  group: misc
+
 - image: electrical/lv-like.png
-  isos: ar.1,ee.8,jp,kg.1,lk.3,lv.9,lt.8,ru.5,ua.1
+  title: Electrical poll
+  isos: ar.1,br,ee.8,jp,kg.2,lk.3,lt.8,lv.9,ru.5,sk,ua.2
+  group: misc
+
 - image: electrical/pl3.png
-  isos: hu,pl
+  title: Electrical poll
+  isos: ee,hu,lv.3,pl,sk
+  group: misc
+
+- image: electrical/tri.png
+  title: Electrical poll
+  isos: lt,lv
+  group: misc
+  level: 2
+
+- image: electrical/white-foot.png
+  title: Electrical poll
+  isos: br,kg.3,ro,ua
+  level: 2
+
+- title: Parallepedic eletrical poll
+  image: electrical/parallelepipedic.svg
+  isos: lk,th,ru
+  level: 2
+
+- title: Cylinder steel eletrical poll
+  image: electrical/cylindric.svg
+  isos: bd,br,sk,ua
+  level: 2
+
 - image: nordic3.png
-  isos: fi,is,no,se
+  title: Nordic style house
+  isos: ee,fi,is,no,se
   level: 3
-- name: Yellow house
-  level: 3
-  isos: 
-#- image: village.png
-#  isos: pl
-- name: Green trashbin
-  level: 3
-  isos: 
-- name: Christianism
-  level: 3
-  isos: hr
-- name: Yellow fire hydrant
-  level: 3
-  isos: ca
+  group: misc

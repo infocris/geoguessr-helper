@@ -1,7 +1,0 @@
----
-- name: Sea
-  isos: ec,ph,tn
-- name: Camera glitch
-  isos: ae
-- name: Gomette voiture
-  isos: cz,hr

@@ -3,7 +3,6 @@ countries:
   be:
     - { image: "poll/be.png" }
   bg: 
-    - { image: "sign/cycle/bg.png" }
     - { image: "sign/stop/bg.png" }
     - { image: "sign/wrong/bg.png" }
     - { image: "sign/nopark/bg.png" }
@@ -21,8 +20,6 @@ countries:
   cl:
     - { image: "landscapes/desertic/cl.png" }
   cz:
-    - { image: "sign/child/cz.png" }
-    - { image: "sign/cycle/cz.png" }
     - { image: "sign/stop/cz.png" }
     #- { image: "country/cz/trash1.png" }
     #- { image: "country/cz/trash2.png" }
@@ -31,18 +28,13 @@ countries:
   ec:
     - { type: "bollard_ec1", front: 1, back: 1 }
   ee:
-    - { image: "sign/cycle/ee.png" }
     - { image: "poll/ee.png" }
     - { image: "poll/lv.png" }
   fi:
-    - { image: "sign/child/fi.png" }
-    - { image: "sign/cycle/fi.png" }
     - { image: "sign/nopriority/fi.png" }
     - { image: "sign/circular/fi.png" }
     - { image: "poll/fi.png" }
   hr:
-    - { image: "sign/child/hr.png" }
-    - { image: "sign/cycle/hr.png" }
     - { image: "sign/nopriority/hr.png" }
     - { image: "sign/circular/hr.png" }
     - { image: "poll/hr.png" }
@@ -51,15 +43,12 @@ countries:
   hu:
     - { image: "electrical/hu.png" }
   is:
-    - { image: "sign/child/is.png" }
-    - { image: "sign/cycle/se.png" }
     - { image: "sign/nopriority/is.png" }
     - { image: "sign/circular/is.png" }
   lt:
     - { image: "poll/lt.png" }
     - { image: "electrical/lt.png" }
   lv:
-    - { image: "sign/cycle/lv.png" }
     - { image: "sign/nopark/lv.png" }
     - { image: "country/lv/elec.png" }
     - { image: "poll/lv.png" }
@@ -68,16 +57,12 @@ countries:
     - { image: "poll/hr.png" }
     #- { image: "trash/me.png" }
   mk:
-    - { image: "sign/child/mk.png" }
-    - { image: "sign/cycle/mk.png" }
     - { image: "sign/nopriority/mk.png" }
     #- { image: "trash/mk1.png" }
     #- { image: "trash/mk2.png" }
   nl:
     - { image: "poll/nl.png" }
   no:
-    - { image: "sign/cycle/no1.png" }
-    - { image: "sign/cycle/no2.png" }
     - { image: "sign/nopriority/no.png" }
     - { image: "sign/circular/no.png" }
     - { image: "poll/no.png" }
@@ -94,8 +79,8 @@ countries:
     - { image: "electrical/ro.png" }
   rs:
     - { image: "electrical/rs.png" }
+    - { image: "poll/hr.png" }
   se:
-    - { image: "sign/cycle/se.png" }
     - { image: "sign/nopriority/se.png" }
     - { image: "sign/circular/se.png" }
     - { image: "poll/se.png" }
@@ -107,8 +92,6 @@ countries:
     #- { image: "trash/si2.png" }
     #- { image: "trash/si3.png" }
   sk:
-    - { image: "sign/child/sk.png" }
-    - { image: "sign/cycle/sk.png" }
     - { image: "sign/circular/sk.png" }
     - { image: "poll/lv.png" }
     #- { image: "trash/sk.png" }

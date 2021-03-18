@@ -1,0 +1,59 @@
+---
+filters:
+  - title: Woman with boy
+    image2: sign/child/hr.png
+    isos: at,ee,de,hr,mk
+    group: cycle
+
+  - title: Man with boy
+    image2: sign/child/fi.png
+    isos: dk,fi,gb,is,lt,lu,no,pt,se
+    group: cycle
+
+  - title: Man with girl
+    image2: sign/child/cz.png
+    isos: cz,sk
+    group: cycle
+    
+  - title: Man alone
+    image2: sign/cycle/bg.png
+    isos: bg,lv,nz
+
+countries:
+  at: 
+    - { image2: "sign/cycle/at.png" }
+  bg: 
+    - { image2: "sign/cycle/bg.png" }
+  cz:
+    - { image2: "sign/child/cz.png" }
+    - { image2: "sign/cycle/cz.png" }
+  de:
+    - { image2: "sign/child/de.png" }
+  dk:
+    - { image2: "sign/cycle/dk.png" }
+  ee:
+    - { image2: "sign/cycle/ee.png" }
+  fi:
+    - { image2: "sign/child/fi.png" }
+    - { image2: "sign/cycle/fi.png" }
+  hr:
+    - { image2: "sign/child/hr.png" }
+    - { image2: "sign/cycle/hr.png" }
+  is:
+    - { image2: "sign/child/is.png" }
+    - { image2: "sign/cycle/se.png" }
+  lt:
+    - { image2: "sign/cycle/lt.png" }
+  lv:
+    - { image2: "sign/cycle/lv.png" }
+  mk:
+    - { image2: "sign/child/mk.png" }
+    - { image2: "sign/cycle/mk.png" }
+  no:
+    - { image2: "sign/cycle/no1.png" }
+    - { image2: "sign/cycle/no2.png" }
+  se:
+    - { image2: "sign/cycle/se.png" }
+  sk:
+    - { image2: "sign/child/sk.png" }
+    - { image2: "sign/cycle/sk.png" }

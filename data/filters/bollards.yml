@@ -1,43 +1,45 @@
 ---
 - fig: { type: bollard, color: white, front: 1 }
-  isos: al,ch,cz,de,ee,fi,gb,gr,hu,hr,il,it,lt,lv,lu,mk,pt,rs,se,sk
+  isos: al,ch,cz,de,ee,fi,gb,gr,hu,hr,il,it,lt,lv,lu,mk,pt,rs,ru,se,sk
 - fig: { type: bollard, color: white, back: 1, circ: 1 }
-  isos: ch.8,de.6,ee.8,es.6,fi.8,gb.3,il.3,lv.8,lu.8,pt.6,se.8
+  isos: ch.8,de.6,ee.8,es.6,fi.8,gb.3,il.3,lu.8,lv.8,no,pt.6,se.8
 - fig: { type: bollard_cz, front: 1 }
   isos: cz,sk
 - fig: { type: bollard, color: red, back: 1 }
-  isos: al,gr,hu,hr,it,lt,mk,rs,se
+  isos: al,gr,hr,hu,it,lt,mk,rs,ru,se,sk
 - fig: { type: bollard, color: gold, color2: white, front: 1 }
   isos: be.7,dk.9,is.2,uy,mx.1
 - fig: { type: bollard, color: gold, color2: white, front: 1, hat: 1 }
   isos: mx
-  level: 3
+  level: 2
 - fig: { type: bollard, color: white, color2: white, front: 1, hat: 1 }
-  isos: mx
-  level: 3
+  isos: at,mx
+  level: 2
 - fig: { type: bollard, color: gold, back: 1, circ: 1 }
   isos: ee,fi,lv
 - fig: { type: bollard, color: gold, front: 1 }
   isos: ee,es,fi,lv
 - fig: { type: bollard_ec2, front: 1 }
-  isos: ec
+  isos: bo,ec.9,my
 - fig: { type: bollard, color: red, color2: white, front: 1 }
-  isos: au,nl,ro.1,tr
+  isos: au.8,nl,ro.2,tr.9,nz.1
 - fig: { type: bollard, color: white, color2: white, back: 1 }
-  level: 3
-  isos: au
+  isos: au,be,mx,tr,uy
+  level: 2
 - fig: { type: bollard_pl, back: 1 }
   isos: pl,nz.1
 - fig: { type: bollard_pl, front: 1 }
   isos: nz,pl
 - fig: { type: bollard, color: red, color2: white, front: 1, hat: 1 }
-  isos: at.1,me.9,rs,si.9
+  isos: at,me.9,mk,rs,si.9
 - fig: { type: bollard_rs, front: 1 }
   isos: me,rs.9
 - fig: [o, black, black]
   isos: al,hr,kg,lk,se,th
+  group: bollard
 - fig: [■, red, red]
   isos: al,at,au,ec,gr,hr,hu,it,kh,me,mn,mk,nl,nz,pl,pt,rs,si,tr
+  group: bollard
 - image: bollard/fr.png
   isos: fr.9,sn
 - image: bollard/ad.png

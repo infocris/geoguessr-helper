@@ -1,29 +1,39 @@
 ---
-- name: Nord
+- name: North
   isos: ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za
   complementary: true
-- name: Equator.
+- name: Eq.
+  title: Countries near equator
   isos: br,co,ec,gh,gr,gt,ke,kh,id,in,lk,mx,my,ph,sg,sn,th,tr,ug
-- name: Sud
+- name: South
   isos: ar,au,bo,br,bw,cl,ec,id,ls,nz,pe,sz,uy,za
 - name: Africa
   isos: bw,gh,ke,ls,ng,sn,sz,tn,ug,za
-- name: South-East Asia
-  isos: id,ph,my
 - name: Orient
   isos: bd,bt,id,in,jp,kg,kh,kr,lk,mn,my,ph,sg,th
+- name: S-E Asia
+  isos: id,ph,my
 - name: Europe
   isos: ad,al,at,be,bg,ch,cz,de,dk,ee,es,fi,fr,gb,gr,hr,hu,ie,it,is,lt,lu,lv,me,mk,mt,nl,no,pl,pt,ro,rs,ru,se,si,sk,ua
 - name: Central
   isos: at,cz,hu,pl,sk,si
+  level: 2
 - name: Nordic
+  title: Nordic-like vegetation
   isos: ca,cl,is.9,dk.7,ee.8,fi.9,no.9,se.9,lt.8,lv.8
-- name: Mediterranean
+- name: Med.
+  title: Mediterranean-like vegetation
   isos: al,il,it,gr,me,mk,pt,rs
+  level: 2
 - name: Latin America
   isos: ar,bo,br,cl,co,ec,gt,mx,pe,uy
 - name: ◄ Left-hand driving
   isos: au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za
 - name: Right ►
   isos: au,bd,bt,bw,gb,id,ie,in,ke,jp,lk,ls,my,nz,sg,sz,th,ug,za
+  complementary: true
+- name: mph
+  isos: gb,us
+- name: km/h
+  isos: gb,us
   complementary: true

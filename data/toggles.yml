@@ -5,11 +5,11 @@
   key: alpha
 - name: Bollard
   key: bollard
-- image2: sign/pedestrian/lv.png
+- image2: sign/pedestrian/pl.png
   key: pedestrian
 - image2: sign/residential/fi.svg
   key: residential
-- image: sign/cycle/fr.svg
+- image2: sign/cycle/fr.svg
   key: cycle
 - image: sign/circular/sk.png
   key: circular

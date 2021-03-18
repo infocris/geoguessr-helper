@@ -5,8 +5,12 @@
   ng-repeat="item in toggles"
 >
   {{ item.name }}
-  <img src="images/{{ item.image }}" style="height: 48px;" ng-if="item.image" />
-  <img src="{{ item.image2 }}" style="height: 48px;" ng-if="item.image2" />
+  <img
+    ng-src="images/{{ item.image }}"
+    style="height: 48px;"
+    ng-if="item.image"
+  />
+  <img ng-src="{{ item.image2 }}" style="height: 48px;" ng-if="item.image2" />
 </div>
 <div
   class="button"
@@ -15,6 +19,6 @@
 >
   <ng-include
     ng-init="e = { svg: ['turn', 'white', 'gray'] }"
-    src="'html/sign/turn.html'"
+    src="'html/figure.html'"
   ></ng-include>
 </div>

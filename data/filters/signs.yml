@@ -2,31 +2,66 @@
 - image: sign/stop/bg.png
   isos: bg
   level: 3
+  
 - image: sign/stop/mx.png
   isos: gt,mx
+
 - image: sign/stop/co.png
   isos: ar,bo,br,cl,co,ec,pe,uy
+
 - image: sign/nopriority/pl.png
-  isos: fi.8,gr,is.9,lv,me,mk,pl,se.8,si.1
-- svg: [square, black, gold]
-  isos: ar,bo,br,ca,cl,ec,gt,ie,mx,my,pe,uy,us
-- image: misc/sign_black_back.png
-  isos: br.9, pe
-- name: sign have outside and inner white border
-  isos: bg
-  level: 3
-- name: sign have outside white border
-  isos: it,lu,sk,tr
-  level: 3
-- name: sign have minimal border
-  isos: at,es,gr
-  level: 3
-- name: Flat sign
-  isos: ae,at,es,fi.2,gr,hu,ie,is,mx,my,no,tr,ua,uy,za
+  title: Yellow filled sign
+  isos: fi.8,gr,is.9,lv,me,mk,pl.9,se.8,si.1
+  group: nopriority_sign
+
+- image: sign/nopriority/hr.png
+  title: White filled sign
+  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,nl,no,pt,ro,rs,ru,sk,ua
   level: 2
-- name: Not Flat sign
-  isos: al,bg,cz,de,es,fi.2,hr,it,lu,mk,ro,ru,se,sk
+  group: nopriority_sign
+
+- title: Diamond yellow sign
+  svg: [square, black, gold]
+  isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,mx,my,nz,pe,th,us,uy
+
+- image: sign/misc/black-back.svg
+  isos: br.9,mk.4,pe
+  group: sign_caract
+
+- image: sign/misc/light-back.svg
+  isos: bo,cl,ec,fr,sk
+  group: sign_caract
+
+- title: Flat sign
+  image: sign/flat.svg
+  isos: ae,at,bg,br,bt,bw,ca,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
+  group: sign_flatness
+
+- title: Not Flat sign
+  image: sign/not-flat.svg
+  isos: al,be,bg,cz,de,ee,es,fi.2,fr,hr,it,lt,lu,lv,me,mk,mx,nl,pl,pt,ro,rs,ru,se,si,sk,ua
+  group: sign_flatness
+
+- title: Forbidden park sign with inner white border line
+  image: sign/nopark/white-lines.svg
+  isos: al,bg,hu,it,lt,lv
   level: 2
-- name: White street sign
-  isos: sk
-  level: 3
+  group: nopark
+
+- title: Forbidden park sign
+  image: sign/nopark/no-white-lines.svg
+  isos: at,cz,de,dk,hr,me,rs,sk
+  level: 2
+  group: nopark
+
+- title: Forbidden dir. with white border line
+  image: sign/forbidden/white-border.png
+  isos: de,it
+  level: 2
+  group: sign_caract
+
+- title: Forbidden dir. has no white border line
+  image: sign/forbidden/no-border.png
+  isos: at,dk,es
+  level: 2
+  group: sign_caract

@@ -44,6 +44,40 @@
     placeholder="Search text or iso code"
     style="display: inline-block; width: 200px;"
   />
+  <div class="btn-group">
+    <div
+      class="btn"
+      ng-repeat="e in [1,2,3]"
+      ng-class="level == e ? 'btn-primary': 'btn-link'"
+      ng-click="updateLevel(e);"
+    >
+      {{ e }}
+    </div>
+  </div>
+  <div
+    class="btn"
+    ng-class="exclusiveFiltering ? 'btn-link': 'btn-link'"
+    ng-click="updateExclusiveFiltering();"
+  >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="exclusiveFiltering"
+    />
+    Exact filters match
+  </div>
+  <div
+    class="btn"
+    ng-class="customFiltering ? 'btn-link': 'btn-link'"
+    ng-click="updateCustomFiltering();"
+  >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="customFiltering"
+    />
+    Use custom filters
+  </div>
   <button
     class="btn btn-primary"
     style="font-size: 16pt;"
@@ -51,14 +85,4 @@
   >
     Reset all filters
   </button>
-  <div class="btn-group">
-    <div
-      class="btn"
-      ng-repeat="e in [1,2,3]"
-      ng-class="level == e ? 'btn-primary': 'btn-info'"
-      ng-click="updateLevel(e);"
-    >
-      {{ e }}
-    </div>
-  </div>
 </div>

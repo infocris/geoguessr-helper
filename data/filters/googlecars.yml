@@ -1,60 +1,97 @@
 ---
 - name: Pedestr. cam
   isos: ae,ec,gt,il,in.9,jo,kg,kr,ph,tn,uy
+
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo.8,br.9,bw,ca,cl,il,kh,ls,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo.8,br.9,bt,bw,ca,cl,fr,id,il,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  group: car_color
+
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar.9,id,jo,my.3,pe.7,ph,ru.9,tr,uy.9
+  isos: ar.9,id,kr,jo,my.3,pe.7,ph,ru.9,tr,uy.9
+  group: car_color
+
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,br,bg,cz,fi,fr,gr,hr,hu,it,mx,ro,th
+  isos: ar,au,bg,br,cz,fi,fr,gr,hr,hu,ie,it,mx,nl,no,nz,ro,th
+  group: car_color
+
 - title: Red car 🚗
   fig: { type: car, color: red }
-  isos: br,co,gb,is,mx,ru.8,ua.9
+  isos: br,co,ec,gb,is,mx,ru.8,sk,ua.9
+  group: car_color
+
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
-  isos: au,dk,fi,fr,ie,lu,se,za.9
+  isos: au,be,ca,ch,dk,es,fi,fr,ie,it,lu,se,za
+  group: blur_circle
+
 - name: Blur Shaped 🚗
   level: 3
-  isos: tr
+  isos: bw,tr
+  group: car_meta
+
 - title: Sky Glitches ☁️
   image: misc/glitch2.png
   isos: al.9,hr,kg,me.9,sn.9
+  group: car_meta
+
 - title: Blury Sky ☁️
   level: 2
   image: misc/sky-blur.png
-  isos: au,it,gr,za
+  isos: au,ca,es,gr,it,se,za
+
 - name: Glitchy Blur 🚗
   level: 3
   isos: ar
+  group: car_meta
+
 - name: v1 cam
   level: 3
   isos: us,au,nz
+  group: car_meta
+
 - image: misc/mirror3.png
   isos: ae.1,bd.2,kg.8,gt.7,ng,ug.9,mn.2
+  group: car_meta
+
 - image: misc/bar2.png
   isos: bd,ke.1,kg.8,gh.9,gt.8,mn.7,ng.3,sn
+  group: car_meta
+
 - image: misc/mirror.png
   isos: bd.8,mn.9,sn
-- image: car/antenna/antenna.png
-  isos: al,au,bg,br,co,cz,ec,fi,hr,hu,il,lt,lv,me,pl,ro,ru,si,sk,ua
+  group: car_meta
+
+- image: car/antenna/drilled.png
+  isos: al,au,bg,br,co,cz,ec,ee,fi,gb,hr,hu,il,lt,lv,me,pl,pt,ro,ru,si,sk,ua
+  group: car_meta
+
 - image: car/antenna/taped.png
   isos: bg,cz,ro,sk
-- image: car/antenna/drilled.png
-  isos: gr,hr,hu,is,ro.3,ru,sk,ua
+  group: car_meta
+
 - image: car/antenna/none.png
-  isos: mx,ph
+  isos: br,mx,ph
+  group: car_meta
+
 - name: no back antenna
   isos: cl
   level: 3
+  group: car_meta
+
 - name: clearly visible back
-  isos: ae,bd,cl
+  isos: ae,bd,cl,id
   level: 3
+  group: car_meta
+
 - name: clearly visible front
   level: 3
+  group: car_meta
+
 - name: Sea photosphere
   level: 3
   isos: ec,ph,tn
+  group: car_meta

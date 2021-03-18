@@ -3,9 +3,41 @@
     ng-repeat="iso in flags"
     class="flag"
     style="text-align: center;"
-    ng-class="iso"
+    ng-class="[iso, exactMatchFlags[iso] ? 'exactMatch': '']"
   >
     <span class="flag-icon" ng-class="'flag-icon-' + iso"></span><br />
     {{ iso }}
+    <span ng-if="sumWeight > 0"
+      ><br />{{ weightFlags[iso]/sumWeight*100|number:0 }}%</span
+    >
+
+    <div
+      ng-if="!exactMatchFlags[iso] && toggledClasses.saveFiltersEnabled"
+      style="position: absolute; margin-left: 20px;"
+    >
+      <div class="btn btn-success btn-sm" ng-click="addFilter(iso)">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  &nbsp;
+  <div class="buttons filters" style="display: inline;">
+    <ng-include
+      src="'html/filter.html'"
+      ng-repeat="e in filters"
+      ng-if="e.selected"
+    ></ng-include>
+  </div>
+  <div
+    class="btn btn-lg btn-link"
+    ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
+    ng-show="similarityCount > 0"
+  >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="toggledClasses.saveFiltersEnabled"
+    />
+    Add custom filters
   </div>
 </center>

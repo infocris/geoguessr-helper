@@ -1,12 +1,13 @@
 ---
 
-charsl1: И ß č š ž ň å ø æ ä ë ö ü ć ś á é í ó ú ý â ê à ė ż ū ă ğ ã õ ç ę ş ļ Ł ħ đ ð
+charsl1: И ß č š ž ň å ø æ ä ë ö ü ȍ ć ś á é í ó ú ý â ê à ė ż ū ă ğ ã õ ç ę ş ļ Ł ħ đ ð
 
 # https://www.lexilogos.com/clavier/slovensky.htm
 
 charsets:
   al: "çë"
   at: "äöü ß"
+  ch: "äöü ß é âêîôû èù æ ç ëïüÿ"
   de: "äöü ß"
   ee: "õ äöü šž"
   es: "áéíóú ñ ü"
@@ -22,16 +23,16 @@ charsets:
   is: "ÐðÞþ áéíóúý ö æ"
   mt: "Ħħ ċġż"
   pl: "Łł ąę ż ćńóśź"
-  tr: "çş ğ Iıİi ü âîû"
+  tr: "çş ğ Iıİi öü âîû"
   br: "áéíóú ãõ âà êô ü ç"
   pt: "áéíóú ãõ âà êô ü ç"
   ro: "ă âî șț şţ"
 
   cz: "ů ĎďŤť áéíóúý ěňř čšž"
-  hr: "Đđ ćź čšž"
+  hr: "áéíóú àèìòù ȁȅȉȍȕ ȃȇȋȏȗ āēīōū ŕȑȓ Đđ ćź čšž"
   lt: "ė ū ąęįų čšž"
   lv: "āēīū Ģģķļņ čšž"
-  me: "Đđ ćśź čšž"
+  me: "Đđ ćśź čšž И"
   si: "čšž"
   sk: "ä áéíóúýŕ ĎďŤťňô ĹĺĽľ čšž"
 
@@ -51,6 +52,6 @@ groups:
   - name: Other
     isos: bt,in,jp,kh,kr,il,lk,th
   - name: English usage
-    isos: bt,in,ke,lk,ls,my,ph,sg,sz,za
-  - name: Hispanic-sound
-    isos: ph
+    isos: au,bt,ca,gb,ie,in,ke,lk,ls,mk.1,mt,my,nz,ph,sg,sz,us,za
+  - name: Spanish/Portuguese/like
+    isos: ar,bo,br,cl,co,ec,es,gt,mx,pe,ph,pt,uy

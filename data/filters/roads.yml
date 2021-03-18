@@ -1,35 +1,66 @@
 ---
-- image: road/comb.png
-  level: 2
-  isos: ee,no
+- image: road/europe.png
+  title: White Lines
+  isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,mk,my,nz,ph,sk,sn,uy
+  group: road_lines_color
+
+- image: road/america.png
+  title: Yellow Center Line
+  isos: ar,bo,br,ca,cl,co,ec,fi,gt,ke,kh,kr,mx,no,nz,pe,ph,th,us,uy
+  group: road_lines_color
+
+- image: road/africa.png
+  title: Yellow Border Lines
+  isos: bw,ch,es.1,ie,jo,ls,sz,tr.1,za
+  group: road_lines_color
+
 - image: road/uy.png
   title: Dashed Line inside 2 lines
   isos: ls,ph,sz,uy,za
-- image: road/europe.png
-  title: White Lines
-  isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,my,nz,ph,sn
-- image: road/america.png
-  title: Yellow Center Line
-  isos: ar,bo,br,ca,cl,co,ec,fi,ke,kh,kr,no,pe,ph,th,us,uy
-- image: road/africa.png
-  title: Yellow Border Lines
-  isos: bw,es.1,jo,ls,sz,tr.1,za
+  group: road_artifact
+
 - image: road/dk.png
   isos: dk
+  group: road_artifact
+
 - image: road/no.png
   isos: be,no
   level: 3
+  group: road_artifact
+
 - image: road/se.png
   isos: fi,se
+  group: road_artifact
+
 - image: road/nz.png
   isos: nz
-- image: road/ae.png
-  isos: ae,es,il,it.1,ng,sg,za,mk.1
-- name: road border black and yellow
-  isos: ae,gr
-  level: 3
-- name: road border red and white
-  isos: mk,sk
-  level: 3
+  group: road_artifact
+
+- image: road/be.png
+  isos: be,nl
+  group: road_artifact
+  level: 2
+
+- image: road/comb.png
+  isos: ee,no
+  group: road_artifact
+  level: 2
+
 - image: road/long-space.png
-  isos: se
+  isos: ee.3,se
+  group: road_artifact
+  
+- image: road/border-white-black.png
+  isos: ae,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
+  group: road_artifact
+  level: 2
+
+- image: road/border-yellow-black.png
+  isos: ae,gr,kh
+  group: road_artifact
+  level: 2
+
+- image: road/border-white-red.png
+  isos: il,mk,sk,tn
+  group: road_artifact
+  level: 2

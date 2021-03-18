@@ -1,0 +1,80 @@
+---
+
+- name: Sign have outside white border
+  isos: it,lu,sk,tr
+  level: 3
+  group: sign_caract
+
+- name: Sign have minimal border
+  isos: at,es,gr
+  level: 3
+  group: sign_caract
+
+- title: White street sign
+  fig: { type: street_sign, color: white, color2: black }
+  isos: sk
+  group: street_sign
+  level: 2
+
+- title: Blue street sign
+  fig: { type: street_sign, color: blue, color2: white }
+  isos: sk
+  group: street_sign
+  level: 2
+
+- title: Red street sign
+  fig: { type: street_sign, color: red, color2: white }
+  isos: cz,tr
+  group: street_sign
+  level: 2
+
+- name: Blue street sign
+  isos: rs
+  level: 3
+  group: street_sign
+
+- name: Yellow house
+  level: 3
+  isos: 
+#- image: village.png
+#  isos: pl
+
+- name: Green trashbin
+  level: 3
+  isos: 
+
+- name: Christianism
+  level: 3
+  isos: hr
+
+- name: Buddhism
+  level: 3
+  isos: th
+
+- name: Yellow fire hydrant
+  level: 3
+  isos: ca,us
+
+- name: Red fire hydrant
+  level: 3
+  isos: dk
+
+- name: Sea pedestr.
+  isos: ec,ph,tn
+  level: 3
+
+- name: Camera glitch
+  isos: ae
+  level: 3
+  
+- name: Car sticker
+  isos: cz,hr
+  level: 3
+
+- name: Latin car.
+  isos: bg,mk
+  level: 3
+
+- name: Blue line parking
+  isos: it
+  level: 3
