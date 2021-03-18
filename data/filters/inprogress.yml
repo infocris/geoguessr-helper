@@ -24,7 +24,7 @@
 
 - title: Red street sign
   fig: { type: street_sign, color: red, color2: white }
-  isos: cz
+  isos: cz,tr
   group: street_sign
   level: 2
 

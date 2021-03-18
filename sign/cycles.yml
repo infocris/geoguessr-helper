@@ -7,7 +7,7 @@ filters:
 
   - title: Man with boy
     image2: sign/child/fi.png
-    isos: dk,fi,lt,lu,no,se,is
+    isos: dk,fi,gb,is,lt,lu,no,pt,se
     group: cycle
 
   - title: Man with girl

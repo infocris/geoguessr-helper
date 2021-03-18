@@ -91,8 +91,8 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           "data/filters/turns.yml",
           "data/filters/signs.yml"
         ],
-        function () {
-          afterFiltersLoaded();
+        function (files) {
+          afterFiltersLoaded(files);
         }
       );
     } else {
@@ -113,8 +113,8 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           "data/filters/misc.yml",
           "data/filters/inprogress.yml"
         ],
-        function () {
-          afterFiltersLoaded();
+        function (files) {
+          afterFiltersLoaded(files);
         }
       );
       _.each(["pedestrians", "residentials", "cycles"], function (e) {
@@ -372,7 +372,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   // start angular.run inner functions
 
-  function afterFiltersLoaded() {
+  function afterFiltersLoaded(files) {
     if (!localStorage.filters) {
       return;
     }
@@ -424,6 +424,42 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       }); // endforeach saved filters
       $rootScope.customFilters.push(data);
     }); // endforeach saved record
+
+    window.makepatch = function () {
+      var res = "";
+      _.each(files, function (file) {
+        console.log(file);
+        var content = file.response.data;
+        _.each(file.data.filters || file.data, function (filter) {
+          if (!filter.customIsos) {
+            return;
+          }
+          var isos = filter.isos.split(/\s*,\s*/);
+          _.each(filter.customIsos, function (v, k) {
+            isos.push(k);
+          });
+          isos = _.sortBy(isos, function (v) {
+            return v.charCodeAt(0);
+          });
+          isos = _.uniq(isos);
+          content = content.replace(
+            "isos: " + filter.isos + "\n",
+            "isos: " + isos.join(",") + "\n"
+          );
+        }); // endforeach filters
+        if (content === file.response.data) {
+          return;
+        }
+        res += window.Diff.createTwoFilesPatch(
+          file.file,
+          file.file,
+          file.response.data,
+          content
+        );
+      }); // endforeach files
+      console.log(res);
+      return "Apply patch to update data.";
+    }; // endfunction makepatch
 
     function similar_text(first, second, percent) {
       // eslint-disable-line camelcase
@@ -511,6 +547,11 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       return;
     }
     var isos = v.isos.split(/\s*,\s*/);
+    var previous_length = isos.length;
+    isos = _.uniq(isos);
+    if (isos.length !== previous_length) {
+      console.warn("filter has duplicate isos", v);
+    }
     v.isos2 = {};
     var defaultWeight = 5;
     if (isos.length > 20) {
@@ -565,18 +606,18 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   } // endfunction readFilterValue
 
   function loadFilterData(filterFilenames, onComplete) {
-    var array = [];
+    var files = [];
     _.each(filterFilenames, function (e) {
       var curr = {};
       curr.file = e;
-      curr.previous = array[array.length - 1] || null;
-      curr.index = array.length;
+      curr.previous = files[files.length - 1] || null;
+      curr.index = files.length;
       curr.loaded = false;
-      array.push(curr);
+      files.push(curr);
       loadYAMLFile(e, function (data, response) {
         curr.response = response;
         curr.data = data;
-        _.each(array, function (e) {
+        _.each(files, function (e) {
           if ((e.previous && !e.previous.loaded) || !e.data || e.loaded) {
             return;
           }
@@ -584,10 +625,10 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           processData(e.data, e.response);
         });
 
-        if (array[array.length - 1].loaded && onComplete) {
+        if (files[files.length - 1].loaded && onComplete) {
           var previousOnComplete = onComplete;
           onComplete = null;
-          previousOnComplete();
+          previousOnComplete(files);
         }
       });
     });

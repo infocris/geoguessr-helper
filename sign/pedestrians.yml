@@ -16,7 +16,7 @@ filters:
     isos: ch,es.9,sk.1
 
   - image2: sign/pedestrian/br.png
-    isos: ar.1,br,co,cl.1,gt,id,my,mx,nz,pe,uy
+    isos: ar.1,br,bo,co,cl.1,gt,id,my,mx,nz,pe,uy
 
   - image2: sign/pedestrian/ec.png
     isos: bo,ec,ie.3,th.1
