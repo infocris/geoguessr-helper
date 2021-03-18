@@ -172,6 +172,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       $rootScope.toggledClasses[k + "_covered"] = true;
     });
     _.each(e.isos2, function (v, k) {
+      if (!$rootScope.customFiltering && e.customIsos[k]) {
+        return;
+      }
       $rootScope.toggledClasses[k + "_select"] = true;
     });
     $rootScope.toggledClasses["overFilter"] = true;
@@ -223,6 +226,17 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   $rootScope.updateExclusiveFiltering = function () {
     $rootScope.exclusiveFiltering = !$rootScope.exclusiveFiltering;
     localStorage.exclusiveFiltering = !$rootScope.exclusiveFiltering
+      ? "disabled"
+      : "enabled";
+    loadFlags();
+    countMatch();
+  };
+
+  $rootScope.customFiltering = localStorage.customFiltering !== "disabled";
+
+  $rootScope.updateCustomFiltering = function () {
+    $rootScope.customFiltering = !$rootScope.customFiltering;
+    localStorage.customFiltering = !$rootScope.customFiltering
       ? "disabled"
       : "enabled";
     loadFlags();
@@ -722,7 +736,10 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           if (!filter.selected) {
             return;
           }
-          if (!filter.isos2[k]) {
+          if (
+            (!$rootScope.customFiltering && filter.customIsos[k]) ||
+            !filter.isos2[k]
+          ) {
             if (
               filterCoverage[filter.filterType][k] &&
               filterCoverage[filter.filterType][k] < 5

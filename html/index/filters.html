@@ -36,6 +36,14 @@
 </div>
 <ng-include src="'html/filter.html'" ng-repeat="e in filters"></ng-include>
 <div style="float: right; display: inline-block; padding: 10px;">
+  <input
+    type="text"
+    ng-model="$scope.search_text"
+    ng-change="updateSearchText($scope.search_text);"
+    class="form-control"
+    placeholder="Search text or iso code"
+    style="display: inline-block; width: 200px;"
+  />
   <div class="btn-group">
     <div
       class="btn"
@@ -58,14 +66,18 @@
     />
     Exact filters match
   </div>
-  <input
-    type="text"
-    ng-model="$scope.search_text"
-    ng-change="updateSearchText($scope.search_text);"
-    class="form-control"
-    placeholder="Search text or iso code"
-    style="display: inline-block; width: 200px;"
-  />
+  <div
+    class="btn"
+    ng-class="customFiltering ? 'btn-link': 'btn-link'"
+    ng-click="updateCustomFiltering();"
+  >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      ng-model="customFiltering"
+    />
+    Use custom filters
+  </div>
   <button
     class="btn btn-primary"
     style="font-size: 16pt;"
