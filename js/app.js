@@ -5,6 +5,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   var errors, tips, filters;
   var filterCoverage = {};
   var countryOrdering;
+  var clickCount = localStorage.clickCount
+    ? JSON.stringify(localStorage.clickCount)
+    : {};
 
   var _ = window._ || {};
 
@@ -153,8 +156,10 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   };
 
   var currentMouseOverFilter = null;
+  var mouseLeaveTimeout = null;
 
   $rootScope.mouseOverFilter = function (e, elt) {
+    clearTimeout(mouseLeaveTimeout);
     if (e.match === 0) {
       return;
     }
@@ -182,6 +187,18 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.mouseLeaveFilter = function (e) {
     $rootScope.toggledClasses["overFilter"] = false;
+    clearTimeout(mouseLeaveTimeout);
+    mouseLeaveTimeout = setTimeout(function () {
+      currentMouseOverFilter.mouseovered = false;
+      _.each($rootScope.toggledClasses, function (v, k) {
+        var m = k.match(/_covered$|_select$/);
+        if (m) {
+          $rootScope.toggledClasses[k] = m[0] === "_covered";
+        }
+      });
+      $rootScope.toggledClasses["overFilter"] = false;
+      $rootScope.$apply();
+    }, 100);
     if (!e.selected) {
       return;
     }
@@ -210,6 +227,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.selectChar = function (e) {
     e.selected = !e.selected;
+    clickCount["char:" + e.value] =
+      (clickCount["char:" + e.value] || 0) + (e.selected ? 1 : -1);
+    localStorage.clickCount = JSON.stringify(clickCount);
     selectedChar[e.value] = !selectedChar[e.value];
     if (!selectedChar[e.value]) {
       delete selectedChar[e.value];
@@ -245,6 +265,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.selectFilter = function (e) {
     e.selected = !e.selected;
+    clickCount[e.filterType + ":" + e.isos] =
+      (clickCount[e.filterType + ":" + e.isos] || 0) + (e.selected ? 1 : -1);
+    localStorage.clickCount = JSON.stringify(clickCount);
     $rootScope.toggledClasses[e.filterType] = e.selected;
     if ($rootScope.exclusiveFiltering && e.selected && e.match === 0) {
       if (deselectExclusiveFilter(e)) {
@@ -394,17 +417,19 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           }
         }); // endforeach loaded filters
         if (!e.filter) {
-          _.each(filters, function (e2) {
-            if (e.filter || e2.filterType !== e.filterType) {
-              return;
-            }
-            var similarity = similar_text(e2.isos, e.isos, true);
-            if (similarity < 75) {
-              return;
-            }
-            e.similarity = similarity;
-            e.filter = e2;
-          }); // endforeach loaded filters
+          _.each([filters], function (collection) {
+            _.each(collection, function (e2) {
+              if (e.filter || e2.filterType !== e.filterType) {
+                return;
+              }
+              var similarity = similar_text(e2.isos, e.isos, true);
+              if (similarity < 75) {
+                return;
+              }
+              e.similarity = similarity;
+              e.filter = e2;
+            }); // endforeach loaded filters
+          });
         } // endif trying to find filter by approximation
         if (e.filter && e.filter.isos2[e3.iso]) {
           delete e.similarity;
@@ -546,6 +571,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     if (!v.isos) {
       return;
     }
+
     var isos = v.isos.split(/\s*,\s*/);
     var previous_length = isos.length;
     isos = _.uniq(isos);
@@ -748,7 +774,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     });
 
     $rootScope.flags = _.sortBy($rootScope.flags, function (k) {
-      return 10 - (weights[k] || 5);
+      return 10 - (weights[k] || 5) - (exactMatchFlags[k] ? 100 : 0);
     });
 
     return;

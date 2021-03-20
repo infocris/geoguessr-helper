@@ -42,7 +42,11 @@
       <strong>Following filters were not found:</strong>
       <ul ng-repeat="record in item.filters">
         <li ng-if="!record.filter">
-          type "{{ record.filterType }}" located in {{ record.file }}
+          type "{{ record.filterType }}"
+          <span ng-if="record.name">({{ record.name }})</span>
+          <span ng-if="record.title">({{ record.title }})</span> [{{ record.file
+          }}]
+
           <ng-include
             class="figure"
             src="'html/figure.html'"

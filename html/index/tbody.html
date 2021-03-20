@@ -1,4 +1,4 @@
-<tr ng-repeat="iso in flags" ng-if="flags.length < 20">
+<tr ng-repeat="iso in flags|limitTo:1">
   <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
   <td>{{ commercialTlds[iso] || iso }}</td>
   <td class="names">{{ countries[iso][0] }}</td>

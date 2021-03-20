@@ -1,3 +1,7 @@
+select.form-control {
+  display: inline-block;
+}
+
 .filters .filter.customFilter,
 .customFilter {
   padding: 10px;
