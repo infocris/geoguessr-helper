@@ -1,7 +1,7 @@
 <center>
   <div
     ng-repeat="iso in flags"
-    ng-show="weightFlags[iso] >= weights2[3]"
+    ng-show="weightFlags[iso] >= weights2[3] || !weights2[3] || exactMatchFlags[iso]"
     class="flag"
     style="text-align: center;"
     ng-class="[iso, exactMatchFlags[iso] ? 'exactMatch': '']"
@@ -23,6 +23,44 @@
   </div>
   &nbsp;
   <div class="buttons filters" style="display: inline;">
+    <div
+      class="char level1"
+      ng-if="e.selected"
+      ng-repeat="e in levels1"
+      ng-click="selectChar(e);"
+      ng-mouseover="mouseOverChar(e);"
+      ng-mouseleave="mouseLeaveChar(e);"
+      ng-class="[e.selected ? 'selected': '', 'count' + e.count, 'match_ratio' + e.match_ratio, 'match' + e.match, !e.selected && e.match == flags.length ? 'full_match': '']"
+    >
+      {{ e.value }}
+    </div>
+    <div
+      class="char level2"
+      ng-if="e.selected"
+      ng-repeat="e in levels2"
+      ng-click="selectChar(e);"
+      ng-mouseover="mouseOverChar(e);"
+      ng-mouseleave="mouseLeaveChar(e);"
+      ng-class="[e.selected ? 'selected': '', 'count' + e.count, 'match_ratio' + e.match_ratio, 'match' + e.match, !e.selected && e.match == flags.length ? 'full_match': '']"
+    >
+      {{ e.value }}
+    </div>
+    <div
+      class="char level3"
+      ng-if="e.selected"
+      ng-repeat="e in levels3"
+      ng-click="selectChar(e);"
+      ng-mouseover="mouseOverChar(e);"
+      ng-mouseleave="mouseLeaveChar(e);"
+      ng-class="[e.selected ? 'selected': '', 'count' + e.count, 'match_ratio' + e.match_ratio, 'match' + e.match]"
+    >
+      {{ e.value }}
+    </div>
+    <ng-include
+      src="'html/filter.html'"
+      ng-if="e.selected"
+      ng-repeat="e in languages.groups"
+    ></ng-include>
     <ng-include
       src="'html/filter.html'"
       ng-repeat="e in filters"

@@ -4,12 +4,12 @@
 
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo.8,br.9,bt,bw,ca,cl,fr,id,il,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo,br,bt,bw,ca,cl,fr,id,il,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
   group: car_color
 
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar.9,id,kr,jo,my.3,pe.7,ph,ru.9,tr,uy.9
+  isos: ar,id,kr,jo,my.3,pe.4,ph,ru,tr,uy
   group: car_color
 
 - title: Blue car 🚗

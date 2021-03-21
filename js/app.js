@@ -563,7 +563,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     v.isos2 = {};
     var defaultWeight = 5;
     if (isos.length > 20) {
-      defaultWeight = 0.0001;
+      //defaultWeight = 0.0001;
     }
     _.each(isos, function (e) {
       var m = e.match(/(.+)\.(.+)/);
@@ -586,7 +586,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       Object.values($rootScope.countries).length - Object.values(isos).length >
       20
     ) {
-      defaultWeight = 0.0001;
+      //defaultWeight = 0.0001;
     }
     isos = [];
     _.each($rootScope.countries, function (v2, k) {
@@ -754,7 +754,10 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       weights2.push(weights[k]);
     });
     if (weights2.length >= 5 && weights2[0] === weights2[4]) {
-      $rootScope.minWeight = weights2[0] + 1;
+      //$rootScope.minWeight = weights2[0] + 1;
+    }
+    if (weights2.length < 5) {
+      $rootScope.minWeight = 0;
     }
 
     return;

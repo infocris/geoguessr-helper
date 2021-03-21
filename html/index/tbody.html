@@ -1,6 +1,6 @@
 <tr
   ng-repeat="iso in flags"
-  ng-if="weightFlags[iso] >= minWeight && weightFlags[iso] >= weights2[0]"
+  ng-if="weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
 >
   <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
   <td>{{ commercialTlds[iso] || iso }}</td>
@@ -16,7 +16,7 @@
           <td>{{ tips[iso] }}</td>
           -->
   <td class="signs">
-    <span ng-repeat="e in signs[iso]" ng-if="e.svg[0] != 'turn'">
+    <span ng-repeat="e in signs[iso]">
       <ng-include
         src="'html/figure.html'"
         ng-init="img_style = {height: 72}"
@@ -25,6 +25,7 @@
     <span
       ng-repeat="e in filtersByCountry[iso]"
       ng-class="[e.selected ? 'selected': '']"
+      ng-if="toggledClasses[e.filterType]"
     >
       <ng-include
         src="'html/figure.html'"
