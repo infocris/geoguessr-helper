@@ -1,0 +1,16 @@
+---
+countries:
+  fi:
+    - { image: "sign/circular/fi.png" }
+  hr:
+    - { image: "sign/circular/hr.png" }
+  is:
+    - { image: "sign/circular/is.png" }
+  no:
+    - { image: "sign/circular/no.png" }
+  se:
+    - { image: "sign/circular/se.png" }
+  si:
+    - { image: "sign/circular/si.png" }
+  sk:
+    - { image: "sign/circular/sk.png" }

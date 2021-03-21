@@ -75,10 +75,13 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           "sign/residentials.yml",
           "sign/cycles.yml",
           "data/filters/roads.yml",
-          "data/filters/polls.yml",
+          "data/poll.yml",
           "data/filters/signs.yml",
           "data/filters/misc.yml",
-          "data/filters/inprogress.yml"
+          "data/filters/inprogress.yml",
+          "data/nopriority.yml",
+          "data/nopark.yml",
+          "data/circular.yml"
         ],
     function (files, filesByName) {
       $rootScope.countries = filesByName["data/countries.yml"].data.list;
@@ -125,12 +128,11 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           });
         } // endif is file filters
 
-        //console.log(v.data);
         if (v.data.countries) {
           _.each(v.data.countries, function (v, k) {
-            //console.log(v, k);
             appendDataCountry(k, v);
           });
+          console.log(v.data.countries);
         } // endif has countries data
       }); // endforeach files > load filters
 
@@ -535,14 +537,14 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   } // endfunction afterFiltersLoaded
 
   function appendDataCountry(k, v) {
-    readFilterValue(v);
-    if (!v.length) {
-      $rootScope.filtersByCountry[k].push(v);
+    if (v.length) {
+      _.each(v, function (v) {
+        appendDataCountry(k, v);
+      });
       return;
     }
-    _.each(v, function (v) {
-      $rootScope.filtersByCountry[k].push(v);
-    });
+    readFilterValue(v);
+    $rootScope.filtersByCountry[k].push(v);
   }
 
   function readFilterValue(v) {

@@ -1,13 +1,9 @@
 ---
 countries:
-  be:
-    - { image: "poll/be.png" }
   bg: 
     - { image: "sign/stop/bg.png" }
-    - { image: "sign/wrong/bg.png" }
-    - { image: "sign/nopark/bg.png" }
-    - { image: "sign/nopriority/bg.png" }
-    - { image: "sign/priority/bg.png" }
+    #- { image: "sign/wrong/bg.png" }
+    #- { image: "sign/priority/bg.png" }
     #- { image: "country/bg/trash.png" }
     #- { image: "country/bg/trash2.png" }
     #- { image: "electrical/bg1.png" }
@@ -15,83 +11,43 @@ countries:
     #- { image: "electrical/bg3.png" }
   bo:
     - { image: "landscapes/desertic/bo.png" }
-  ch:
-    - { image: "poll/ch.png" }
   cl:
     - { image: "landscapes/desertic/cl.png" }
   cz:
-    - { image: "sign/stop/cz.png" }
+    #- { image: "sign/stop/cz.png" }
     #- { image: "country/cz/trash1.png" }
     #- { image: "country/cz/trash2.png" }
   dk:
-    - { image: "road/dk.png" }
+    #- { image: "road/dk.png" }
   ec:
     - { type: "bollard_ec1", front: 1, back: 1 }
-  ee:
-    - { image: "poll/ee.png" }
-    - { image: "poll/lv.png" }
-  fi:
-    - { image: "sign/nopriority/fi.png" }
-    - { image: "sign/circular/fi.png" }
-    - { image: "poll/fi.png" }
   hr:
-    - { image: "sign/nopriority/hr.png" }
-    - { image: "sign/circular/hr.png" }
-    - { image: "poll/hr.png" }
-    - { image: "electrical/hr1.png" }
-    - { image: "electrical/hr2.png" }
+    #- { image: "electrical/hr1.png" }
+    #- { image: "electrical/hr2.png" }
   hu:
     - { image: "electrical/hu.png" }
-  is:
-    - { image: "sign/nopriority/is.png" }
-    - { image: "sign/circular/is.png" }
   lt:
-    - { image: "poll/lt.png" }
-    - { image: "electrical/lt.png" }
+    #- { image: "electrical/lt.png" }
   lv:
-    - { image: "sign/nopark/lv.png" }
     - { image: "country/lv/elec.png" }
-    - { image: "poll/lv.png" }
   me:
-    - { image: "sign/nopriority/me.png" }
-    - { image: "poll/hr.png" }
     #- { image: "trash/me.png" }
   mk:
-    - { image: "sign/nopriority/mk.png" }
     #- { image: "trash/mk1.png" }
     #- { image: "trash/mk2.png" }
-  nl:
-    - { image: "poll/nl.png" }
-  no:
-    - { image: "sign/nopriority/no.png" }
-    - { image: "sign/circular/no.png" }
-    - { image: "poll/no.png" }
   pe:
     - { image: "landscapes/desertic/pe.png" }
   pl:
-    - { image: "sign/nopriority/pl.png" }
-    - { image: "sign/wrong/pl.png" }
-    - { image: "poll/pl.png" }
-    - { image: "sign/nopark/pl.png" }
-    - { image: "electrical/pl.png" }
+    #- { image: "sign/wrong/pl.png" }
+    #- { image: "electrical/pl.png" }
     - { image: "electrical/pl2.png" }
   ro:
     - { image: "electrical/ro.png" }
   rs:
     - { image: "electrical/rs.png" }
-    - { image: "poll/hr.png" }
-  se:
-    - { image: "sign/nopriority/se.png" }
-    - { image: "sign/circular/se.png" }
-    - { image: "poll/se.png" }
   si:
-    - { image: "sign/nopriority/si.png" }
-    - { image: "sign/circular/si.png" }
-    - { image: "poll/hr.png" }
     #- { image: "trash/si1.png" }
     #- { image: "trash/si2.png" }
     #- { image: "trash/si3.png" }
   sk:
-    - { image: "sign/circular/sk.png" }
-    - { image: "poll/lv.png" }
     #- { image: "trash/sk.png" }

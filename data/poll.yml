@@ -1,0 +1,67 @@
+---
+filters:
+  - svg: [poll1, black, white]
+    isos: ae,bh,bt,ie,lk,lt,lv,mt,my,nl,pe,th,uy
+    group: poll
+
+  - svg: [poll1, black, gold]
+    isos: ch,co,hr,me,no,rs,si
+    group: poll
+
+  - svg: [poll1, "#037bfc", white]
+    isos: ee,fi,se
+    group: poll
+
+  - svg: [poll1, red, white]
+    isos: sk
+    group: poll
+
+  #- image: poll/ee.png
+  #  isos: ee,fi
+  #- image: poll/se.png
+  #  isos: fi,se
+  #- image: poll/no.png
+  #  isos: "no"
+  #- image: poll/hr.png
+  #  isos: ch,hr,me,si
+
+  - image: poll/nl.png
+    isos: be,it,nl,pl
+    group: poll
+
+  - title: Stripped red and white poll
+    image: poll/lv.png
+    isos: bg,cz,de,dk,ee,hr,lv,sk
+    group: poll
+countries:
+  be:
+    - { image: "poll/be.png" }
+  ch:
+    - { image: "poll/ch.png" }
+  ee:
+    - { image: "poll/ee.png" }
+    - { image: "poll/lv.png" }
+  fi:
+    - { image: "poll/fi.png" }
+  hr:
+    - { image: "poll/hr.png" }
+  lt:
+    - { image: "poll/lt.png" }
+  lv:
+    - { image: "poll/lv.png" }
+  me:
+    - { image: "poll/hr.png" }
+  nl:
+    - { image: "poll/nl.png" }
+  no:
+    - { image: "poll/no.png" }
+  pl:
+    - { image: "poll/pl.png" }
+  rs:
+    - { image: "poll/hr.png" }
+  se:
+    - { image: "poll/se.png" }
+  si:
+    - { image: "poll/hr.png" }
+  sk:
+    - { image: "poll/lv.png" }
