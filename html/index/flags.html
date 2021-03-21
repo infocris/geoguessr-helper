@@ -1,6 +1,7 @@
 <center>
   <div
     ng-repeat="iso in flags"
+    ng-show="weightFlags[iso] >= weights2[3]"
     class="flag"
     style="text-align: center;"
     ng-class="[iso, exactMatchFlags[iso] ? 'exactMatch': '']"

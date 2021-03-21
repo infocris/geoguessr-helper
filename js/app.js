@@ -6,7 +6,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   var filterCoverage = {};
   var countryOrdering;
   var clickCount = localStorage.clickCount
-    ? JSON.stringify(localStorage.clickCount)
+    ? JSON.parse(localStorage.clickCount)
     : {};
 
   var _ = window._ || {};
@@ -49,58 +49,22 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     style.innerHTML = content;
     document.getElementsByTagName("head")[0].appendChild(style);
   }
-  loadYAMLFile("data/countries.yml", function (data) {
-    var styles = [];
-    var styles_covered = [];
-    _.each(data.list, function (v, k) {
-      styles.push("table." + k + "_select div.flag." + k);
-      styles_covered.push("table." + k + "_covered div.flag." + k);
-    });
-    appendCssRule(
-      styles.join(",") +
-        " { background-color: #D9D933; opacity: 1; } " +
-        styles_covered.join(",") +
-        " { opacity: 1; } "
-    );
 
-    $rootScope.countries = data.list;
-    $rootScope.commercialTlds = data.commercialTlds;
-
-    _.each($rootScope.countries, function (v, k) {
-      if (!$rootScope.filtersByCountry[k]) {
-        $rootScope.filtersByCountry[k] = [];
-      }
-    });
-
-    countryOrdering = data.order.replace(/\s$/, "").split(" ");
-    loadYAMLFile("data/languages.yml", function (data) {
-      $rootScope.languages = data;
-      _.each(data.groups, function (v) {
-        readFilterValue(v);
-        v.file = "languages.yml";
-      });
-      loadLevels();
-      loadFlags();
-      countMatch();
-    });
-
-    if (window.location.hash === "#!#dev" || window.location.hash === "#dev") {
-      loadFilterData(
-        [
+  asyncLoadFiles(
+    window.location.hash === "#!#dev" || window.location.hash === "#dev"
+      ? [
+          "data/countries.yml",
+          "data/languages.yml",
           "data/filters/landscapes.yml",
           "data/filters/googlecars.yml",
           "data/filters/plates.yml",
           "data/filters/bollards.yml",
           "data/filters/turns.yml",
           "data/filters/signs.yml"
-        ],
-        function (files) {
-          afterFiltersLoaded(files);
-        }
-      );
-    } else {
-      loadFilterData(
-        [
+        ]
+      : [
+          "data/countries.yml",
+          "data/languages.yml",
           "data/filters/regions.yml",
           "data/filters/landscapes.yml",
           "data/filters/googlecars.yml",
@@ -116,33 +80,95 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           "data/filters/misc.yml",
           "data/filters/inprogress.yml"
         ],
-        function (files) {
-          afterFiltersLoaded(files);
-        }
+    function (files, filesByName) {
+      $rootScope.countries = filesByName["data/countries.yml"].data.list;
+      $rootScope.commercialTlds =
+        filesByName["data/countries.yml"].data.commercialTlds;
+      countryOrdering = filesByName["data/countries.yml"].data.order
+        .replace(/\s$/, "")
+        .split(" ");
+      $rootScope.languages = filesByName["data/languages.yml"].data;
+
+      var styles = [];
+      var styles_covered = [];
+      _.each($rootScope.countries, function (v, k) {
+        styles.push("table." + k + "_select div.flag." + k);
+        styles_covered.push("table." + k + "_covered div.flag." + k);
+      });
+      appendCssRule(
+        styles.join(",") +
+          " { background-color: #D9D933; opacity: 1; } " +
+          styles_covered.join(",") +
+          " { opacity: 1; } "
       );
-      _.each(["pedestrians", "residentials", "cycles"], function (e) {
-        loadYAMLFile("sign/" + e + ".yml", function (data) {
-          _.each(data.countries, function (v, k) {
-            v.file = e + ".yml";
+
+      _.each($rootScope.countries, function (v, k) {
+        if (!$rootScope.filtersByCountry[k]) {
+          $rootScope.filtersByCountry[k] = [];
+        }
+      });
+      _.each($rootScope.languages.groups, function (v) {
+        readFilterValue(v);
+        v.file = "languages.yml";
+      });
+
+      _.each(files, function (v) {
+        if (v.data.filters) {
+          _.each(v.data.filters, function (e) {
+            eachValue(e, v.response);
+          });
+        } // endif has filters
+
+        if (v.file.match(/\/filters\//)) {
+          _.each(v.data, function (e) {
+            eachValue(e, v.response);
+          });
+        } // endif is file filters
+
+        //console.log(v.data);
+        if (v.data.countries) {
+          _.each(v.data.countries, function (v, k) {
+            //console.log(v, k);
             appendDataCountry(k, v);
           });
-        });
-      });
+        } // endif has countries data
+      }); // endforeach files > load filters
+
+      afterFiltersLoaded(files);
+
+      loadLevels();
+      loadFlags();
+      countMatch();
 
       return;
 
-      function appendDataCountry(k, v) {
-        readFilterValue(v);
-        if (!v.length) {
-          $rootScope.filtersByCountry[k].push(v);
+      function eachValue(v, response) {
+        if (!v.isos) {
+          console.warn("empty isos", v);
           return;
         }
-        _.each(v, function (v) {
-          $rootScope.filtersByCountry[k].push(v);
+        readFilterValue(v);
+        v.previous = filters[filters.length - 1] || null;
+        if (v.previous) {
+          v.previous.next = v;
+        }
+        v.file = response.config.url.replace(/^.+\/([^\\/]+)$/, "$1");
+        filters.push(v);
+        if (v.svg && v.svg[0] === "turn") {
+        } else if (v.fig && v.fig.type && v.fig.type.match(/^bollard/)) {
+        } else {
+          return;
+        }
+        _.each(v.isos2, function (v2, k) {
+          try {
+            $rootScope.filtersByCountry[k].push(v);
+          } catch (err) {
+            console.error(err);
+          }
         });
       }
     }
-  }); // endfunction loadYAMLFile("data/countries.yml"
+  ); // endcallback asyncLoadFiles
 
   $rootScope.level = localStorage.level || 1;
   $rootScope.toggledClasses["level" + $rootScope.level] = true;
@@ -227,9 +253,11 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.selectChar = function (e) {
     e.selected = !e.selected;
+
     clickCount["char:" + e.value] =
       (clickCount["char:" + e.value] || 0) + (e.selected ? 1 : -1);
     localStorage.clickCount = JSON.stringify(clickCount);
+
     selectedChar[e.value] = !selectedChar[e.value];
     if (!selectedChar[e.value]) {
       delete selectedChar[e.value];
@@ -265,9 +293,12 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
 
   $rootScope.selectFilter = function (e) {
     e.selected = !e.selected;
+
     clickCount[e.filterType + ":" + e.isos] =
       (clickCount[e.filterType + ":" + e.isos] || 0) + (e.selected ? 1 : -1);
     localStorage.clickCount = JSON.stringify(clickCount);
+    //localStorage["clickCount:filter:" + e.filterType + ":" + e.isos] = clickCount[e.filterType + ":" + e.isos];
+
     $rootScope.toggledClasses[e.filterType] = e.selected;
     if ($rootScope.exclusiveFiltering && e.selected && e.match === 0) {
       if (deselectExclusiveFilter(e)) {
@@ -336,8 +367,13 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   var customFilters = [];
   $rootScope.customFilters = [];
   $rootScope.addFilter = function (iso) {
-    var res = { iso: iso, filters: [] };
-    var savedValue = { iso: iso, filters: [], date: new Date().toISOString() };
+    var res = { iso: iso, filters: [], chars: "" };
+    var savedValue = {
+      iso: iso,
+      filters: [],
+      chars: "",
+      date: new Date().toISOString()
+    };
     res.savedValue = res;
     _.each([filters, $rootScope.languages.groups], function (collection) {
       _.each(collection, function (e) {
@@ -370,6 +406,18 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
         );
       }); // endforeach
     }); // endforeach filters
+    _.each(
+      [$rootScope.levels1, $rootScope.levels2, $rootScope.levels3],
+      function (collection) {
+        _.each(collection, function (e) {
+          if (!e.selected) {
+            return;
+          }
+          savedValue.chars += e.value;
+          res.savedValue.chars += e.value;
+        }); // endforeach
+      }
+    ); // endforeach levels language
     $rootScope.customFilters.push(res);
     customFilters.push(savedValue);
 
@@ -417,7 +465,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           }
         }); // endforeach loaded filters
         if (!e.filter) {
-          _.each([filters], function (collection) {
+          _.each([filters, $rootScope.languages.groups], function (collection) {
             _.each(collection, function (e2) {
               if (e.filter || e2.filterType !== e.filterType) {
                 return;
@@ -453,7 +501,6 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     window.makepatch = function () {
       var res = "";
       _.each(files, function (file) {
-        console.log(file);
         var content = file.response.data;
         _.each(file.data.filters || file.data, function (filter) {
           if (!filter.customIsos) {
@@ -485,83 +532,18 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       console.log(res);
       return "Apply patch to update data.";
     }; // endfunction makepatch
-
-    function similar_text(first, second, percent) {
-      // eslint-disable-line camelcase
-      //  discuss at: https://locutus.io/php/similar_text/
-      // original by: Rafał Kukawski (https://blog.kukawski.pl)
-      // bugfixed by: Chris McMacken
-      // bugfixed by: Jarkko Rantavuori original by findings in stackoverflow (https://stackoverflow.com/questions/14136349/how-does-similar-text-work)
-      // improved by: Markus Padourek (taken from https://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
-      //   example 1: similar_text('Hello World!', 'Hello locutus!')
-      //   returns 1: 8
-      //   example 2: similar_text('Hello World!', null)
-      //   returns 2: 0
-
-      if (
-        first === null ||
-        second === null ||
-        typeof first === "undefined" ||
-        typeof second === "undefined"
-      ) {
-        return 0;
-      }
-
-      first += "";
-      second += "";
-
-      let pos1 = 0;
-      let pos2 = 0;
-      let max = 0;
-      const firstLength = first.length;
-      const secondLength = second.length;
-      let p;
-      let q;
-      let l;
-      let sum;
-
-      for (p = 0; p < firstLength; p++) {
-        for (q = 0; q < secondLength; q++) {
-          for (
-            l = 0;
-            p + l < firstLength &&
-            q + l < secondLength &&
-            first.charAt(p + l) === second.charAt(q + l);
-            l++
-          ) {
-            // eslint-disable-line max-len
-            // @todo: ^-- break up this crazy for loop and put the logic in its body
-          }
-          if (l > max) {
-            max = l;
-            pos1 = p;
-            pos2 = q;
-          }
-        }
-      }
-
-      sum = max;
-
-      if (sum) {
-        if (pos1 && pos2) {
-          sum += similar_text(first.substr(0, pos1), second.substr(0, pos2));
-        }
-
-        if (pos1 + max < firstLength && pos2 + max < secondLength) {
-          sum += similar_text(
-            first.substr(pos1 + max, firstLength - pos1 - max),
-            second.substr(pos2 + max, secondLength - pos2 - max)
-          );
-        }
-      }
-
-      if (!percent) {
-        return sum;
-      }
-
-      return (sum * 200) / (firstLength + secondLength);
-    } // endfunction similar_text
   } // endfunction afterFiltersLoaded
+
+  function appendDataCountry(k, v) {
+    readFilterValue(v);
+    if (!v.length) {
+      $rootScope.filtersByCountry[k].push(v);
+      return;
+    }
+    _.each(v, function (v) {
+      $rootScope.filtersByCountry[k].push(v);
+    });
+  }
 
   function readFilterValue(v) {
     v.filterType = getFilterType(v);
@@ -631,8 +613,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     }
   } // endfunction readFilterValue
 
-  function loadFilterData(filterFilenames, onComplete) {
+  function asyncLoadFiles(filterFilenames, onComplete, processData) {
     var files = [];
+    var filesByName = {};
     _.each(filterFilenames, function (e) {
       var curr = {};
       curr.file = e;
@@ -640,6 +623,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       curr.index = files.length;
       curr.loaded = false;
       files.push(curr);
+      filesByName[e] = curr;
       loadYAMLFile(e, function (data, response) {
         curr.response = response;
         curr.data = data;
@@ -648,36 +632,23 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
             return;
           }
           e.loaded = true;
-          processData(e.data, e.response);
+          if (processData) {
+            processData(e.data, e.response);
+          }
         });
 
         if (files[files.length - 1].loaded && onComplete) {
           var previousOnComplete = onComplete;
           onComplete = null;
-          previousOnComplete(files);
+          previousOnComplete(files, filesByName);
         }
       });
     });
-
-    /*
-    loadYAMLFile(
-      filterFilenames.shift(),
-      function (data, response) {
-        processData(data, response);
-      },
-      function () {
-        if (filterFilenames.length > 0) {
-          loadFilterData(filterFilenames, onComplete);
-          return;
-        }
-        if (onComplete) {
-          onComplete();
-        }
-      }
-    );
-    */
-
-    return;
+  }
+  function loadFilterData(filterFilenames, onComplete) {
+    asyncLoadFiles(filterFilenames, onComplete, function (data, response) {
+      processData(data, response);
+    });
 
     function processData(data, response) {
       if (data.filters) {
@@ -715,7 +686,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
   } // endfunction loadFilterData
 
   function loadYAMLFile(url, callback, complete) {
-    $http.get(url).then(function (response) {
+    $http.get(url, { cache: true }).then(function (response) {
       try {
         callback(window.jsyaml.load(response.data), response);
       } catch (err) {
@@ -776,6 +747,15 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     $rootScope.flags = _.sortBy($rootScope.flags, function (k) {
       return 10 - (weights[k] || 5) - (exactMatchFlags[k] ? 100 : 0);
     });
+
+    $rootScope.minWeight = 1;
+    var weights2 = ($rootScope.weights2 = []);
+    _.each($rootScope.flags, function (k) {
+      weights2.push(weights[k]);
+    });
+    if (weights2.length >= 5 && weights2[0] === weights2[4]) {
+      $rootScope.minWeight = weights2[0] + 1;
+    }
 
     return;
 
@@ -876,6 +856,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     } // endfunction updateMatch
   } // endfunction countMatch
 
+  /**
+   * Load level 1/2/3 languages choices
+   */
   function loadLevels() {
     $rootScope.levels1 = {};
     $rootScope.levels2 = {};
@@ -961,4 +944,80 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       }
     });
   } // endfunction loadLevels
+
+  function similar_text(first, second, percent) {
+    // eslint-disable-line camelcase
+    //  discuss at: https://locutus.io/php/similar_text/
+    // original by: Rafał Kukawski (https://blog.kukawski.pl)
+    // bugfixed by: Chris McMacken
+    // bugfixed by: Jarkko Rantavuori original by findings in stackoverflow (https://stackoverflow.com/questions/14136349/how-does-similar-text-work)
+    // improved by: Markus Padourek (taken from https://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
+    //   example 1: similar_text('Hello World!', 'Hello locutus!')
+    //   returns 1: 8
+    //   example 2: similar_text('Hello World!', null)
+    //   returns 2: 0
+
+    if (
+      first === null ||
+      second === null ||
+      typeof first === "undefined" ||
+      typeof second === "undefined"
+    ) {
+      return 0;
+    }
+
+    first += "";
+    second += "";
+
+    let pos1 = 0;
+    let pos2 = 0;
+    let max = 0;
+    const firstLength = first.length;
+    const secondLength = second.length;
+    let p;
+    let q;
+    let l;
+    let sum;
+
+    for (p = 0; p < firstLength; p++) {
+      for (q = 0; q < secondLength; q++) {
+        for (
+          l = 0;
+          p + l < firstLength &&
+          q + l < secondLength &&
+          first.charAt(p + l) === second.charAt(q + l);
+          l++
+        ) {
+          // eslint-disable-line max-len
+          // @todo: ^-- break up this crazy for loop and put the logic in its body
+        }
+        if (l > max) {
+          max = l;
+          pos1 = p;
+          pos2 = q;
+        }
+      }
+    }
+
+    sum = max;
+
+    if (sum) {
+      if (pos1 && pos2) {
+        sum += similar_text(first.substr(0, pos1), second.substr(0, pos2));
+      }
+
+      if (pos1 + max < firstLength && pos2 + max < secondLength) {
+        sum += similar_text(
+          first.substr(pos1 + max, firstLength - pos1 - max),
+          second.substr(pos2 + max, secondLength - pos2 - max)
+        );
+      }
+    }
+
+    if (!percent) {
+      return sum;
+    }
+
+    return (sum * 200) / (firstLength + secondLength);
+  } // endfunction similar_text
 });
