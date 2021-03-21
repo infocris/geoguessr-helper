@@ -5,7 +5,7 @@
 
 - fig: { type: car_plate }
   title: Yellow 🚗 Plate
-  isos: bw,co.9,dk.6,gb.7,gh,ke,kr.1,hu.1,il.9,jp,lk,lu.9,my,nl.8,ph.1,th.1,ua.1,ug
+  isos: bw,co.9,dk.6,gb.7,gh,ke,kr.1,hu.1,il.9,jp,lk,lu.9,my,nl.8,ph.1,th.1,ua.1,ug,uy.1
 
 - fig: { type: car_plate, content: front }
   title: Yellow Front Plate

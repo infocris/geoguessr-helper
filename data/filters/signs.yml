@@ -22,19 +22,19 @@
 
 - title: Diamond yellow sign
   svg: [square, black, gold]
-  isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,mx,my,nz,pe,th,us,uy
+  isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,kh,mx,my,nz,pe,th,us,uy
 
 - image: sign/misc/black-back.svg
-  isos: br.9,mk.4,pe
+  isos: br.9,ec.1,mk.4,pe
   group: sign_caract
 
 - image: sign/misc/light-back.svg
-  isos: bo,cl,ec,fr,sk
+  isos: ar,bo,cl,ec,fr,sk,sz,uy
   group: sign_caract
 
 - title: Flat sign
   image: sign/flat.svg
-  isos: ae,at,bg,br,bt,bw,ca,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,is,ls,lt,mx,my,no,nz,tr,ua,us,uy,za
+  isos: ae,at,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,is,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
@@ -50,7 +50,7 @@
 
 - title: Forbidden park sign
   image: sign/nopark/no-white-lines.svg
-  isos: at,cz,de,dk,hr,me,rs,sk
+  isos: at,cz,de,dk,ee,hr,me,rs,sk
   level: 2
   group: nopark
 
@@ -62,6 +62,6 @@
 
 - title: Forbidden dir. has no white border line
   image: sign/forbidden/no-border.png
-  isos: at,dk,es
+  isos: at,dk,es,ee
   level: 2
   group: sign_caract

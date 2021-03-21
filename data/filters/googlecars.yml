@@ -4,12 +4,12 @@
 
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo,br,bt,bw,ca,cl,fr,id,il,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo,br,bt,bw,ca,cl,fr,id,il,jp,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
   group: car_color
 
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar,id,kr,jo,my.3,pe.4,ph,ru,tr,uy
+  isos: ar,id,kr,jo,il.1,my.3,pe.4,ph,ru,tr,uy
   group: car_color
 
 - title: Blue car 🚗
@@ -25,7 +25,7 @@
 - title: Blur Circle 🚗
   level: 2
   image: misc/blur-circle.png
-  isos: au,be,ca,ch,dk,es,fi,fr,ie,it,lu,se,za
+  isos: au,be,ca,ch,dk,es,fi,fr,gb,ie,it,lu,se,za
   group: blur_circle
 
 - name: Blur Shaped 🚗
@@ -41,7 +41,7 @@
 - title: Blury Sky ☁️
   level: 2
   image: misc/sky-blur.png
-  isos: au,ca,es,gr,it,se,za
+  isos: au,ca,es,gb,gr,it,se,za
 
 - name: Glitchy Blur 🚗
   level: 3
@@ -70,7 +70,7 @@
   group: car_meta
 
 - image: car/antenna/taped.png
-  isos: bg,cz,ro,sk
+  isos: bg,cz,hu,ro,sk
   group: car_meta
 
 - image: car/antenna/none.png

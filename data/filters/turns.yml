@@ -12,7 +12,7 @@
   isos: tr
 
 - svg: [turn, white, black]
-  isos: al,ch,gb,gr,it,nz
+  isos: al,ch,es.1,gb,gr,il.1,it,nz
 
 - svg: [turn, black, white]
   isos: ca,ch,co,me,rs,si

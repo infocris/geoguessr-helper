@@ -53,7 +53,7 @@
 
 - name: Yellow fire hydrant
   level: 3
-  isos: ca,us
+  isos: ca,my,us
 
 - name: Red fire hydrant
   level: 3

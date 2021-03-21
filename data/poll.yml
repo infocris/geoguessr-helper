@@ -5,7 +5,7 @@ filters:
     group: poll
 
   - svg: [poll1, black, gold]
-    isos: ch,co,hr,me,no,rs,si
+    isos: ch,co,hr,me,no,rs,si,uy
     group: poll
 
   - svg: [poll1, "#037bfc", white]
