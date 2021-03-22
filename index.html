@@ -46,6 +46,10 @@
         ng-include="'html/index/custom_filters.html'"
         ng-show="view == 'manageCustomFilter'"
       ></tbody>
+      <tbody
+        ng-include="'html/options/options.html'"
+        ng-show="view == 'options'"
+      ></tbody>
       <tfoot>
         <td
           colspan="10"
@@ -62,6 +66,14 @@
             ng-show="!view"
           ></ng-include>
           <div style="float: right; padding-right: 130px;">
+            <div
+              class="btn btn-lg btn-link"
+              ng-click="view='options'"
+              ng-show="!view && customFilters.length > 0"
+            >
+              <span class="glyphicon glyphicon-wrench"></span>
+              Options
+            </div>
             <div
               class="btn btn-lg btn-link"
               ng-click="view='manageCustomFilter'"
@@ -82,5 +94,14 @@
         >https://github.com/infocris/geoguessr-helper</a
       >
     </p>
+    <svg width="0" height="0">
+        <mask id="myMask">
+          <polygon points="0 0, 100 0, 0 100" fill="white" />
+        </mask>
+        <mask id="myMask2">
+          <polygon points="100 0, 100 100, 0 100" fill="white" />
+        </mask>
+      </g>
+    </svg>
   </body>
 </html>

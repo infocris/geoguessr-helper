@@ -1,6 +1,6 @@
 <tr
   ng-repeat="iso in flags"
-  ng-if="weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
+  ng-if="$index < 3 || weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
 >
   <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
   <td>{{ commercialTlds[iso] || iso }}</td>

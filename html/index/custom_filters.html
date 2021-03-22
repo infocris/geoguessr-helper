@@ -6,6 +6,8 @@
 <tr
   ng-repeat="item in customFilters|orderBy:'-'"
   ng-class="item.deleted ? 'deleted': ''"
+  ng-if="view == 'manageCustomFilter' || loaded.custom_filters"
+  ng-init="loaded.custom_filters = true;"
 >
   <td><span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span></td>
   <td>{{ commercialTlds[item.iso] || item.iso }}</td>
@@ -36,7 +38,8 @@
         ></ng-include>
         <span ng-if="record.similarity"
           >({{ record.similarity|number:1 }} %)</span
-        >
+        ><br />
+        <span class="label label-default">{{ e.file }}</span>
       </span>
     </span>
     <div ng-show="item.errors > 0" class="alert alert-danger">

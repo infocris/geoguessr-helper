@@ -56,19 +56,7 @@
   </g>
 </svg>
 
-<ng-include
-  ng-if="e.type == 'bollard'"
-  src="'html/bollard/bollard.html'"
-  class="bollard"
-></ng-include>
-
-<ng-include
-  ng-repeat="code in ['cz', 'ec1', 'ec2', 'pl', 'rs']"
-  ng-if="e.type == 'bollard_' + code"
-  src="'html/bollard/' + code + '.html'"
-  title="--- bollard_{{ code }}"
-  class="bollard"
-></ng-include>
+<ng-include src="'html/bollard/bollard.html'" class="bollard"></ng-include>
 
 <svg
   width="48"
@@ -128,7 +116,7 @@
 <svg
   width="32"
   height="32"
-  ng-if="e.type == 'priority'"
+  ng-if="e.type == 'priority' || e.svg[0] == 'priority'"
   xmlns="http://www.w3.org/2000/svg"
 >
   <g transform="rotate(180 12 15) scale(0.3)">
@@ -140,7 +128,7 @@
 <svg
   width="48"
   height="48"
-  ng-if="e.type == 'car'"
+  ng-if="e.type == 'car' || e.svg[0] == 'car'"
   xmlns="http://www.w3.org/2000/svg"
 >
   <g transform="translate(5, 10) scale(0.5)">
@@ -164,5 +152,67 @@
     />
     <rect x="40" y="2" width="16" height="16" fill="#69CBFF" />
     <rect x="20" y="2" width="16" height="16" fill="#69CBFF" />
+  </g>
+</svg>
+
+<svg ng-if="e.svg[0] == 'nopriority'" width="48" height="48">
+  <g transform="scale(0.48)">
+    <polygon points="0 0, 100 0, 50 100" fill="red" />
+    <g transform="translate(20,15) scale(0.6)">
+      <polygon points="0 0, 100 0, 50 100" fill="gold" />
+    </g>
+  </g>
+</svg>
+
+<svg ng-if="e.svg[0] == 'combined_sign'" width="48" height="48">
+  <g transform="scale(0.48)">
+    <g mask="url(#myMask)">
+      <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[2] || 'red' }}" />
+      <g transform="translate(20,15) scale(0.6)">
+        <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[1] || 'gold' }}" />
+      </g>
+    </g>
+    <g mask="url(#myMask2)">
+      <circle cx="50" cy="50" r="50" fill="{{ e.svg[2] || 'red' }}" />
+      <circle cx="50" cy="50" r="35" fill="{{ e.svg[1] || 'gold' }}" />
+    </g>
+  </g>
+</svg>
+
+<svg ng-if="e.svg[0] == 'combined_sign_bordered'" width="48" height="48">
+  <g transform="scale(0.48)">
+    <g mask="url(#myMask)">
+      <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[1] || '#ccc' }}" />
+      <g transform="translate(10,5) scale(0.8)">
+        <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[2] || '#555' }}" />
+        <g transform="translate(20,15) scale(0.6)">
+          <polygon
+            points="0 0, 100 0, 50 100"
+            fill="{{ e.svg[1] || '#ccc' }}"
+          />
+        </g>
+      </g>
+    </g>
+    <g mask="url(#myMask2)">
+      <circle cx="50" cy="50" r="50" fill="{{ e.svg[1] || '#ccc' }}" />
+      <circle cx="50" cy="50" r="45" fill="{{ e.svg[2] || '#555' }}" />
+      <circle cx="50" cy="50" r="30" fill="{{ e.svg[1] || '#ccc' }}" />
+    </g>
+  </g>
+</svg>
+
+<svg ng-if="e.svg[0] == 'nopriority_sign'" width="48" height="48">
+  <g transform="scale(0.48)">
+    <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[2] || 'red' }}" />
+    <g transform="translate(20,15) scale(0.6)">
+      <polygon points="0 0, 100 0, 50 100" fill="{{ e.svg[1] || 'gold' }}" />
+    </g>
+  </g>
+</svg>
+
+<svg ng-if="e.svg[0] == 'speedlimit_sign'" width="48" height="48">
+  <g transform="scale(0.48)">
+    <circle cx="50" cy="50" r="50" fill="{{ e.svg[2] || 'red' }}" />
+    <circle cx="50" cy="50" r="35" fill="{{ e.svg[1] || 'gold' }}" />
   </g>
 </svg>

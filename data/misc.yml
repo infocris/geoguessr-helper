@@ -44,7 +44,7 @@ countries:
   ro:
     - { image: "electrical/ro.png" }
   rs:
-    - { image: "electrical/rs.png" }
+    #- { image: "electrical/rs.png" }
   si:
     #- { image: "trash/si1.png" }
     #- { image: "trash/si2.png" }

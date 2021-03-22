@@ -9,16 +9,47 @@
 - image: sign/stop/co.png
   isos: ar,bo,br,cl,co,ec,pe,uy
 
-- image: sign/nopriority/pl.png
-  title: Yellow filled sign
+- title: Yellow filled sign
+  svg: ["combined_sign", "gold"]
   isos: fi.8,gr,is.9,lv,me,mk,pl.9,se.8,si.1
   group: nopriority_sign
 
-- image: sign/nopriority/hr.png
-  title: White filled sign
-  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,nl,no,pt,ro,rs,ru,sk,ua
+- svg: ["nopriority_sign", "gold"]
+  isos: fi
+  group: sign_caract
   level: 2
+
+- svg: ["speedlimit_sign", "gold"]
+  isos: 
+  group: sign_caract
+  level: 2
+
+- title: White filled sign
+  svg: ["combined_sign", "white"]
+  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,nl,no,pt,ro,rs,ru,sk,ua
   group: nopriority_sign
+  level: 2
+
+- svg: ["nopriority_sign", "white"]
+  isos: fr
+  filterType: nopriority
+  group: sign_caract
+  level: 2
+
+- svg: ["speedlimit_sign", "white"]
+  isos: fr,pt
+  group: sign_caract
+  level: 2
+
+- svg: ["combined_sign", "white", "#333"]
+  isos: gr,pt
+  group: sign_caract
+  level: 2
+
+- svg: ["combined_sign_bordered", "white", "#333"]
+  isos: fr,pt
+  group: sign_caract
+  level: 2
 
 - title: Diamond yellow sign
   svg: [square, black, gold]

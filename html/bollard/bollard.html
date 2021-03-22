@@ -1,4 +1,4 @@
-<svg width="16" height="60">
+<svg ng-if="e.type == 'bollard'" width="16" height="60">
   <rect fill="white" x="0" y="0" width="16" height="60" />
   <path
     fill="{{ e.color2 || '#000000' }}"
@@ -39,4 +39,44 @@
     fill="{{ e.hat || 'white' }}"
     ng-if="e.hat"
   />
+</svg>
+
+<svg ng-if="e.type == 'bollard_cz'" width="16" height="60">
+  <rect fill="white" x="0" y="0" width="16" height="60" />
+  <rect x="0" y="12" width="16" height="26" fill="black" />
+  <rect fill="red" x="2" y="14" width="12" height="10" ng-if="e.front" />
+  <rect fill="red" x="2" y="26" width="12" height="10" ng-if="e.front" />
+  <rect fill="#eee" x="4" y="18" width="8" height="14" ng-if="e.back" />
+</svg>
+
+<svg ng-if="e.type == 'bollard_ec1'" width="16" height="60">
+  <rect
+    fill="white"
+    x="0"
+    y="0"
+    width="16"
+    height="60"
+    stroke="#aaa"
+    stroke-width="3"
+  />
+  <rect fill="red" x="1" y="26" width="14" height="20" />
+</svg>
+
+<svg ng-if="e.type == 'bollard_ec2'" width="16" height="60">
+  <rect fill="white" x="0" y="0" width="16" height="60" />
+  <rect fill="red" x="4" y="30" width="9" height="20" />
+  <rect fill="red" x="4" y="6" width="9" height="20" />
+</svg>
+
+<svg ng-if="e.type == 'bollard_pl'" width="16" height="60">
+  <rect fill="white" x="0" y="0" width="16" height="60" />
+  <rect fill="red" x="0" y="14" width="16" height="28" />
+  <rect fill="#eee" x="5" y="16" width="6" height="24" ng-if="e.front" />
+</svg>
+
+<svg ng-if="e.type == 'bollard_rs'" width="16" height="60">
+  <rect fill="white" x="0" y="0" width="16" height="60" />
+  <rect x="0" y="0" width="16" height="10" fill="black" />
+  <rect fill="red" x="0" y="14" width="6" height="30" ng-if="e.front" />
+  <rect fill="#eee" x="0" y="14" width="6" height="30" ng-if="e.back" />
 </svg>
