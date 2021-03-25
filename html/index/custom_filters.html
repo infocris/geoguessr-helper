@@ -1,7 +1,42 @@
 <tr>
-  <td colspan="10">
+  <td colspan="50">
     <h1>Custom filters</h1>
   </td>
+</tr>
+<tr>
+  <td colspan="5"></td>
+  <th ng-repeat="e in allFilters" ng-if="e.customCount > 1">
+    <span class="label label-primary">{{ e.file }}</span><br />
+    #{{ e.index }}
+  </th>
+  <td colspan="50"></td>
+</tr>
+<tr>
+  <td colspan="5"></td>
+  <th ng-repeat="e in allFilters" ng-if="e.customCount > 1">
+    <span ng-if="e.name">{{ e.name }}</span>
+    <ng-include
+      class="figure"
+      src="'html/figure.html'"
+      ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+      ng-init="img_style = {'max-width': 'e.width || 48', 'max-height': e.width || 48}"
+    ></ng-include>
+  </th>
+  <td colspan="50"></td>
+</tr>
+<tr>
+  <td colspan="5"></td>
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1">
+    {{ e.customDiff }}
+  </td>
+  <td colspan="50"></td>
+</tr>
+<tr class="isos">
+  <td colspan="5"></td>
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1">
+    {{ customIsos(e).join(",") }}
+  </td>
+  <td colspan="50"></td>
 </tr>
 <tr
   ng-repeat="item in customFilters|orderBy:'-'"
@@ -20,15 +55,61 @@
     {{ item.filters.length }} filters
   </td>
   <td>
+    <div
+      class="btn btn-danger glyphicon glyphicon-trash"
+      ng-show="!item.deleted"
+      ng-click="item.deleted = true; updateCustomFilter(item);"
+    ></div>
+    <div
+      class="btn btn-success glyphicon glyphicon-repeat"
+      ng-show="item.deleted"
+      ng-click="item.deleted = false; updateCustomFilter(item);"
+    >
+      Cancel
+    </div>
+  </td>
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1">
+    <span
+      ng-if="e.customIsos[item.iso]"
+      class="glyphicon glyphicon-plus-sign text-success"
+    ></span>
+    <span
+      ng-if="e.isos2[item.iso] && !e.customIsos[item.iso]"
+      class="glyphicon glyphicon-ok-sign"
+    ></span>
+  </td>
+  <td>
+    <div
+      class="btn btn-danger glyphicon glyphicon-trash"
+      ng-show="!item.deleted"
+      ng-click="item.deleted = true; updateCustomFilter(item);"
+    ></div>
+    <div
+      class="btn btn-success glyphicon glyphicon-repeat"
+      ng-show="item.deleted"
+      ng-click="item.deleted = false; updateCustomFilter(item);"
+    >
+      Cancel
+    </div>
+  </td>
+  <td colspan="10" style="text-align: left;">
     {{ item.chars }}
-    <span ng-repeat="record in item.filters">
+    <span
+      ng-repeat="record in item.filters"
+      ng-if="record.filter.customCount < 2"
+    >
       <span
         ng-if="e"
         ng-repeat="e in [record.filter]"
         class="customFilter"
         ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
-        ng-title="record.similarity ? record.similarity|number:1 + '%': null"
+        title="{{ e.title }}"
       >
+        <div>
+          <span class="label label-primary"
+            >{{ record.filter.file }}#{{ record.filter.index }}</span
+          >
+        </div>
         <span ng-if="e.name">{{ e.name }}</span>
         <ng-include
           class="figure"
@@ -38,8 +119,19 @@
         ></ng-include>
         <span ng-if="record.similarity"
           >({{ record.similarity|number:1 }} %)</span
-        ><br />
-        <span class="label label-default">{{ e.file }}</span>
+        >
+        <div ng-if="record.svg">
+          <span class="label label-default">{{ e.svg[0] }}</span><br />
+          <span ng-if="e.svg[1]" ng-style="{'background-color': e.svg[1]}"
+            >{{ e.svg[1] }}</span
+          >
+          <span ng-if="e.svg[2]" ng-style="{'background-color': e.svg[2]}"
+            >{{ e.svg[2] }}</span
+          >
+        </div>
+        <div class="isos">
+          {{ customIsos(e).join(",") }}
+        </div>
       </span>
     </span>
     <div ng-show="item.errors > 0" class="alert alert-danger">
@@ -60,20 +152,6 @@
         </li>
       </ul>
       <strong>It seems that data may be outdated.</strong>
-    </div>
-  </td>
-  <td>
-    <div
-      class="btn btn-danger glyphicon glyphicon-trash"
-      ng-show="!item.deleted"
-      ng-click="item.deleted = true; updateCustomFilter(item);"
-    ></div>
-    <div
-      class="btn btn-success glyphicon glyphicon-repeat"
-      ng-show="item.deleted"
-      ng-click="item.deleted = false; updateCustomFilter(item);"
-    >
-      Cancel
     </div>
   </td>
 </tr>

@@ -1,3 +1,35 @@
+tbody.customFilters tr:nth-child(2n + 1) > *:nth-child(2n) {
+  background-color: #aaa;
+}
+tbody.customFilters tr:nth-child(2n + 1) > *:nth-child(2n + 1) {
+  background-color: #bbb;
+}
+tbody.customFilters tr:nth-child(2n) > *:nth-child(2n) {
+  background-color: #999;
+}
+tbody.customFilters tr:nth-child(2n) > *:nth-child(2n + 1) {
+  background-color: #888;
+}
+tbody.customFilters div.isos,
+tbody.customFilters tr.isos td {
+  max-width: 100px;
+  font-size: 10pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+
+tbody.customFilters th {
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  z-index: 100000;
+  text-align: center;
+}
+tbody.customFilters td {
+  text-align: center;
+}
+
 select.form-control {
   display: inline-block;
 }
@@ -8,7 +40,7 @@ select.form-control {
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  max-height: 100px;
+  max-height: 150px;
   text-align: center;
   border-radius: 4px;
   /*border: 2px solid #555;*/

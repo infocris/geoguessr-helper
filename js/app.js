@@ -137,14 +137,17 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       });
 
       _.each(files, function (v) {
+        var i = 1;
         if (v.data.filters) {
           _.each(v.data.filters, function (e) {
+            e.index = i++;
             eachValue(e, v.response);
           });
         } // endif has filters
 
         if (v.file.match(/\/filters\//)) {
           _.each(v.data, function (e) {
+            e.index = i++;
             eachValue(e, v.response);
           });
         } // endif is file filters
@@ -447,6 +450,8 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
         e.isos2[iso] = 5;
         if (!e.customIsos) {
           e.customIsos = {};
+          e.customCount = 0;
+          e.customDiff = 0;
         }
         e.customIsos[iso] = true;
       }
@@ -512,37 +517,57 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       data.savedValue = e3;
       _.each(e3.filters, function (e) {
         e = _.clone(e);
-        _.each(filters, function (e2) {
-          if (
-            !e.filter &&
-            e2.filterType === e.filterType &&
-            e2.isos === e.isos
-          ) {
-            e.filter = e2;
-          }
-        }); // endforeach loaded filters
-        if (!e.filter) {
-          _.each(allFilters, function (e2) {
-            if (e.filter || e2.filterType !== e.filterType) {
+        if (e.svg) {
+          _.each(filters, function (e2) {
+            if (e.filter || !e2.svg) {
               return;
             }
-            var similarity = similar_text(e2.isos, e.isos, true);
-            if (similarity < 75) {
-              return;
+            if (
+              e.svg[0] === e2.svg[0] &&
+              JSON.stringify(e.svg) === JSON.stringify(e2.svg)
+            ) {
+              e.filter = e2;
             }
-            e.similarity = similarity;
-            e.filter = e2;
           }); // endforeach loaded filters
-        } // endif trying to find filter by approximation
+        } // endif svg
+        if (!e.svg) {
+          _.each(filters, function (e2) {
+            if (e.filter) {
+              return;
+            }
+            if (e2.filterType === e.filterType && e2.isos === e.isos) {
+              e.filter = e2;
+            }
+          }); // endforeach loaded filters
+          if (!e.filter) {
+            _.each(allFilters, function (e2) {
+              if (e.filter || e2.filterType !== e.filterType) {
+                return;
+              }
+              var similarity = similar_text(e2.isos, e.isos, true);
+              if (similarity < 75) {
+                return;
+              }
+              e.similarity = similarity;
+              e.filter = e2;
+            }); // endforeach loaded filters
+          } // endif trying to find filter by approximation
+        } // endif not svg
         if (e.filter && e.filter.isos2[e3.iso]) {
           delete e.similarity;
         }
+        if (e.filter && !e.filter.customIsos) {
+          e.filter.customIsos = {};
+          e.filter.customCount = 0;
+          e.filter.customDiff = 0;
+        }
+        if (e.filter) {
+          e.filter.customCount++;
+        }
         if (e.filter && !e.filter.isos2[e3.iso]) {
-          if (!e.filter.customIsos) {
-            e.filter.customIsos = {};
-          }
           e.filter.isos2[e3.iso] = 5;
           e.filter.customIsos[e3.iso] = true;
+          e.filter.customDiff++;
         }
         if (!e.filter) {
           console.warn("filter not found", e);
@@ -550,8 +575,22 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
         }
         data.filters.push(e);
       }); // endforeach saved filters
+      data.filters = _.sortBy(data.filters, function (e) {
+        return e.filter ? (e.filter.customIsos[e3.iso] ? 1 : 2) : 3;
+      });
       $rootScope.customFilters.push(data);
     }); // endforeach saved record
+
+    $rootScope.customIsos = function (filter) {
+      var isos = filter.isos.split(/\s*,\s*/);
+      _.each(filter.customIsos, function (v, k) {
+        isos.push(k);
+      });
+      isos = _.sortBy(isos, function (v) {
+        return v.charCodeAt(0);
+      });
+      return _.uniq(isos);
+    };
 
     window.makepatch = function () {
       var res = "";
@@ -561,17 +600,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           if (!filter.customIsos) {
             return;
           }
-          var isos = filter.isos.split(/\s*,\s*/);
-          _.each(filter.customIsos, function (v, k) {
-            isos.push(k);
-          });
-          isos = _.sortBy(isos, function (v) {
-            return v.charCodeAt(0);
-          });
-          isos = _.uniq(isos);
           content = content.replace(
             "isos: " + filter.isos + "\n",
-            "isos: " + isos.join(",") + "\n"
+            "isos: " + $rootScope.customIsos(filter).join(",") + "\n"
           );
         }); // endforeach filters
         if (content === file.response.data) {
@@ -823,16 +854,23 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
         }
         weights[k] += filter.isos2[k];
       }); // endforeach filters
-      if ($rootScope.search_text) {
-        if (
-          !(($rootScope.texts[k] || []).join(",") + "," + k)
+      if ($rootScope.search_text && $rootScope.search_text.length >= 2) {
+        if ($rootScope.search_text.length === 2) {
+          if (k !== $rootScope.search_text) {
+            matched = false;
+            return;
+          }
+          weights[k] += 100;
+        } else if (
+          !($rootScope.texts[k] || [])
+            .join(",")
             .toLowerCase()
             .match($rootScope.search_text.toLowerCase())
         ) {
           matched = false;
           return;
         }
-        weights[k] += 5;
+        weights[k] += 15;
       } // endif search_text
       return matched;
     } // endfunction isFlagMatch

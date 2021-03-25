@@ -9,12 +9,12 @@
 
 - title: Black car 🚗
   fig: { type: car, color: black }
-  isos: ar,id,kr,jo,il.1,my.3,pe.4,ph,ru,tr,uy
+  isos: ar,hr,id,il.1,jo,kr,my.3,pe.4,ph,ru,tr,uy
   group: car_color
 
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,bg,br,cz,fi,fr,gr,hr,hu,ie,it,mx,nl,no,nz,ro,th
+  isos: ar,au,bg,br,cz,dk,fi,fr,gr,hr,hu,ie,it,mx,nl,no,nz,ro,th
   group: car_color
 
 - title: Red car 🚗
@@ -41,7 +41,7 @@
 - title: Blury Sky ☁️
   level: 2
   image: misc/sky-blur.png
-  isos: au,ca,es,gb,gr,it,se,za
+  isos: au,be,ca,dk,es,gb,gr,it,se,za
 
 - name: Glitchy Blur 🚗
   level: 3
@@ -74,7 +74,7 @@
   group: car_meta
 
 - image: car/antenna/none.png
-  isos: br,mx,ph
+  isos: br,fi,mx,ph
   group: car_meta
 
 - name: no back antenna

@@ -12,13 +12,13 @@
 
 - title: White street sign
   fig: { type: street_sign, color: white, color2: black }
-  isos: sk
+  isos: at,lu,sk
   group: street_sign
   level: 2
 
 - title: Blue street sign
   fig: { type: street_sign, color: blue, color2: white }
-  isos: sk
+  isos: nl,sk
   group: street_sign
   level: 2
 
@@ -58,6 +58,10 @@
 - name: Red fire hydrant
   level: 3
   isos: dk
+
+- name: Blue fire hydrant
+  level: 3
+  isos: hr
 
 - name: Sea pedestr.
   isos: ec,ph,tn

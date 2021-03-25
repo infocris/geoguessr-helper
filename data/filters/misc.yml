@@ -1,7 +1,7 @@
 ---
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.2,in.1
+  isos: hr,in.1,kg,lt.6,lu.2,ro.8,ru.7,ua.9
 
 - title: Painted tree (India)
   image: misc/tree2.png
@@ -15,12 +15,12 @@
 
 - image: electrical/lv-like.png
   title: Electrical poll
-  isos: ar.1,br,ee.8,jp,kg.2,lk.3,lt.8,lv.9,ru.5,sk,ua.2
+  isos: ar.1,br,ee.8,hr,jp,kg.2,lk.3,lt.8,lv.9,ru.5,sk,ua.2
   group: misc
 
 - image: electrical/pl3.png
   title: Electrical poll
-  isos: ee,hu,lv.3,pl,sk
+  isos: ee,hu,hr,lv.3,me,pl,ru,sk
   group: misc
 
 - image: electrical/tri.png
@@ -36,7 +36,7 @@
 
 - title: Parallepedic eletrical poll
   image: electrical/parallelepipedic.svg
-  isos: lk,th,ru
+  isos: lk,lt,th,ru
   level: 2
 
 - title: Cylinder steel eletrical poll

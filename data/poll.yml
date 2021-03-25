@@ -1,7 +1,7 @@
 ---
 filters:
   - svg: [poll1, black, white]
-    isos: ae,bh,bt,ie,lk,lt,lv,mt,my,nl,pe,th,uy
+    isos: ae,ar,bh,bt,ie,lk,lt,lv,mt,my,nl,pe,th,uy
     group: poll
 
   - svg: [poll1, black, gold]
@@ -26,7 +26,7 @@ filters:
   #  isos: ch,hr,me,si
 
   - image: poll/nl.png
-    isos: be,it,nl,pl
+    isos: be,hu,it,nl,pl
     group: poll
 
   - title: Stripped red and white poll

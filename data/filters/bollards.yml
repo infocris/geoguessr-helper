@@ -13,7 +13,7 @@
   isos: mx
   level: 2
 - fig: { type: bollard, color: white, color2: white, front: 1, hat: 1 }
-  isos: at,mx
+  isos: at,me,mx
   level: 2
 - fig: { type: bollard, color: gold, back: 1, circ: 1 }
   isos: ee,fi,lv
@@ -22,7 +22,7 @@
 - fig: { type: bollard_ec2, front: 1 }
   isos: bo,ec.9,my
 - fig: { type: bollard, color: red, color2: white, front: 1 }
-  isos: au.8,nl,ro.2,tr.9,nz.1
+  isos: au.8,nl,ro.2,tr.9,nz.1,pl
 - fig: { type: bollard, color: white, color2: white, back: 1 }
   isos: au,be,mx,tr,uy
   level: 2

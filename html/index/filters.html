@@ -39,30 +39,6 @@
       <b>{{ e }}</b> ({{ levelsFilterCount[e] }})
     </div>
   </div>
-  <div
-    class="btn"
-    ng-class="exclusiveFiltering ? 'btn-link': 'btn-link'"
-    ng-click="updateExclusiveFiltering();"
-  >
-    <input
-      class="form-check-input"
-      type="checkbox"
-      ng-model="exclusiveFiltering"
-    />
-    Exact filters match
-  </div>
-  <div
-    class="btn"
-    ng-class="customFiltering ? 'btn-link': 'btn-link'"
-    ng-click="updateCustomFiltering();"
-  >
-    <input
-      class="form-check-input"
-      type="checkbox"
-      ng-model="customFiltering"
-    />
-    Use custom filters
-  </div>
   <button
     class="btn btn-primary"
     style="font-size: 16pt;"

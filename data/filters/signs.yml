@@ -26,28 +26,28 @@
 
 - title: White filled sign
   svg: ["combined_sign", "white"]
-  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,nl,no,pt,ro,rs,ru,sk,ua
+  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,me,nl,no,pt,ro,rs,ru,sk,ua
   group: nopriority_sign
   level: 2
 
 - svg: ["nopriority_sign", "white"]
-  isos: fr
+  isos: be,dk,fr,hu,il,jo,lu,ru
   filterType: nopriority
   group: sign_caract
-  level: 2
+  level: 3
 
 - svg: ["speedlimit_sign", "white"]
-  isos: fr,pt
+  isos: be,fr,il,pt,ru
   group: sign_caract
-  level: 2
+  level: 3
 
 - svg: ["combined_sign", "white", "#333"]
-  isos: gr,pt
+  isos: at,dk,gr,jo,pt,ro
   group: sign_caract
   level: 2
 
 - svg: ["combined_sign_bordered", "white", "#333"]
-  isos: fr,pt
+  isos: be,fr,hu,hr,il,lu,pt,ru
   group: sign_caract
   level: 2
 
@@ -65,7 +65,7 @@
 
 - title: Flat sign
   image: sign/flat.svg
-  isos: ae,at,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,is,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
+  isos: ae,at,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,il,is,jo,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
@@ -75,24 +75,24 @@
 
 - title: Forbidden park sign with inner white border line
   image: sign/nopark/white-lines.svg
-  isos: al,bg,hu,it,lt,lv
+  isos: al,bg,hu,it,lt,lv,ru
   level: 2
   group: nopark
 
 - title: Forbidden park sign
   image: sign/nopark/no-white-lines.svg
-  isos: at,cz,de,dk,ee,hr,me,rs,sk
+  isos: at,cz,de,dk,ee,fi,hr,il,lu,me,mt,nl,rs,sk
   level: 2
   group: nopark
 
 - title: Forbidden dir. with white border line
   image: sign/forbidden/white-border.png
-  isos: de,it
+  isos: de,it,mt,nl
   level: 2
   group: sign_caract
 
 - title: Forbidden dir. has no white border line
   image: sign/forbidden/no-border.png
-  isos: at,dk,es,ee
+  isos: at,dk,es,ee,nl
   level: 2
   group: sign_caract
