@@ -28,6 +28,12 @@
   group: street_sign
   level: 2
 
+- title: Green street sign
+  fig: { type: street_sign, color: green, color2: white }
+  isos: 
+  group: street_sign
+  level: 2
+
 - name: Blue street sign
   isos: rs
   level: 3

@@ -424,6 +424,11 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
     _.each(allFilters, function (e) {
       e.selected = false;
     });
+    _.each($rootScope.toggledClasses, function (v, k) {
+      if (!k.match(/_covered$|_select$|^level|^saveFiltersEnabled$/) && v) {
+        $rootScope.toggledClasses[k] = false;
+      }
+    });
     selectedChar = {};
     $rootScope.search_text = "";
     loadFlags();
@@ -588,6 +593,9 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
       });
       isos = _.sortBy(isos, function (v) {
         return v.charCodeAt(0);
+      });
+      isos = _.reject(isos, function (v) {
+        return v === "";
       });
       return _.uniq(isos);
     };

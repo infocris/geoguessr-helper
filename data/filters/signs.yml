@@ -26,7 +26,7 @@
 
 - title: White filled sign
   svg: ["combined_sign", "white"]
-  isos: ad,al,at,be,bg,ch,cz,cl,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,me,nl,no,pt,ro,rs,ru,sk,ua
+  isos: ad,al,at,ae,be,bg,ch,cz,cl,co,de,dk,ee,es,fr,hr,hu,it,lt,lu,lv,me,nl,no,pt,ro,rs,ru,sk,si,ua
   group: nopriority_sign
   level: 2
 
@@ -42,12 +42,12 @@
   level: 3
 
 - svg: ["combined_sign", "white", "#333"]
-  isos: at,dk,gr,jo,pt,ro
+  isos: at,bw,dk,ee,gr,jo,no,pt,ro,si
   group: sign_caract
   level: 2
 
 - svg: ["combined_sign_bordered", "white", "#333"]
-  isos: be,fr,hu,hr,il,lu,pt,ru
+  isos: ae,be,fr,hu,hr,il,lu,pt,ru
   group: sign_caract
   level: 2
 
@@ -60,12 +60,12 @@
   group: sign_caract
 
 - image: sign/misc/light-back.svg
-  isos: ar,bo,cl,ec,fr,sk,sz,uy
+  isos: ar,bo,cl,co,ec,fr,no,pt,sk,sz,uy
   group: sign_caract
 
 - title: Flat sign
   image: sign/flat.svg
-  isos: ae,at,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,il,is,jo,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
+  isos: ae,at,au,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,il,is,jo,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
@@ -81,7 +81,7 @@
 
 - title: Forbidden park sign
   image: sign/nopark/no-white-lines.svg
-  isos: at,cz,de,dk,ee,fi,hr,il,lu,me,mt,nl,rs,sk
+  isos: at,cz,de,dk,ee,fi,hr,il,lu,me,mt,nl,rs,sk,si
   level: 2
   group: nopark
 
