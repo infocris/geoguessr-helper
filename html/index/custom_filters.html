@@ -39,7 +39,9 @@
   ng-init="loaded.custom_filters = true;"
 >
   <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
-    <span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span>
+    <span class="flag-icon" ng-class="'flag-icon-' + item.iso">
+      <ng-include src="'html/flag.html'" ng-init="iso = item.iso"></ng-include>
+    </span>
   </td>
   <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
     {{commercialTlds[item.iso] || item.iso}}<br />

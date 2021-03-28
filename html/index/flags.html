@@ -6,7 +6,10 @@
     style="text-align: center;"
     ng-class="[iso, exactMatchFlags[iso] ? 'exactMatch': '']"
   >
-    <span class="flag-icon" ng-class="'flag-icon-' + iso"></span><br />
+    <span class="flag-icon" ng-class="'flag-icon-' + iso">
+      <ng-include src="'html/flag/flag.html'"></ng-include>
+    </span>
+    <br />
     {{ iso }}
     <span ng-if="sumWeight > 0"
       ><br />{{ weightFlags[iso]/sumWeight*100|number:0 }}%</span

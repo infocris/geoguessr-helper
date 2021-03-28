@@ -18,7 +18,7 @@
 
 - title: Blue street sign
   fig: { type: street_sign, color: blue, color2: white }
-  isos: nl,sk
+  isos: bg,nl,sk
   group: street_sign
   level: 2
 
@@ -56,18 +56,6 @@
 - name: Buddhism
   level: 3
   isos: th
-
-- name: Yellow fire hydrant
-  level: 3
-  isos: ca,my,us
-
-- name: Red fire hydrant
-  level: 3
-  isos: dk
-
-- name: Blue fire hydrant
-  level: 3
-  isos: hr
 
 - name: Sea pedestr.
   isos: ec,ph,tn

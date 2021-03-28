@@ -34,12 +34,12 @@
   isos: br,kg.3,ro,ua
   level: 2
 
-- title: Parallepedic eletrical poll
+- title: Parallepedic electrical poll
   image: electrical/parallelepipedic.svg
   isos: lk,lt,th,ru
   level: 2
 
-- title: Cylinder steel eletrical poll
+- title: Cylinder electrical poll
   image: electrical/cylindric.svg
   isos: bd,br,sk,ua
   level: 2
@@ -49,3 +49,18 @@
   isos: ee,fi,is,no,se
   level: 3
   group: misc
+
+- title: Yellow fire hydrant
+  svg: ["firehydrant", "yellow"]
+  level: 2
+  isos: ca,my,us
+
+- title: Red fire hydrant
+  svg: ["firehydrant"]
+  level: 2
+  isos: dk,lt,us
+
+- title: Blue fire hydrant
+  svg: ["firehydrant", "blue"]
+  level: 2
+  isos: hr

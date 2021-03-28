@@ -4,7 +4,7 @@
 
 - title: White car 🚗
   fig: { type: car, color: white }
-  isos: ae,bd,bo,br,bt,bw,ca,cl,fr,id,il,jp,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us
+  isos: ae,bd,bo,br,bt,bw,ca,cl,fr,id,il,jp,kh,ls,lv,mk,my,mx,pe.3,ph,ro,sz,ua,us,za
   group: car_color
 
 - title: Black car 🚗
@@ -74,7 +74,7 @@
   group: car_meta
 
 - image: car/antenna/none.png
-  isos: br,fi,mx,ph
+  isos: br,fi,kr,mx,ph
   group: car_meta
 
 - name: no back antenna

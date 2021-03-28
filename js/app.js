@@ -89,6 +89,7 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
           "data/circular.yml"
         ],
     function (files, filesByName) {
+      $rootScope.files = files;
       $rootScope.countries = filesByName["data/countries.yml"].data.list;
       $rootScope.commercialTlds =
         filesByName["data/countries.yml"].data.commercialTlds;

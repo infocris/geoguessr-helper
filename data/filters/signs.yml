@@ -19,14 +19,14 @@
   group: sign_caract
   level: 2
 
-- svg: ["speedlimit_sign", "gold", "red", "XX"]
+- svg: ["speedlimit_sign", "gold"]
   isos: fi,si,se
   group: sign_caract
   level: 2
 
 - title: White filled sign
   svg: ["combined_sign", "white"]
-  isos: ad,al,at,ae,be,bg,ch,cz,cl,co,de,dk,ee,es,fr,hr,hu,it,kr,lt,lu,lv,me,nl,no,pt,ro,rs,ru,sk,si,tr,ua
+  isos: ad,al,at,ae,be,bg,ch,cz,cl,co,de,dk,ee,es,fr,hr,hu,it,ie,kr,lt,lu,lv,me,nl,no,pt,ro,rs,ru,sk,si,sz,tr,ua,za
   group: nopriority_sign
 
 - svg: ["nopriority_sign", "white"]
@@ -35,17 +35,17 @@
   group: sign_caract
   level: 3
 
-- svg: ["speedlimit_sign", "white", "red", "XX"]
-  isos: ar,be,fr,il,no,pt,ru
+- svg: ["speedlimit_sign", "white"]
+  isos: ar,be,co,ec,fr,il,no,pt,ru
   group: sign_caract
   level: 2
 
 - svg: ["combined_sign", "white", "#333"]
-  isos: at,bw,be,cl,dk,ee,gr,jo,no,pt,pl,ro,si
+  isos: at,bw,be,cl,co,dk,ee,gr,ie,is,jo,no,nl,pt,pl,ro,si,sz,za
   group: sign_caract
 
 - svg: ["combined_sign_bordered", "white", "#333"]
-  isos: ae,ar,be,fr,hu,hr,il,lu,mt,mn,pt,ru,tr
+  isos: ae,ar,be,bg,fr,hu,hr,il,lu,lv,mt,mn,nl,pt,ru,sz,tr
   group: sign_caract
 
 - title: Diamond yellow sign
@@ -53,7 +53,7 @@
   isos: ar,au,bo,br,ca,cl,co,ec,gt,ie,kh,mx,my,nz,pe,th,us,uy
 
 - image: sign/misc/black-back.svg
-  isos: br.9,ec.1,mk.4,pe
+  isos: ar,br.9,ec.1,mk.4,pe
   group: sign_caract
 
 - image: sign/misc/light-back.svg
@@ -62,7 +62,7 @@
 
 - title: Flat sign
   image: sign/flat.svg
-  isos: ae,at,au,ar,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,fi.2,gb,gr,hu,ie,il,is,jo,kr,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
+  isos: ae,at,au,ar,bg,br,bt,bw,ca,cl,ch,co,de,dk,es,ec,fi.2,gb,gr,hu,ie,il,is,jo,kr,ls,lt,mx,my,no,nz,sz,tr,ua,us,uy,za
   group: sign_flatness
 
 - title: Not Flat sign
@@ -82,7 +82,7 @@
 
 - title: Forbidden dir. with white border line
   image: sign/forbidden/white-border.png
-  isos: ae,de,it,lv,mt,nl
+  isos: ae,bg,de,it,lv,lu,mt,nl,ru
   level: 2
   group: sign_caract
 

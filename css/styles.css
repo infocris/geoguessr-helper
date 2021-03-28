@@ -119,10 +119,6 @@ table.level2 .filter.level3 {
   user-select: none;
 }
 
-.flag-icon-kg {
-  background-image: url(../flags/4x3/kg_.svg);
-}
-
 body {
   overflow: scroll;
 }
@@ -255,11 +251,6 @@ div.filter {
   background-color: #00399c;
   border-color: #00399c;
   color: white;
-}
-.flag-icon {
-  width: 50px;
-  height: 50px;
-  margin: 10px;
 }
 
 body,
