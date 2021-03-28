@@ -11,7 +11,7 @@
 
 - image: road/africa.png
   title: Yellow Border Lines
-  isos: bw,ch,es.1,ie,il.1,jo,ls,sz,tr.1,za
+  isos: bw,ch,es.1,ie,il.1,jo,ls,my,sz,tr.1,za
   group: road_lines_color
 
 - image: road/uy.png
@@ -51,7 +51,7 @@
   group: road_artifact
   
 - image: road/border-white-black.png
-  isos: ae,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,ru,sg,si,sz,th,za
+  isos: ae,bd,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,ru,sg,si,sz,th,ua,za
   group: road_artifact
   level: 2
 

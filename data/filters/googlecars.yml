@@ -14,12 +14,12 @@
 
 - title: Blue car 🚗
   fig: { type: car, color: blue }
-  isos: ar,au,bg,br,cz,dk,fi,fr,gr,hr,hu,ie,it,mx,nl,no,nz,ro,th
+  isos: ar,au,bg,br,cz,dk,fi,fr,gr,hr,hu,ie,it,mx,nl,no,nz,ro,se,th
   group: car_color
 
 - title: Red car 🚗
   fig: { type: car, color: red }
-  isos: br,co,ec,gb,is,mx,ru.8,sk,ua.9
+  isos: br,co,ec,gb,is,kr,mx,ru.8,sk,ua.9
   group: car_color
 
 - title: Blur Circle 🚗

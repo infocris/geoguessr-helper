@@ -535,7 +535,18 @@ window.angular.module("app", []).run(function ($rootScope, $http) {
             }
           }); // endforeach loaded filters
         } // endif svg
-        if (!e.svg) {
+        if (e.fig) {
+          delete e.fig.$$hashKey;
+          _.each(filters, function (e2) {
+            if (e.filter || !e2.fig) {
+              return;
+            }
+            if (JSON.stringify(e.fig) === JSON.stringify(e2.fig)) {
+              e.filter = e2;
+            }
+          }); // endforeach loaded filters
+        } // endif fig
+        if (!e.svg && !e.fig) {
           _.each(filters, function (e2) {
             if (e.filter) {
               return;

@@ -33,6 +33,7 @@ countries:
   ch: {image2: sign/pedestrian/ch.png}
   cl: {image2: sign/pedestrian/cl.png}
   co: {image2: sign/pedestrian/co.png}
+  dk: {image2: sign/pedestrian/dk.png}
   es: {image2: sign/pedestrian/es.png}
   gr: {image2: sign/pedestrian/gr.png}
   ie: {image2: sign/pedestrian/ie.png}
