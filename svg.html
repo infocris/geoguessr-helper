@@ -14,11 +14,6 @@
     <link href="../css/flag-icon.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="../js/app.js"></script>
-    <style>
-      li {
-        display: inline-block;
-      }
-    </style>
   </head>
   <body>
     <div ng-repeat="item in errors" class="error">
@@ -29,9 +24,13 @@
       <ng-include
         src="'html/filter.html'"
         ng-repeat="e in filters"
-        ng-if="e.svg"
+        ng-if="e.svg || e.fig"
       ></ng-include>
     </div>
+    <h2>Files:</h2>
+    <ul>
+    <li ng-repeat="item in files">{{ item.file }}</li>
+    </ul>
     <svg width="0" height="0">
         <mask id="myMask">
           <polygon points="0 0, 100 0, 0 100" fill="white" />
