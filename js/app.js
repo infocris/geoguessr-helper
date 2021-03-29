@@ -67,7 +67,7 @@ window.app = window.angular
       window.location.hash === "#!#dev" || window.location.hash === "#dev"
         ? [
             "images/tiles.yml",
-            "images/tiles.png",
+            "flags/flags.yml",
             "data/countries.yml",
             "data/languages.yml",
             "data/filters/landscapes.yml",
@@ -79,7 +79,7 @@ window.app = window.angular
           ]
         : [
             "images/tiles.yml",
-            "images/tiles.png",
+            "flags/flags.yml",
             "data/countries.yml",
             "data/languages.yml",
             "data/filters/regions.yml",
@@ -118,6 +118,18 @@ window.app = window.angular
               v[0] * 48 +
               "px -" +
               v[1] * 48 +
+              "px; } "
+          );
+        });
+
+        _.each(filesByName["flags/flags.yml"].data, function (v, k) {
+          appendCssRule(
+            ".flag-icon-" +
+              k +
+              " { background-position: -" +
+              v[0] * 50 +
+              "px -" +
+              v[1] * 50 +
               "px; } "
           );
         });

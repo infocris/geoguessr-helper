@@ -15,6 +15,7 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/flag-icon.custom.css" rel="stylesheet" />
     <script src="../js/app.js"></script>
+    <script src="../js/flags.js"></script>
     <style>
       div.flag {
         opacity: 1;
@@ -22,12 +23,15 @@
     </style>
   </head>
   <body>
-    <div ng-repeat="iso in flags" class="flag" style="text-align: center;">
-      <span class="flag-icon" ng-class="'flag-icon-' + iso">
-        <ng-include src="'html/flag/flag.html'"></ng-include>
-      </span>
-      <br />
-      {{ iso }}
+    <div id="images">
+      <img
+        ng-repeat="iso in flags"
+        ng-src="flags/4x3/{{ iso == 'kg' ? 'kg_': iso }}.svg"
+        style="width: 100px;"
+      />
     </div>
+    <canvas id="canvas" width="1000" height="{{ 128 * 8 }}">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
   </body>
 </html>
