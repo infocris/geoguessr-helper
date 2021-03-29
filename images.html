@@ -1,0 +1,40 @@
+<html ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="../css/flag-icon.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script src="../js/app.js"></script>
+    <script src="../js/images.js"></script>
+  </head>
+  <body>
+    <div ng-repeat="item in errors" class="error">
+      Error in file: {{ item.response.config.url }}
+      <pre>{{ item.error }}</pre>
+    </div>
+    <canvas id="canvas" width="1280" height="{{ 128 * 8 }}">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+    <div id="images">
+      <img
+        ng-repeat="e in filters"
+        ng-src="{{ e.image2 || ( 'images/' + e.image ) }}"
+        ng-if="e.image || e.image2"
+        style="max-height: 128px; max-width: 128px;"
+      />
+    </div>
+    <h2>Files:</h2>
+    <ul>
+      <li ng-repeat="item in files">{{ item.file }}</li>
+    </ul>
+  </body>
+</html>
