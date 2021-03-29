@@ -700,6 +700,7 @@ window.app = window.angular
       if (v.image) {
         image = "images/" + image;
       }
+
       if (image && tiledImages[image]) {
         v.imagePlaceholder = v.image ? "blank.png" : "images/blank.png";
         v.imageClass = [

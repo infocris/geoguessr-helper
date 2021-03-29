@@ -3,9 +3,7 @@
   ng-if="$index < 3 || weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
 >
   <td>
-    <span class="flag-icon" ng-class="'flag-icon-' + iso">
-      <ng-include src="'html/flag/flag.html'"></ng-include>
-    </span>
+    <span class="flag-icon" ng-class="'flag-icon-' + iso"></span>
   </td>
   <td>{{ commercialTlds[iso] || iso }}</td>
   <td class="names">{{ countries[iso][0] }}</td>
