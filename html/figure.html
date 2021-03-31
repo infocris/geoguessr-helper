@@ -10,7 +10,7 @@
   ng-if="e.image"
   ng-src="images/{{ e.imagePlaceholder || e.image }}"
   ng-class="e.imageClass"
-  ng-style="img_style"
+  ng-style="e.imageStyle(img_style) || img_style"
   title="{{ e.title }}"
 />
 
@@ -18,7 +18,7 @@
   ng-if="e.image2"
   ng-src="{{ e.imagePlaceholder || e.image2 }}"
   ng-class="e.imageClass"
-  ng-style="img_style"
+  ng-style="e.imageStyle(img_style) || img_style"
   title="{{ e.title }}"
 />
 
@@ -56,7 +56,11 @@
   </g>
 </svg>
 
-<ng-include src="'html/bollard/bollard.html'" class="bollard"></ng-include>
+<ng-include
+  src="'html/bollard/bollard.html'"
+  class="bollard"
+  ng-if="e.type"
+></ng-include>
 
 <svg
   width="48"

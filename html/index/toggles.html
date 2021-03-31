@@ -6,8 +6,9 @@
 >
   {{ item.name }}
   <img
-    ng-src="images/{{ item.image }}"
-    style="height: 48px;"
+    ng-src="images/{{ item.imagePlaceholder || item.image }}"
+    ng-class="item.imageClass"
+    ng-style="item.imageStyle({height: 48}) || {height: 48}"
     ng-if="item.image"
   />
   <img ng-src="{{ item.image2 }}" style="height: 48px;" ng-if="item.image2" />

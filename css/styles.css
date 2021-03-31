@@ -1,6 +1,9 @@
 img.tile {
-  background-image: url(../images/tiles.png);
-  background-size: 480px;
+  background-image: url(../images/tiles/tiles.png);
+}
+
+img.tile_48 {
+  background-size: 576px;
 }
 
 tbody.customFilters tr:nth-child(2n + 1) > *:nth-child(2n) {

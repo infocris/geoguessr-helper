@@ -24,6 +24,7 @@ window.app = window.angular
     $rootScope.errors = errors = [];
     $rootScope.tips = tips;
     $rootScope.filters = filters = [];
+    $rootScope.images = [];
 
     var resolveOnAppLoaded;
     $rootScope.onAppLoaded = $q(function (resolve, reject) {
@@ -44,6 +45,9 @@ window.app = window.angular
 
     loadYAMLFile("data/toggles.yml", function (data) {
       $rootScope.toggles = data;
+      _.each(data, function (e) {
+        prepareImage(e);
+      });
     });
 
     loadYAMLFile("data/texts.yml", function (data) {
@@ -66,7 +70,7 @@ window.app = window.angular
     asyncLoadFiles(
       window.location.hash === "#!#dev" || window.location.hash === "#dev"
         ? [
-            "images/tiles.yml",
+            "images/tiles/tiles.yml",
             "flags/flags.yml",
             "data/countries.yml",
             "data/languages.yml",
@@ -78,7 +82,7 @@ window.app = window.angular
             "data/filters/signs.yml"
           ]
         : [
-            "images/tiles.yml",
+            "images/tiles/tiles.yml",
             "flags/flags.yml",
             "data/countries.yml",
             "data/languages.yml",
@@ -109,18 +113,54 @@ window.app = window.angular
           .replace(/\s$/, "")
           .split(" ");
         $rootScope.languages = filesByName["data/languages.yml"].data;
-        tiledImages = filesByName["images/tiles.yml"].data;
+        tiledImages = filesByName["images/tiles/tiles.yml"].data;
+        /*
         _.each(tiledImages, function (v) {
+          var ratio = 48 / Math.max(v[3], v[4]);
           appendCssRule(
-            ".tile_" +
-              v.join("_") +
-              " { background-position: -" +
-              v[0] * 48 +
-              "px -" +
-              v[1] * 48 +
+            [
+              "img.tile_48_",
+              v[0],
+              " { background-position: -",
+              Math.round(v[1] * ratio),
+              "px -",
+              Math.round(v[2] * ratio),
+              "px; background-size: ",
+              Math.round(1536 * ratio),
               "px; } "
+            ].join("")
+          );
+          return;
+          if (v[3] < 128 && v[4] < 128) {
+            var ratio = 48 / Math.max(v[3], v[4]);
+            appendCssRule(
+              [
+                "img.tile_48_",
+                v[0],
+                " { background-position: -",
+                Math.round(v[1] * ratio),
+                "px -",
+                Math.round(v[2] * ratio),
+                "px; background-size: ",
+                Math.round(1536 * ratio),
+                "px; } "
+              ].join("")
+            );
+            return;
+          }
+          appendCssRule(
+            [
+              ".tile_48_",
+              v[0],
+              " { background-position: -",
+              (v[1] * 48) / v[3],
+              "px -",
+              (v[2] * 48) / v[4],
+              "px; } "
+            ].join("")
           );
         });
+          */
 
         _.each(filesByName["flags/flags.yml"].data, function (v, k) {
           appendCssRule(
@@ -691,8 +731,7 @@ window.app = window.angular
       $rootScope.filtersByCountry[k].push(v);
     }
 
-    function readFilterValue(v) {
-      v.filterType = getFilterType(v);
+    function prepareImage(v) {
       if (v.image || v.image2) {
         v.imageClass = $rootScope.imageClass(v);
       }
@@ -700,15 +739,42 @@ window.app = window.angular
       if (v.image) {
         image = "images/" + image;
       }
+      if (image) {
+        $rootScope.images.push(v);
+      }
+
+      v.imageStyle = function (style) {
+        return style;
+      };
 
       if (image && tiledImages[image]) {
         v.imagePlaceholder = v.image ? "blank.png" : "images/blank.png";
-        v.imageClass = [
-          v.imageClass,
-          "tile",
-          "tile_" + tiledImages[image].join("_")
-        ];
-      }
+        v.imagePlaceholder += "#" + image;
+        v.imageClass = [v.imageClass, "tile"];
+        v.imageStyle = function (style) {
+          var ratio =
+            (style["max-height"] || style["height"]) /
+            Math.max(tiledImages[image][3], tiledImages[image][4]);
+          style["background-position"] =
+            "-" +
+            Math.round(tiledImages[image][1] * ratio) +
+            "px -" +
+            Math.round(tiledImages[image][2] * ratio) +
+            "px";
+          style["background-size"] = Math.round(1536 * ratio) + "px";
+          style["width"] = Math.round(tiledImages[image][3] * ratio);
+          if (tiledImages[image][3] < tiledImages[image][4]) {
+            style["height"] = Math.round(tiledImages[image][4] * ratio);
+          }
+          return style;
+        };
+      } // endif tiledImage
+    }
+
+    function readFilterValue(v) {
+      v.filterType = getFilterType(v);
+
+      prepareImage(v);
 
       //v.customIsos = {};
       if (!v.isos) {

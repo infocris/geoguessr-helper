@@ -21,12 +21,14 @@
       Error in file: {{ item.response.config.url }}
       <pre>{{ item.error }}</pre>
     </div>
-    <canvas id="canvas" width="1280" height="{{ 128 * 8 }}">
+    <canvas id="canvas" width="{{max_width}}" height="{{height}}">
       Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
     </canvas>
+    <canvas id="canvas2"></canvas>
+    <hr />
     <div id="images">
       <img
-        ng-repeat="e in filters"
+        ng-repeat="e in images"
         ng-src="{{ e.image2 || ( 'images/' + e.image ) }}"
         ng-if="e.image || e.image2"
         style="max-height: 128px; max-width: 128px;"
@@ -36,5 +38,15 @@
     <ul>
       <li ng-repeat="item in files">{{ item.file }}</li>
     </ul>
+
+    <svg width="0" height="0">
+        <mask id="myMask">
+          <polygon points="0 0, 100 0, 0 100" fill="white" />
+        </mask>
+        <mask id="myMask2">
+          <polygon points="100 0, 100 100, 0 100" fill="white" />
+        </mask>
+      </g>
+    </svg>
   </body>
 </html>
