@@ -13,20 +13,42 @@
     />
     <link href="../css/flag-icon.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
+    <script src="../js/html2canvas.min.js"></script>
     <script src="../js/app.js"></script>
+    <script src="../js/svg.js"></script>
   </head>
   <body>
+    <canvas id="canvas" width="{{max_width}}" height="{{height}}">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+
+    <div id="htmlcanvas" style="width: 2000px; background-color: transparent;">
+      <div ng-repeat="e in svgs" style="float:left;" data-svg="{{ e.svg }}"
+        data-fig="{{ e.fig }}" ng-style="{clear: $index % 15 == 0 ? 'both': false}"
+        ><ng-include
+        src="'html/svg.html'"
+        ng-if="e.fig || e.svg"
+      ></ng-include><ng-include
+        src="'html/bollard/bollard.html'"
+        class="bollard"
+        ng-if="e.file == 'bollards.yml'"
+    ></ng-include></div>
+    </div>
+
+    <hr style="clear:both;"/>
+    <hr style="clear:both;"/>
+
+    <div class="buttons">
+      <ng-include
+        src="'html/svg.html'"
+        ng-repeat="e in svgs"
+      ></ng-include>
+    </div>
     <div ng-repeat="item in errors" class="error">
       Error in file: {{ item.response.config.url }}
       <pre>{{ item.error }}</pre>
     </div>
-    <div class="buttons">
-      <ng-include
-        src="'html/filter.html'"
-        ng-repeat="e in filters"
-        ng-if="e.svg || e.fig"
-      ></ng-include>
-    </div>
+
     <h2>Files:</h2>
     <ul>
     <li ng-repeat="item in files">{{ item.file }}</li>

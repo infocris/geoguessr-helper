@@ -7,7 +7,7 @@ window.app.run(function ($rootScope, $http) {
   var tiles = {};
   var canvas2d = document.getElementById("canvas").getContext("2d");
   $rootScope.max_width = 1536;
-  $rootScope.height = 300;
+  $rootScope.height = 100;
   $rootScope.onAppLoaded.then(function () {
     setTimeout(function () {
       eachPic();
@@ -16,7 +16,7 @@ window.app.run(function ($rootScope, $http) {
       x = y = max_height = 0;
       eachPic(function (e, x, y, width, height) {
         canvas2d.drawImage(e, x, y, width, height);
-        tiles[e.getAttribute("src")] = [i++, x, y, e.width, e.height];
+        tiles[e.getAttribute("src")] = [i++, x, y, width, height];
       });
 
       console.log(JSON.stringify(tiles));
@@ -55,6 +55,6 @@ window.app.run(function ($rootScope, $http) {
           }
         });
       }
-    }, 1000);
+    }, 5000);
   }); // endcallback onAppLoaded
 });
