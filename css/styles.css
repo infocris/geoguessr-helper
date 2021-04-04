@@ -107,6 +107,10 @@ table.level2 .filter.level3 {
   display: none;
 }
 
+table .filter.selected {
+  display: inline-block !important;
+}
+
 .error {
   color: red;
   font-size: 12pt;

@@ -122,7 +122,7 @@ window.app = window.angular
 
         $rootScope.languages = filesByName["data/languages.yml"].data;
 
-        if (filesByName["tiles/tiles/tiles.yml"]) {
+        if (filesByName["images/tiles/tiles.yml"]) {
           tiledImages = filesByName["images/tiles/tiles.yml"].data;
         }
 

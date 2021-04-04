@@ -91,7 +91,7 @@
     >
       <span
         ng-if="e"
-        ng-show="e.customIsos[item.iso]"
+        ng-show="true || e.customIsos[item.iso]"
         ng-repeat="e in [record.filter]"
         class="customFilter"
         ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
@@ -104,11 +104,10 @@
         </div>
         <span ng-if="e.name">{{ e.name }}</span>
         <ng-include
-          ng-if="record.filter.customIsos[item.iso]"
+          ng-if="true || record.filter.customIsos[item.iso]"
           class="figure"
           src="'html/figure.html'"
-          ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
-          ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+          ng-init="img_style = {height: 48}"
         ></ng-include>
         <span ng-if="record.similarity"
           >({{ record.similarity|number:1 }} %)</span
@@ -139,8 +138,8 @@
           <ng-include
             class="figure"
             src="'html/figure.html'"
-            ng-repeat="e in [record.fig && record.fig.type ? record.fig: record]"
-            ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+            ng-repeat="e in [record]"
+            ng-init="img_style = {height:48}"
           ></ng-include>
         </li>
       </ul>
