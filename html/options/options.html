@@ -12,7 +12,6 @@
     <ng-include
       class="figure"
       src="'html/figure.html'"
-      ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
       ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
     ></ng-include>
     <span ng-show="!allFilters[v.key]">{{ v.key }}</span>

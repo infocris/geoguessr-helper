@@ -31,10 +31,12 @@
     >
       <ng-include
         src="'html/figure.html'"
-        ng-init="img_style = {height: 72}"
-        ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+        ng-init="img_style={height:72}"
       ></ng-include>
     </span>
   </td>
   <td class="alpha">{{ languages.charsets[iso] }}</td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
 </tr>

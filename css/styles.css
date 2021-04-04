@@ -2,6 +2,10 @@ img.tile {
   background-image: url(../images/tiles/tiles.png);
 }
 
+img.tileSvg {
+  background-image: url(../tiles/svg.png);
+}
+
 img.tile_48 {
   background-size: 576px;
 }
@@ -201,10 +205,6 @@ div.char.level3 {
 
 .filters .filter span.text {
   padding: 3px 10px 3px 10px;
-}
-
-svg.turn {
-  zoom: 1.5;
 }
 
 .char.match0:not(.selected) {
