@@ -50,37 +50,68 @@
   </g>
 </svg>
 
-<div
-  ng-if="e.type == 'car_plate'"
-  ng-style="{'background-color': e.color || 'gold', color: e.color2 || 'black', 'border-color': e.color2 || 'black' }"
-  style="
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    border-radius: 5px;
-    border: 2px solid black;
-    font-size: 20px;
-    overflow: hidden;
-  "
+<svg
+  ng-if="e.type == 'road_sign'"
+  height="24"
+  ng-style="{width: e.width || 40}"
 >
-  {{ e.content || "XXXX"}}
-</div>
+  <rect
+    ng-style="{width: e.width || 40}"
+    height="24"
+    fill="{{ e.color || 'gold' }}"
+  />
+  <text
+    x="{{ (e.width || 40) /2 }}"
+    y="18"
+    fill="{{ e.color2 || 'black' }}"
+    font-size="18"
+    text-anchor="middle"
+  >
+    {{ e.content || "XXXX"}}
+  </text>
+</svg>
 
-<div
-  ng-if="e.type == 'street_sign'"
-  ng-style="{'background-color': e.color || 'gold', color: e.color2 || 'black', 'border-color': e.color2 || 'black' }"
-  style="
-    display: inline-block;
-    width: 60px;
-    height: 24px;
-    border-radius: 5px;
-    border: 2px solid black;
-    font-size: 20px;
-    overflow: hidden;
-  "
->
-  {{ e.content || "street"}}
-</div>
+<svg ng-if="e.type == 'car_plate'" width="56" height="24">
+  <rect
+    width="56"
+    height="24"
+    stroke="{{ e.color2 || 'black' }}"
+    rx="5"
+    ry="5"
+    stroke-width="2"
+    fill="{{ e.color || 'gold' }}"
+  />
+  <text
+    x="28"
+    y="20"
+    fill="{{ e.color2 || 'black' }}"
+    font-size="20"
+    text-anchor="middle"
+  >
+    {{ e.content || "XXXX"}}
+  </text>
+</svg>
+
+<svg ng-if="e.type == 'street_sign'" width="60" height="24">
+  <rect
+    width="60"
+    height="24"
+    stroke="{{ e.color2 || 'black' }}"
+    rx="5"
+    ry="5"
+    stroke-width="2"
+    fill="{{ e.color || 'gold' }}"
+  />
+  <text
+    x="30"
+    y="20"
+    text-anchor="middle"
+    fill="{{ e.color2 || 'black' }}"
+    font-size="20"
+  >
+    {{ e.content || "street"}}
+  </text>
+</svg>
 
 <svg
   width="32"

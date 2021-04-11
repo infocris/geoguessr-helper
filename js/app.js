@@ -27,6 +27,11 @@ window.app = window.angular
     $rootScope.tips = tips;
     $rootScope.filters = filters = [];
     $rootScope.images = {};
+    $rootScope.detailedListLimit = 3;
+
+    if (!window.location.hash.match(/disableOptimizations/)) {
+      $rootScope.detailedListLimit = 20;
+    }
 
     var resolveOnAppLoaded;
     $rootScope.onAppLoaded = $q(function (resolve, reject) {
@@ -109,7 +114,8 @@ window.app = window.angular
             "data/filters/inprogress.yml",
             "data/nopriority.yml",
             "data/nopark.yml",
-            "data/circular.yml"
+            "data/circular.yml",
+            "data/roadsigns.yml"
           ],
       function (files, filesByName) {
         $rootScope.files = files;
@@ -122,11 +128,17 @@ window.app = window.angular
 
         $rootScope.languages = filesByName["data/languages.yml"].data;
 
-        if (filesByName["images/tiles/tiles.yml"]) {
+        if (
+          filesByName["images/tiles/tiles.yml"] &&
+          !window.location.hash.match(/disableOptimizations/)
+        ) {
           tiledImages = filesByName["images/tiles/tiles.yml"].data;
         }
 
-        if (filesByName["tiles/svg.yml"]) {
+        if (
+          filesByName["tiles/svg.yml"] &&
+          !window.location.hash.match(/disableOptimizations/)
+        ) {
           tiledSvgs = filesByName["tiles/svg.yml"].data;
         }
 
@@ -202,11 +214,16 @@ window.app = window.angular
             });
           } // endif is file filters
 
-          if (v.data.countries) {
-            _.each(v.data.countries, function (v, k) {
-              appendDataCountry(k, v);
-            });
-          } // endif has countries data
+          try {
+            if (v.data.countries) {
+              _.each(v.data.countries, function (v, k) {
+                appendDataCountry(k, v);
+              });
+            } // endif has countries data
+          } catch (err) {
+            console.error(err);
+            console.error(v.data.countries);
+          }
         }); // endforeach files > load filters
 
         afterFiltersLoaded(files);
@@ -699,13 +716,19 @@ window.app = window.angular
       }; // endfunction makepatch
     } // endfunction afterFiltersLoaded
 
-    function appendDataCountry(k, v) {
-      if (v.length) {
+    function appendDataCountry(k, v, depth) {
+      if (v.length && !depth) {
         _.each(v, function (v) {
-          appendDataCountry(k, v);
+          appendDataCountry(k, v, (depth || 1) + 1);
         });
         return;
       }
+
+      if (v.fig) {
+        _.extend(v, v.fig);
+        $rootScope.svgs.push(v);
+      }
+
       readFilterValue(v);
       $rootScope.filtersByCountry[k].push(v);
     }

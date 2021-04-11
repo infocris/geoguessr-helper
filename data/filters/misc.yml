@@ -37,12 +37,10 @@
 - title: Parallepedic electrical poll
   image: electrical/parallelepipedic.svg
   isos: lk,lt,th,ru
-  level: 2
 
 - title: Cylinder electrical poll
   image: electrical/cylindric.svg
   isos: bd,br,sk,ua
-  level: 2
 
 - image: nordic3.png
   title: Nordic style house

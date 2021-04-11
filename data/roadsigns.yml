@@ -1,0 +1,56 @@
+---
+filters:
+  - fig: {type: road_sign, color: red, color2: white, content: XXX, width: 40}
+    isos: ch,ee,es,fi,fr,lt,lu,lv,nl,pl,pt,ro,sk,sl
+    title: Road number sign
+    filterType: road_sign
+    level: 2
+  - fig: {type: road_sign, color: gold, color2: black, content: XXX, width: 40}
+    isos: be,ee,es,fi,fr,lt,lv,me,nl,pl,sl
+    title: Road number sign
+    filterType: road_sign
+    level: 2
+  - fig: {type: road_sign, color: blue, color2: white, content: XXX, width: 40}
+    isos: be,bg,es,gb,gr,hr,ie,it,lu,me,no,pt,rs,ru,sk,sl,tr
+    title: Road number sign
+    filterType: road_sign
+    level: 2
+  - fig: {type: road_sign, color: green, color2: white, content: XXX, width: 40}
+    isos: bg,gr,hr,it,mk,rs,sl
+    title: Road number sign
+    filterType: road_sign
+    level: 2
+  - fig: {type: road_sign, color: white, color2: black, content: XXX, width: 40}
+    isos: be
+    title: Road number sign
+    filterType: road_sign
+    level: 2
+
+countries:
+  al:
+    - fig: {type: road_sign, color: "#336FD9", color2: white, content: SH10, width: 50}
+  bg:
+    - fig: {type: road_sign, color: "#336FD9", color2: white, content: 100, width: 50}
+  es:
+    - fig: {type: road_sign, color: "#336FD9", color2: white, content: AB-10, width: 60}
+    - fig: {type: road_sign, color: red, color2: white, content: N-100, width: 60}
+    - fig: {type: road_sign, color: gold, color2: black, content: A-1000, width: 70}
+    - fig: {type: road_sign, color: orange, color2: black, content: AB-100, width: 70}
+  fr:
+    - fig: {type: road_sign, color: red, color2: white, content: A10, width: 40}
+    - fig: {type: road_sign, color: red, color2: white, content: N10, width: 40}
+    - fig: {type: road_sign, color: gold, color2: black, content: D100, width: 60}
+  hu:
+    - fig: {type: road_sign, color: "#336FD9", color2: white, content: M10, width: 50}
+    - fig: {type: road_sign, color: green, color2: white, content: 100, width: 50}
+  it:
+    - fig: {type: road_sign, color: "#336FD9", color2: white, content: SS100, width: 70}
+  mk:
+    - fig: {type: road_sign, color: gold, color2: black, content: R1000, width: 60}
+  ro:
+    - fig: {type: road_sign, color: red, color2: white, content: 10A, width: 60}
+  rs:
+    - fig: {type: road_sign, color: gold, color2: black, content: 100, width: 50}
+  si:
+    - fig: {type: road_sign, color: gold, color2: black, content: 100, width: 50}
+    - fig: {type: road_sign, color: green, color2: white, content: A1, width: 50}

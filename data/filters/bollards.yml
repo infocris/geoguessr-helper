@@ -45,7 +45,10 @@
   group: bollard
 - image: bollard/fr.png
   isos: fr.9,sn
+  level: 2
 - image: bollard/ad.png
   isos: ad
+  level: 2
 - image: bollard/is.png
   isos: is
+  level: 2

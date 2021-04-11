@@ -1,6 +1,6 @@
 <tr
   ng-repeat="iso in flags"
-  ng-if="$index < 3 || weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
+  ng-if="$index < detailedListLimit || weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
 >
   <td>
     <span class="flag-icon" ng-class="'flag-icon-' + iso"></span>
@@ -27,7 +27,7 @@
     <span
       ng-repeat="e in filtersByCountry[iso]"
       ng-class="[e.selected ? 'selected': '']"
-      ng-if="toggledClasses[e.filterType]"
+      ng-if="toggledClasses[e.filterType] || e.filterType == 'road_sign'"
     >
       <ng-include
         src="'html/figure.html'"
