@@ -1,5 +1,10 @@
-<tr ng-repeat="iso in flags" ng-if="flags.length < 20">
-  <td><span class="flag-icon" ng-class="'flag-icon-' + iso"></span></td>
+<tr
+  ng-repeat="iso in flags"
+  ng-if="$index < detailedListLimit || weightFlags[iso] >= minWeight && (flags.length <= 5 || (weightFlags[iso]/sumWeight*100) > 10)"
+>
+  <td>
+    <span class="flag-icon" ng-class="'flag-icon-' + iso"></span>
+  </td>
   <td>{{ commercialTlds[iso] || iso }}</td>
   <td class="names">{{ countries[iso][0] }}</td>
   <td class="names">{{ countries[iso][1] }}</td>
@@ -13,7 +18,7 @@
           <td>{{ tips[iso] }}</td>
           -->
   <td class="signs">
-    <span ng-repeat="e in signs[iso]" ng-if="e.svg[0] != 'turn'">
+    <span ng-repeat="e in signs[iso]">
       <ng-include
         src="'html/figure.html'"
         ng-init="img_style = {height: 72}"
@@ -22,13 +27,16 @@
     <span
       ng-repeat="e in filtersByCountry[iso]"
       ng-class="[e.selected ? 'selected': '']"
+      ng-if="toggledClasses[e.filterType] || e.filterType == 'road_sign'"
     >
       <ng-include
         src="'html/figure.html'"
-        ng-init="img_style = {height: 72}"
-        ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
+        ng-init="img_style={height:72}"
       ></ng-include>
     </span>
   </td>
   <td class="alpha">{{ languages.charsets[iso] }}</td>
+</tr>
+<tr>
+  <td colspan="10">&nbsp;</td>
 </tr>

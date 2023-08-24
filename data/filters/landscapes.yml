@@ -24,9 +24,9 @@
   level: 2
 
 - name: Montainous
-  isos: ad,bt,bo,ch,jo,jp,me,mk,pe,si
+  isos: ad,bt,bo,ch,co,jo,jp,me,mk,pe,si
   level: 2
 
 - name: Sea
-  isos: ae,cl,es,hr
+  isos: ae,cl,es,hr,si,ru
   level: 2

@@ -53,5 +53,6 @@ groups:
     isos: bt,in,jp,kh,kr,il,lk,th
   - name: English usage
     isos: au,bt,ca,gb,ie,in,ke,lk,ls,mk.1,mt,my,nz,ph,sg,sz,us,za
-  - name: Spanish/Portuguese/like
-    isos: ar,bo,br,cl,co,ec,es,gt,mx,pe,ph,pt,uy
+  - name: ES / PT / IT / ES-like
+    title: Spanish, Portuguese, Italian, Spanish soundlike
+    isos: ar,bo,br,cl,co,ec,es,gt,it,mx,pe,ph,pt,uy

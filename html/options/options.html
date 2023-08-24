@@ -1,0 +1,20 @@
+<tr>
+  <th>filter</th>
+  <th>nb used</th>
+</tr>
+<tr
+  ng-repeat="v in clickCountSorted"
+  ng-if="(view == 'options' || loaded.options) && allFilters[v.key] && v.value > 5"
+  ng-init="loaded.options = true;"
+>
+  <td ng-repeat="e in [allFilters[v.key]]">
+    {{ e.name }}
+    <ng-include
+      class="figure"
+      src="'html/figure.html'"
+      ng-init="img_style = {height: 32}"
+    ></ng-include>
+    <span ng-show="!allFilters[v.key]">{{ v.key }}</span>
+  </td>
+  <td>{{ v.value }}</td>
+</tr>

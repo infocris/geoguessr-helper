@@ -12,19 +12,25 @@
 
 - title: White street sign
   fig: { type: street_sign, color: white, color2: black }
-  isos: sk
+  isos: at,lu,mt,sk
   group: street_sign
   level: 2
 
 - title: Blue street sign
   fig: { type: street_sign, color: blue, color2: white }
-  isos: sk
+  isos: bg,nl,sk
   group: street_sign
   level: 2
 
 - title: Red street sign
   fig: { type: street_sign, color: red, color2: white }
-  isos: cz,tr
+  isos: cz,mk,tr
+  group: street_sign
+  level: 2
+
+- title: Green street sign
+  fig: { type: street_sign, color: green, color2: white }
+  isos: si
   group: street_sign
   level: 2
 
@@ -50,14 +56,6 @@
 - name: Buddhism
   level: 3
   isos: th
-
-- name: Yellow fire hydrant
-  level: 3
-  isos: ca,us
-
-- name: Red fire hydrant
-  level: 3
-  isos: dk
 
 - name: Sea pedestr.
   isos: ec,ph,tn

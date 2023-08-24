@@ -1,0 +1,66 @@
+<html ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="../css/flag-icon.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script src="../js/html2canvas.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/svg.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" width="{{max_width}}" height="{{height}}">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+
+    <div id="htmlcanvas" style="width: 2000px; background-color: transparent;">
+      <div ng-repeat="e in svgs" style="float:left;" data-svg="{{ e.svg }}"
+        data-fig="{{ e.fig }}" ng-style="{clear: $index % 15 == 0 ? 'both': false}"
+        ><ng-include
+        src="'html/svg.html'"
+        ng-if="e.fig || e.svg"
+      ></ng-include><ng-include
+        src="'html/bollard/bollard.html'"
+        class="bollard"
+        ng-if="e.file == 'bollards.yml'"
+    ></ng-include></div>
+    </div>
+
+    <hr style="clear:both;"/>
+    <hr style="clear:both;"/>
+
+    <div class="buttons">
+      <ng-include
+        src="'html/svg.html'"
+        ng-repeat="e in svgs"
+      ></ng-include>
+    </div>
+    <div ng-repeat="item in errors" class="error">
+      Error in file: {{ item.response.config.url }}
+      <pre>{{ item.error }}</pre>
+    </div>
+
+    <h2>Files:</h2>
+    <ul>
+    <li ng-repeat="item in files">{{ item.file }}</li>
+    </ul>
+    <svg width="0" height="0">
+        <mask id="myMask">
+          <polygon points="0 0, 100 0, 0 100" fill="white" />
+        </mask>
+        <mask id="myMask2">
+          <polygon points="100 0, 100 100, 0 100" fill="white" />
+        </mask>
+      </g>
+    </svg>
+  </body>
+</html>

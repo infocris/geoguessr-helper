@@ -1,13 +1,90 @@
+img.tile {
+  background-image: url(../images/tiles/tiles.png);
+}
+
+.electricalFilter:before {
+  position: absolute;
+  content: "";
+  background-image: url(../images/electrical/symbol.svg);
+  background-size: 24px;
+  opacity: 0.8;
+  margin-top: 24px;
+  margin-left: 24px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+img.tileSvg {
+  background-image: url(../tiles/svg.png);
+}
+
+img.tile_48 {
+  background-size: 576px;
+}
+
+tbody.customFilters tr:nth-child(2n + 1) > *:nth-child(2n) {
+  background-color: #aaa;
+}
+tbody.customFilters tr:nth-child(2n + 1) > *:nth-child(2n + 1) {
+  background-color: #bbb;
+}
+tbody.customFilters tr:nth-child(2n) > *:nth-child(2n) {
+  background-color: #999;
+}
+tbody.customFilters tr:nth-child(2n) > *:nth-child(2n + 1) {
+  background-color: #888;
+}
+
+tbody.customFilters div.isos,
+tbody.customFilters tr.isos td {
+  max-width: 100px;
+  font-size: 10pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+tbody.customFilters .customFilter div.isos {
+  position: absolute;
+  margin-top: 5px;
+  margin-left: -5px;
+  font-size: 8pt;
+  width: 50px;
+}
+tbody.customFilters .customFilter .file {
+  position: absolute;
+  margin-top: -12px;
+  margin-left: -16px;
+  opacity: 0.9;
+  font-size: 10pt;
+}
+
+tbody.customFilters th {
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  z-index: 100000;
+  text-align: center;
+}
+tbody.customFilters td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+select.form-control {
+  display: inline-block;
+}
+
 .filters .filter.customFilter,
 .customFilter {
   padding: 10px;
   margin: 5px;
   display: inline-block;
   overflow: hidden;
-  max-height: 70px;
+  max-height: 150px;
   text-align: center;
   border-radius: 4px;
-  border: 2px solid #555;
+  /*border: 2px solid #555;*/
   background-color: #ddd;
 }
 
@@ -43,6 +120,10 @@ table.level2 .filter.level3 {
   display: none;
 }
 
+table .filter.selected {
+  display: inline-block !important;
+}
+
 .error {
   color: red;
   font-size: 12pt;
@@ -65,10 +146,6 @@ table.level2 .filter.level3 {
   background-color: white;
   z-index: 10000;
   user-select: none;
-}
-
-.flag-icon-kg {
-  background-image: url(../flags/4x3/kg_.svg);
 }
 
 body {
@@ -119,7 +196,7 @@ div.mycontainer {
 
 div.char {
   background-color: white;
-  margin: 5px;
+  margin: 2px;
   font-size: 30px;
   /*letter-spacing: 10px;*/
   text-align: center;
@@ -145,10 +222,6 @@ div.char.level3 {
 
 .filters .filter span.text {
   padding: 3px 10px 3px 10px;
-}
-
-svg.turn {
-  zoom: 1.5;
 }
 
 .char.match0:not(.selected) {
@@ -203,11 +276,6 @@ div.filter {
   background-color: #00399c;
   border-color: #00399c;
   color: white;
-}
-.flag-icon {
-  width: 50px;
-  height: 50px;
-  margin: 10px;
 }
 
 body,

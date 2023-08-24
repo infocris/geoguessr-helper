@@ -1,7 +1,7 @@
 ---
 filters:
   - image2: sign/pedestrian/0.png
-    isos: at.9,be.9,gr.9,lk,me,mk,pl.9,rs.9,si,sg
+    isos: at.9,be.9,gr.9,il,lk,me,mk,pl.9,rs.9,si,sg
 
   - image2: sign/pedestrian/3.png
     isos: ee,kg.4,lt,mn.4,ru,ua
@@ -33,6 +33,7 @@ countries:
   ch: {image2: sign/pedestrian/ch.png}
   cl: {image2: sign/pedestrian/cl.png}
   co: {image2: sign/pedestrian/co.png}
+  dk: {image2: sign/pedestrian/dk.png}
   es: {image2: sign/pedestrian/es.png}
   gr: {image2: sign/pedestrian/gr.png}
   ie: {image2: sign/pedestrian/ie.png}

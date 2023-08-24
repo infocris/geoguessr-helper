@@ -1,0 +1,23 @@
+---
+filters:
+countries:
+  bg:
+    - { image: "sign/nopriority/bg.png" }
+  fi:
+    - { image: "sign/nopriority/fi.png" }
+  hr:
+    - { image: "sign/nopriority/hr.png" }
+  is:
+    - { image: "sign/nopriority/is.png" }
+  me:
+    - { image: "sign/nopriority/me.png" }
+  mk:
+    - { image: "sign/nopriority/mk.png" }
+  no:
+    - { image: "sign/nopriority/no.png" }
+  pl:
+    - { image: "sign/nopriority/pl.png" }
+  se:
+    - { image: "sign/nopriority/se.png" }
+  si:
+    - { image: "sign/nopriority/si.png" }
