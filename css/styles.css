@@ -2,6 +2,19 @@ img.tile {
   background-image: url(../images/tiles/tiles.png);
 }
 
+.electricalFilter:before {
+  position: absolute;
+  content: "";
+  background-image: url(../images/electrical/symbol.svg);
+  background-size: 24px;
+  opacity: 0.8;
+  margin-top: 24px;
+  margin-left: 24px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
 img.tileSvg {
   background-image: url(../tiles/svg.png);
 }

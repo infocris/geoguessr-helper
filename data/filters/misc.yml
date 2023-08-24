@@ -10,36 +10,43 @@
 
 - image: electrical/hu-like.png
   title: Electrical poll
+  filterClass: electricalFilter
   isos: hu.9,pl.8,ro.7,sk
   group: misc
 
 - image: electrical/lv-like.png
   title: Electrical poll
+  filterClass: electricalFilter
   isos: ar.1,br,ee.8,hr,jp,kg.2,lk.3,lt.8,lv.9,ru.5,sk,ua.2
   group: misc
 
 - image: electrical/pl3.png
   title: Electrical poll
+  filterClass: electricalFilter
   isos: ee,hu,hr,lv.3,me,pl,ru,sk
   group: misc
 
 - image: electrical/tri.png
   title: Electrical poll
+  filterClass: electricalFilter
   isos: lt,lv
   group: misc
   level: 2
 
 - image: electrical/white-foot.png
   title: Electrical poll
+  filterClass: electricalFilter
   isos: br,kg.3,ro,ua
   level: 2
 
 - title: Parallepedic electrical poll
   image: electrical/parallelepipedic.svg
+  filterClass: electricalFilter
   isos: lk,lt,th,ru
 
 - title: Cylinder electrical poll
   image: electrical/cylindric.svg
+  filterClass: electricalFilter
   isos: bd,br,sk,ua
 
 - image: nordic3.png

@@ -6,7 +6,8 @@
     'match' + e.match,
     !e.selected && e.match == flags.length ? 'full_match': '',
     'level' + (e.level || 1),
-    e.mouseovered ? 'mouseovered': ''
+    e.mouseovered ? 'mouseovered': '',
+    e.filterClass
   ]"
   ng-style="e.style"
   ng-click="selectFilter(e);"
