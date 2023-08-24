@@ -2,7 +2,7 @@
 # Files copy from wikipedia.org
 filters:
   - image2: sign/residential/model1.png
-    isos: at,es,gb.3,de,gr,rs
+    isos: at,de,es,gb.3,gr,lu,rs,si
   - image2: sign/residential/model2.png
     isos: be,ch,cz,dk.3,ee,fi,pl,ro.3,se,sk
   - image2: sign/residential/ru.svg

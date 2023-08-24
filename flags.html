@@ -1,0 +1,37 @@
+<html ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="../css/flag-icon.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/flag-icon.custom.css" rel="stylesheet" />
+    <script src="../js/app.js"></script>
+    <script src="../js/flags.js"></script>
+    <style>
+      div.flag {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="images">
+      <img
+        ng-repeat="iso in flags"
+        ng-src="flags/4x3/{{ iso == 'kg' ? 'kg_': iso }}.svg"
+        style="width: 100px;"
+      />
+    </div>
+    <canvas id="canvas" width="1000" height="{{ 128 * 8 }}">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+  </body>
+</html>

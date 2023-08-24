@@ -1,7 +1,7 @@
 ---
 - title: Painted tree
   image: misc/tree.png
-  isos: kg,lt.6,ro.8,ru.7,ua.9,lu.2,in.1
+  isos: hr,in.1,kg,lt.6,lu.2,ro.8,ru.7,ua.9
 
 - title: Painted tree (India)
   image: misc/tree2.png
@@ -15,12 +15,12 @@
 
 - image: electrical/lv-like.png
   title: Electrical poll
-  isos: ar.1,ee.8,jp,kg.2,lk.3,lv.9,lt.8,ru.5,ua.2
+  isos: ar.1,br,ee.8,hr,jp,kg.2,lk.3,lt.8,lv.9,ru.5,sk,ua.2
   group: misc
 
 - image: electrical/pl3.png
   title: Electrical poll
-  isos: ee,hu,lv.3,pl
+  isos: ee,hu,hr,lv.3,me,pl,ru,sk
   group: misc
 
 - image: electrical/tri.png
@@ -34,18 +34,31 @@
   isos: br,kg.3,ro,ua
   level: 2
 
-- title: Parallepedic eletrical poll
+- title: Parallepedic electrical poll
   image: electrical/parallelepipedic.svg
-  isos: lk,th,ru
-  level: 2
+  isos: lk,lt,th,ru
 
-- title: Cylinder steel eletrical poll
+- title: Cylinder electrical poll
   image: electrical/cylindric.svg
   isos: bd,br,sk,ua
-  level: 2
 
 - image: nordic3.png
   title: Nordic style house
-  isos: fi,is,no,se
+  isos: ee,fi,is,no,se
   level: 3
   group: misc
+
+- title: Yellow fire hydrant
+  svg: ["firehydrant", "yellow"]
+  level: 2
+  isos: ca,my,us
+
+- title: Red fire hydrant
+  svg: ["firehydrant"]
+  level: 2
+  isos: dk,lt,us
+
+- title: Blue fire hydrant
+  svg: ["firehydrant", "blue"]
+  level: 2
+  isos: hr

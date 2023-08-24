@@ -1,7 +1,7 @@
 ---
 - image: road/europe.png
   title: White Lines
-  isos: ar.3,au,cl.3,gb,gh,id,ie,jp,lk,my,nz,ph,sn,uy
+  isos: ar.3,au,cl.3,gb,gh,gr,id,ie,jp,lk,mk,my,nz,ph,pl,ru,sk,sn,uy
   group: road_lines_color
 
 - image: road/america.png
@@ -11,7 +11,7 @@
 
 - image: road/africa.png
   title: Yellow Border Lines
-  isos: bw,es.1,ie,jo,ls,sz,tr.1,za
+  isos: bw,ch,es.1,ie,il.1,jo,ls,my,sz,tr.1,za
   group: road_lines_color
 
 - image: road/uy.png
@@ -29,7 +29,7 @@
   group: road_artifact
 
 - image: road/se.png
-  isos: fi,se
+  isos: ee.4,fi,se
   group: road_artifact
 
 - image: road/nz.png
@@ -51,12 +51,12 @@
   group: road_artifact
   
 - image: road/border-white-black.png
-  isos: ae,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,sg,si,th,za
+  isos: ae,bd,es,id,ie,il,it.1,lk,lt,mk.1,my,ng,ru,sg,si,sz,th,ua,za
   group: road_artifact
   level: 2
 
 - image: road/border-yellow-black.png
-  isos: ae,gr
+  isos: ae,gr,jo,kh
   group: road_artifact
   level: 2
 

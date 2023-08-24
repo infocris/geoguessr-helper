@@ -20,7 +20,7 @@
   level: 2
 - name: Nordic
   title: Nordic-like vegetation
-  isos: ca,cl,is.9,dk.7,ee.8,fi.9,no.9,se.9,lt.8,lv.8
+  isos: ca,cl,is.9,dk.7,ee.8,fi.9,no.9,se.9,lt.8,lv.8,ru
 - name: Med.
   title: Mediterranean-like vegetation
   isos: al,il,it,gr,me,mk,pt,rs

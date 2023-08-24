@@ -4,14 +4,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsdiff/5.0.0/diff.min.js"></script>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous"
     />
-    <link href="./css/flag-icon.css" rel="stylesheet" />
+    <link href="./css/flag-icon.min.css" rel="stylesheet" />
     <link href="./css/styles.css" rel="stylesheet" />
+    <link href="./css/flag-icon.custom.css" rel="stylesheet" />
     <script src="js/app.js"></script>
   </head>
   <body>
@@ -42,8 +44,13 @@
         class="countriesList"
       ></tbody>
       <tbody
+        class="customFilters"
         ng-include="'html/index/custom_filters.html'"
         ng-show="view == 'manageCustomFilter'"
+      ></tbody>
+      <tbody
+        ng-include="'html/options/options.html'"
+        ng-show="view == 'options'"
       ></tbody>
       <tfoot>
         <td
@@ -61,6 +68,14 @@
             ng-show="!view"
           ></ng-include>
           <div style="float: right; padding-right: 130px;">
+            <div
+              class="btn btn-lg btn-link"
+              ng-click="view='options'"
+              ng-show="!view && customFilters.length > 0"
+            >
+              <span class="glyphicon glyphicon-wrench"></span>
+              Options
+            </div>
             <div
               class="btn btn-lg btn-link"
               ng-click="view='manageCustomFilter'"
@@ -81,5 +96,14 @@
         >https://github.com/infocris/geoguessr-helper</a
       >
     </p>
+    <svg width="0" height="0">
+        <mask id="myMask">
+          <polygon points="0 0, 100 0, 0 100" fill="white" />
+        </mask>
+        <mask id="myMask2">
+          <polygon points="100 0, 100 100, 0 100" fill="white" />
+        </mask>
+      </g>
+    </svg>
   </body>
 </html>

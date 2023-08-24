@@ -1,18 +1,20 @@
 <center>
   <div
     ng-repeat="iso in flags"
+    ng-show="weightFlags[iso] >= weights2[3] || !weights2[3] || exactMatchFlags[iso]"
     class="flag"
     style="text-align: center;"
     ng-class="[iso, exactMatchFlags[iso] ? 'exactMatch': '']"
   >
-    <span class="flag-icon" ng-class="'flag-icon-' + iso"></span><br />
+    <span class="flag-icon" ng-class="'flag-icon-' + iso"></span>
+    <br />
     {{ iso }}
     <span ng-if="sumWeight > 0"
       ><br />{{ weightFlags[iso]/sumWeight*100|number:0 }}%</span
     >
 
     <div
-      ng-if="!exactMatchFlags[iso] && toggledClasses.saveFiltersEnabled"
+      ng-if="!exactMatchFlags[iso] && toggledClasses.saveFiltersEnabled && customFiltering"
       style="position: absolute; margin-left: 20px;"
     >
       <div class="btn btn-success btn-sm" ng-click="addFilter(iso)">
@@ -23,21 +25,73 @@
   &nbsp;
   <div class="buttons filters" style="display: inline;">
     <ng-include
+      src="'html/char.html'"
+      ng-repeat="e in levels1"
+      ng-init="level = 1"
+      ng-if="e.selected"
+    ></ng-include>
+    <ng-include
+      src="'html/char.html'"
+      ng-repeat="e in levels2"
+      ng-init="level = 2"
+      ng-if="e.selected"
+    ></ng-include>
+    <ng-include
+      src="'html/char.html'"
+      ng-repeat="e in levels3"
+      ng-init="level = 3"
+      ng-if="e.selected"
+    ></ng-include>
+    <ng-include
+      src="'html/filter.html'"
+      ng-if="e.selected"
+      ng-repeat="e in languages.groups"
+    ></ng-include>
+    <ng-include
       src="'html/filter.html'"
       ng-repeat="e in filters"
       ng-if="e.selected"
     ></ng-include>
   </div>
-  <div
-    class="btn btn-lg btn-link"
-    ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
-    ng-show="similarityCount > 0"
-  >
-    <input
-      class="form-check-input"
-      type="checkbox"
-      ng-model="toggledClasses.saveFiltersEnabled"
-    />
-    Add custom filters
+  <div style="display: inline-block; padding: 10px;">
+    <div
+      class="btn btn-lg"
+      style="display: block;"
+      ng-class="exclusiveFiltering ? 'btn-link': 'btn-link'"
+      ng-click="updateExclusiveFiltering();"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+        ng-model="exclusiveFiltering"
+      />
+      Exact filters match
+    </div>
+    <div
+      class="btn btn-lg"
+      style="display: block;"
+      ng-class="customFiltering ? 'btn-link': 'btn-link'"
+      ng-click="updateCustomFiltering();"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+        ng-model="customFiltering"
+      />
+      Use custom filters
+    </div>
+    <div
+      class="btn btn-lg btn-link"
+      style="display: block;"
+      ng-click="toggledClasses.saveFiltersEnabled = !toggledClasses.saveFiltersEnabled"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+        ng-model="toggledClasses.saveFiltersEnabled"
+        ng-disabled="!customFiltering"
+      />
+      Add custom filters
+    </div>
   </div>
 </center>

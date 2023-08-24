@@ -1,0 +1,9 @@
+<div
+  class="char"
+  ng-click="selectChar(e);"
+  ng-mouseover="mouseOverChar(e);"
+  ng-mouseleave="mouseLeaveChar(e);"
+  ng-class="[e.selected ? 'selected': '', 'count' + e.count, 'match_ratio' + e.match_ratio, 'match' + e.match, !e.selected && e.match == flags.length ? 'full_match': '', 'level' + level]"
+>
+  {{ e.value }}
+</div>

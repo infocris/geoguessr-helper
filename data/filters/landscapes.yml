@@ -1,6 +1,6 @@
 ---
 - name: Desertic
-  isos: ar,bo,bw,cl,jo,pe,tr
+  isos: ar,bo,bw,cl,jo,mx,pe,tr
   level: 2
 
 - name: Tropical
@@ -8,7 +8,7 @@
   level: 2
 
 - name: Dry
-  isos: ae,il,jo,pe
+  isos: ae,bo,il,jo,pe
   level: 2
 
 - name: Snow
@@ -20,13 +20,13 @@
   level: 2
 
 - name: Not flat
-  isos: al,ad,bh,bo,ch,co,ec,hr,gr,it,ls,me,mk,mt,pe,pt,ro,rs,si,sk
+  isos: ad,al,bh,bo,ch,co,ec,gr,hr,it,ls,me,mk,mt,mx,pe,pt,ro,rs,si,sk,th
   level: 2
 
 - name: Montainous
-  isos: ad,bt,bo,ch,jo,jp,me,mk,pe,si
+  isos: ad,bt,bo,ch,co,jo,jp,me,mk,pe,si
   level: 2
 
 - name: Sea
-  isos: ae,hr
+  isos: ae,cl,es,hr,si,ru
   level: 2

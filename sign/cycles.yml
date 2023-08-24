@@ -2,12 +2,12 @@
 filters:
   - title: Woman with boy
     image2: sign/child/hr.png
-    isos: at,ee,de,hr,mk
+    isos: at,de,ee,hr,mk,si
     group: cycle
 
-  - title: Man with boy
+  - title: Man with child
     image2: sign/child/fi.png
-    isos: dk,fi,lt,lu,no,se,is
+    isos: be,dk,fi,gb,is,lt,lu,no,pt,se
     group: cycle
 
   - title: Man with girl

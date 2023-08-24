@@ -1,53 +1,145 @@
 <tr>
-  <td colspan="10">
+  <td colspan="50">
     <h1>Custom filters</h1>
+  </td>
+</tr>
+<tr>
+  <td colspan="3" rowspan="4" style="background-color: #aaa;"></td>
+  <th ng-repeat="e in allFilters" ng-if="e.customCount > 1 && e.customDiff > 0">
+    <span class="label label-primary">{{ e.file }}</span><br />
+    #{{ e.index }}
+  </th>
+  <td colspan="50" rowspan="4" style="background-color: #aaa;"></td>
+</tr>
+<tr>
+  <th ng-repeat="e in allFilters" ng-if="e.customCount > 1 && e.customDiff > 0">
+    <span ng-if="e.name">{{ e.name }}</span>
+    <ng-include
+      class="figure"
+      src="'html/figure.html'"
+      ng-init="img_style = {'max-width': 'e.width || 48', 'max-height': e.width || 48}"
+    ></ng-include>
+  </th>
+</tr>
+<tr>
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1 && e.customDiff > 0">
+    {{ e.customDiff }}
+  </td>
+</tr>
+<tr class="isos">
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1 && e.customDiff > 0">
+    {{ customIsos(e).join(",") }}
   </td>
 </tr>
 <tr
   ng-repeat="item in customFilters|orderBy:'-'"
   ng-class="item.deleted ? 'deleted': ''"
+  ng-if="view == 'manageCustomFilter' || loaded.custom_filters"
+  ng-init="loaded.custom_filters = true;"
 >
-  <td><span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span></td>
-  <td>{{ commercialTlds[item.iso] || item.iso }}</td>
-  <td class="names">{{ countries[item.iso][0] }}</td>
-  <td class="names">{{ countries[item.iso][1] }}</td>
   <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
-    {{ item.date }}
+    <span class="flag-icon" ng-class="'flag-icon-' + item.iso"></span>
   </td>
   <td ng-style="{'text-decoration': item.deleted ? 'line-through': ''}">
+    {{commercialTlds[item.iso] || item.iso}}<br />
+    {{item.date|date:"yyyy-MM-dd"}}<br />
     {{ item.filters.length }} filters
   </td>
   <td>
-    <span ng-repeat="record in item.filters">
+    <div
+      class="btn btn-danger glyphicon glyphicon-trash"
+      ng-show="!item.deleted"
+      ng-click="item.deleted = true; updateCustomFilter(item);"
+    ></div>
+    <div
+      class="btn btn-success glyphicon glyphicon-repeat"
+      ng-show="item.deleted"
+      ng-click="item.deleted = false; updateCustomFilter(item);"
+    >
+      Cancel
+    </div>
+  </td>
+  <td ng-repeat="e in allFilters" ng-if="e.customCount > 1 && e.customDiff > 0">
+    <span
+      ng-if="e.customIsos[item.iso]"
+      class="glyphicon glyphicon-plus-sign text-success"
+    ></span>
+    <span
+      ng-if="e.isos2[item.iso] && !e.customIsos[item.iso]"
+      class="glyphicon glyphicon-ok-sign"
+    ></span>
+  </td>
+  <td>
+    <div
+      class="btn btn-danger glyphicon glyphicon-trash"
+      ng-show="!item.deleted"
+      ng-click="item.deleted = true; updateCustomFilter(item);"
+    ></div>
+    <div
+      class="btn btn-success glyphicon glyphicon-repeat"
+      ng-show="item.deleted"
+      ng-click="item.deleted = false; updateCustomFilter(item);"
+    >
+      Cancel
+    </div>
+  </td>
+  <td colspan="10" style="text-align: left;">
+    {{ item.chars }}
+    <span
+      ng-repeat="record in item.filters"
+      ng-if="record.filter.customCount < 2"
+    >
       <span
         ng-if="e"
+        ng-show="true || e.customIsos[item.iso]"
         ng-repeat="e in [record.filter]"
         class="customFilter"
         ng-class="e.customIsos[item.iso] ? 'overwrite': ''"
-        ng-title="record.similarity ? record.similarity|number:1 + '%': null"
+        title="{{ e.title }}"
       >
+        <div class="file">
+          <span class="label label-primary"
+            >{{ record.filter.file }}#{{ record.filter.index }}</span
+          >
+        </div>
         <span ng-if="e.name">{{ e.name }}</span>
         <ng-include
+          ng-if="true || record.filter.customIsos[item.iso]"
           class="figure"
           src="'html/figure.html'"
-          ng-repeat="e in [e.fig && e.fig.type ? e.fig: e]"
-          ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+          ng-init="img_style = {height: 48}"
         ></ng-include>
         <span ng-if="record.similarity"
           >({{ record.similarity|number:1 }} %)</span
         >
+        <div ng-if="record.svg">
+          <span class="label label-default">{{ e.svg[0] }}</span><br />
+          <span ng-if="e.svg[1]" ng-style="{'background-color': e.svg[1]}"
+            >{{ e.svg[1] }}</span
+          >
+          <span ng-if="e.svg[2]" ng-style="{'background-color': e.svg[2]}"
+            >{{ e.svg[2] }}</span
+          >
+        </div>
+        <div class="isos">
+          {{ customIsos(e).join(",") }}
+        </div>
       </span>
     </span>
     <div ng-show="item.errors > 0" class="alert alert-danger">
       <strong>Following filters were not found:</strong>
       <ul ng-repeat="record in item.filters">
         <li ng-if="!record.filter">
-          type "{{ record.filterType }}" located in {{ record.file }}
+          type "{{ record.filterType }}"
+          <span ng-if="record.name">({{ record.name }})</span>
+          <span ng-if="record.title">({{ record.title }})</span>
+          [{{record.file}}]
+
           <ng-include
             class="figure"
             src="'html/figure.html'"
-            ng-repeat="e in [record.fig && record.fig.type ? record.fig: record]"
-            ng-init="img_style = {'max-width': e.width || 48, 'max-height': e.width || 48}"
+            ng-repeat="e in [record]"
+            ng-init="img_style = {height:48}"
           ></ng-include>
         </li>
       </ul>

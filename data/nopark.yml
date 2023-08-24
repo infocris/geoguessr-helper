@@ -1,0 +1,11 @@
+---
+filters:
+countries:
+  bg:
+    - { image: "sign/nopark/bg.png" }
+  dk:
+    - { image: "sign/nopark/dk.png" }
+  lv:
+    - { image: "sign/nopark/lv.png" }
+  pl:
+    - { image: "sign/nopark/pl.png" }
